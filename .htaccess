@@ -1,0 +1,249 @@
+
+RewriteEngine On
+
+# Forzar HTTPS
+#
+# ⚠️ LA SEGUNDA CONDICIÓN NO SE PUEDE QUITAR (2026-07-23). Antes solo estaba la
+# primera, y eso provoca un BUCLE INFINITO DE REDIRECCIONES en cualquier hosting
+# donde el SSL lo termina un proxy por delante de Apache (Hostinger, Cloudflare,
+# casi todos los compartidos): el proxy habla HTTPS con el visitante pero HTTP
+# con Apache, así que %{HTTPS} vale "off" INCLUSO en una petición HTTPS. Apache
+# redirige a HTTPS, el proxy vuelve a entrar como HTTP, y otra vez.
+#
+# El síntoma NO es un error: es que la web SE QUEDA CARGANDO PARA SIEMPRE, y por
+# eso cuesta tanto de diagnosticar. Tumbó nouweb-es.com el 2026-07-23.
+#
+# `X-Forwarded-Proto` es la cabecera con la que el proxy dice con qué protocolo
+# le habló el visitante de verdad. Si dice "https", no se redirige y el bucle no
+# existe.
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# La raíz es la versión canónica en español. /es/ deja de existir como home
+# para evitar contenido duplicado con /. Solo se redirige la home, no las
+# páginas legales de /es/, que siguen sirviéndose desde su carpeta.
+RewriteRule ^es/?$ / [L,R=301]
+RewriteRule ^es/index\.html$ / [L,R=301]
+
+# /es-pe/ nunca ha tenido contenido y no va a tenerlo: la raíz ES la versión
+# Perú y es la única indexada (Fase 14). Esta carpeta existe solo como redirección
+# porque, desde que hay /es-es/, la gente y los enlaces de fuera van a teclear la
+# pareja simétrica — y un 404 en una URL que el propio esquema del sitio sugiere
+# es peor que no tener el esquema.
+#
+# ⚠️ Va DESPUÉS de las de /es/ y no antes, aunque parezca indiferente: `^es/?$`
+# no llega a mirar "es-pe" (exige fin de cadena tras la barra opcional), pero el
+# orden de un bloque de redirecciones se lee de lo específico a lo general y
+# mezclarlo es cómo nacen los bucles.
+#
+# ⚠️ NO se declara en sitemap.xml. Una URL que redirige no se declara nunca:
+# Google la marcaría como error de cobertura.
+RewriteRule ^es-pe/?$ / [L,R=301]
+RewriteRule ^es-pe/index\.html$ / [L,R=301]
+
+
+DirectoryIndex index.html dashboard.php
+
+
+Options -Indexes
+
+
+# =============================================================================
+# Rendimiento — Fase 13 (2026-07-22)
+#
+# Motivo: Luis va a pagar por tráfico (Google, Meta, TikTok). Cada kilobyte de
+# más se paga dos veces: en la factura del anuncio y en la gente que se va
+# antes de que cargue. En Google Ads la velocidad de la página entra además en
+# el Nivel de calidad, o sea que una web lenta encarece literalmente el clic.
+#
+# ⚠️ TODO ESTE BLOQUE VA ENTRE <IfModule>. Si el hosting no tiene un módulo,
+# Apache se salta el bloque en vez de devolver un error 500 y tumbar la web
+# entera. Sin eso, un cambio de servidor de IONOS dejaría el sitio caído.
+# =============================================================================
+
+
+# --- 1. Compresión ----------------------------------------------------------
+# Es el mayor ahorro de toda la fase y no cambia ni un píxel de la web: el
+# servidor manda los archivos comprimidos y el navegador los descomprime solo.
+# Medido en este proyecto: styles.css 117 KB y script.js 115 KB viajaban
+# ENTEROS en cada primera visita. Comprimidos bajan a ~20 KB cada uno.
+#
+# Se comprime solo texto (CSS, JS, HTML, SVG, JSON). Las imágenes y los vídeos
+# NO: ya vienen comprimidos y volver a comprimirlos gasta CPU sin ahorrar nada.
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE application/ld+json
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+    AddOutputFilterByType DEFLATE font/ttf
+    AddOutputFilterByType DEFLATE font/otf
+
+    # ⚠️ Las fuentes .woff y .woff2 NO se comprimen: ya están comprimidas por
+    # dentro. Pasarlas por gzip las deja igual de grandes y gasta CPU.
+
+    # Proxies viejos que se atragantan con el contenido comprimido.
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE\s7 !no-gzip !gzip-only-text/html
+</IfModule>
+
+# Brotli comprime ~15 % mejor que gzip y lo entienden todos los navegadores
+# actuales. Si el hosting no lo tiene, este bloque se ignora y queda el gzip
+# de arriba, que ya hace el 90 % del trabajo.
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html
+    AddOutputFilterByType BROTLI_COMPRESS text/plain
+    AddOutputFilterByType BROTLI_COMPRESS text/css
+    AddOutputFilterByType BROTLI_COMPRESS text/javascript
+    AddOutputFilterByType BROTLI_COMPRESS application/javascript
+    AddOutputFilterByType BROTLI_COMPRESS application/json
+    AddOutputFilterByType BROTLI_COMPRESS application/ld+json
+    AddOutputFilterByType BROTLI_COMPRESS image/svg+xml
+</IfModule>
+
+
+# --- 2. Caché del navegador -------------------------------------------------
+# Esto NO acelera la primera visita: acelera la segunda y las siguientes, y en
+# publicidad eso importa más de lo que parece, porque el mismo usuario ve el
+# anuncio varias veces antes de decidirse.
+#
+# ⚠️ EL PUNTO DELICADO: `styles.css` y `script.js` se cachean UN AÑO, y eso solo
+# es seguro porque este proyecto usa cache busting (`?v=22`). Al subir un cambio
+# HAY QUE subir el número del `?v=`; si no, los visitantes que ya estuvieron
+# seguirán viendo la versión vieja durante un año. Está avisado en ESTADO.md en
+# cada aviso de publicación, y ahora también aquí.
+#
+# El HTML se cachea muy poco a propósito: es el que trae los `?v=` nuevos. Si se
+# cacheara mucho, el navegador no se enteraría nunca de que hay CSS nuevo.
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    ExpiresByType text/html                     "access plus 10 minutes"
+
+    ExpiresByType text/css                      "access plus 1 year"
+    ExpiresByType text/javascript               "access plus 1 year"
+    ExpiresByType application/javascript        "access plus 1 year"
+
+    ExpiresByType image/png                     "access plus 1 year"
+    ExpiresByType image/jpeg                    "access plus 1 year"
+    ExpiresByType image/gif                     "access plus 1 year"
+    ExpiresByType image/webp                    "access plus 1 year"
+    ExpiresByType image/svg+xml                 "access plus 1 year"
+    ExpiresByType image/x-icon                  "access plus 1 year"
+
+    ExpiresByType font/woff                     "access plus 1 year"
+    ExpiresByType font/woff2                    "access plus 1 year"
+    ExpiresByType application/font-woff         "access plus 1 year"
+
+    ExpiresByType video/mp4                     "access plus 1 year"
+
+    # sitemap y robots: los lee Google, no el visitante. Un día basta.
+    ExpiresByType application/xml               "access plus 1 day"
+    ExpiresByType text/plain                    "access plus 1 day"
+
+    ExpiresDefault                              "access plus 1 month"
+</IfModule>
+
+<IfModule mod_headers.c>
+    # `immutable` le dice al navegador que ni se moleste en preguntar si el
+    # archivo cambió. Solo vale con cache busting, que es lo que hay.
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico|woff|woff2|mp4)$">
+        Header set Cache-Control "public, max-age=31536000"
+    </FilesMatch>
+
+    <FilesMatch "\.html$">
+        Header set Cache-Control "public, max-age=600, must-revalidate"
+    </FilesMatch>
+
+    # Quita la cabecera que delata la versión de PHP del servidor.
+    Header unset X-Powered-By
+</IfModule>
+
+
+# --- 3. Seguridad de cabeceras ---------------------------------------------
+# No es publicidad ni velocidad, pero son cuatro líneas y el sitio pide datos
+# personales por formulario. Ninguna de las cuatro rompe nada de lo que hay.
+
+<IfModule mod_headers.c>
+    # Impide que la web se cargue dentro de un iframe ajeno (clickjacking).
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # Impide que el navegador "adivine" el tipo de un archivo.
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Al salir hacia otro dominio manda solo el dominio, no la URL completa.
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Desactiva APIs que esta web no usa. Si algún día se añade un mapa o una
+    # videollamada, hay que revisar esta línea.
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+</IfModule>
+
+
+# --- 4. Tipos MIME ----------------------------------------------------------
+# Si el servidor no declara bien el tipo, el navegador no aplica la compresión
+# ni la caché de arriba. En hostings compartidos suele faltar el de woff2.
+
+<IfModule mod_mime.c>
+    AddType text/javascript                 .js
+    AddType application/json                .json
+    AddType image/svg+xml                   .svg
+    AddType image/webp                      .webp
+    AddType font/woff                       .woff
+    AddType font/woff2                      .woff2
+    AddType video/mp4                       .mp4
+</IfModule>
+
+
+# --- 5. Archivos que no deben servirse --------------------------------------
+# El backlog de ESTADO.md avisa de que Backup/ vive dentro del sitio y de que
+# hay archivos sueltos que no deberían ser públicos. Esto NO sustituye a
+# borrarlos del servidor —es una red de seguridad, no una solución— pero evita
+# que un despiste por FTP los deje descargables.
+
+<IfModule mod_rewrite.c>
+    RewriteRule ^Backup/ - [F,L]
+    RewriteRule ^docs/ - [F,L]
+</IfModule>
+
+# ⚠️ `Require` es sintaxis de Apache 2.4 y `Deny from all` es de la 2.2. Cada
+# una da error 500 en la versión que no le toca, así que van las dos, cada una
+# dentro del <IfModule> de su módulo. Con esto el archivo es seguro suba lo que
+# suba IONOS. Sin ese cuidado, un cambio de versión del servidor tumbaría la
+# web entera — y justo mientras hay dinero corriendo en anuncios.
+
+<IfModule mod_authz_core.c>
+    <FilesMatch "\.(bak|sql|md|log|ini)$">
+        Require all denied
+    </FilesMatch>
+    <Files "hostinger-recovery-codes.txt">
+        Require all denied
+    </Files>
+</IfModule>
+
+<IfModule !mod_authz_core.c>
+    <FilesMatch "\.(bak|sql|md|log|ini)$">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+    <Files "hostinger-recovery-codes.txt">
+        Order allow,deny
+        Deny from all
+    </Files>
+</IfModule>

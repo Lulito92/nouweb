@@ -1,0 +1,31 @@
+# robots.txt de nouweb-es.com — creado en la Fase 10 (2026-07-22).
+#
+# Lo que hace: decirle a los buscadores dónde está el mapa del sitio y pedirles
+# que no gasten rastreo en páginas que no son contenido.
+#
+# ⚠️ ESTO NO ES UNA MEDIDA DE SEGURIDAD, y conviene tenerlo claro:
+# este archivo es público (cualquiera abre nouweb-es.com/robots.txt) y es una
+# PETICIÓN, no una barrera. Un buscador serio la respeta; un escáner que busca
+# vulnerabilidades no, y de hecho lee este archivo justo para saber qué rutas
+# hay. Por eso acá NO se listan las carpetas del backend: escribirlas sería
+# publicar un índice de lo que conviene mirar. Lo que tenga que estar protegido
+# se protege con contraseña en el servidor, no con una línea de texto.
+
+User-agent: *
+
+# Páginas reales pero sin valor de búsqueda: son herramientas, no contenido.
+Disallow: /login.html
+Disallow: /briefing.html
+Disallow: /form_contact.html
+Disallow: /test-idiomas.html
+Disallow: /test-selector.html
+
+# El molde de los artículos. Ya lleva noindex dentro; esto es el cinturón
+# además de los tirantes.
+Disallow: /blog/_plantilla.html
+
+# /es/ redirige 301 a la raíz (CLAUDE.md § 7). No hay nada que rastrear ahí y
+# el sitemap tampoco la declara.
+Disallow: /es/
+
+Sitemap: https://nouweb-es.com/sitemap.xml

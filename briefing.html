@@ -1,0 +1,2147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Briefing de Inicio de Proyecto | Nouweb</title>
+    <meta name="description" content="Completa el briefing de tu proyecto web para comenzar a trabajar en tu diseño a medida.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="Imagenes/iconoweb.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Uploadcare -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@uploadcare/file-uploader@1/web/uc-file-uploader-regular.min.css">
+    <script type="module">
+      import * as UC from 'https://cdn.jsdelivr.net/npm/@uploadcare/file-uploader@1/web/uc-file-uploader-regular.min.js';
+      UC.defineComponents(UC);
+    </script>
+
+    <style>
+        /* ── VARIABLES Y RESET ── */
+        :root {
+            --bg-color: #050505;
+            --bg-deep: #0a0a0a;
+            --surface-color: rgba(26, 26, 26, 0.7);
+            --primary-color: #3b82f6;      /* Blue */
+            --secondary-color: #8b5cf6;    /* Purple */
+            --accent-color: #06b6d4;       /* Cyan */
+            --text-color: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-focus: #3b82f6;
+            --accent-gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --glass-bg: rgba(20, 20, 20, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.06);
+            --section-radius: 20px;
+            --font-main: 'Outfit', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Background Animated Dots & Glows */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+            background-size: 35px 35px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .ambient-glow-1 {
+            position: fixed;
+            top: -20%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .ambient-glow-2 {
+            position: fixed;
+            bottom: -10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── HEADER ── */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-color);
+            height: 90px;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-logo-img {
+            height: 68px;
+            width: auto;
+            transition: var(--transition);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+            padding: 8px 16px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+        }
+
+        .back-link:hover {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            background: rgba(59, 130, 246, 0.08);
+            transform: translateX(-3px);
+        }
+
+        /* ── LANGUAGE SWITCHER ── */
+        .lang-switcher {
+            display: flex;
+            gap: 6px;
+        }
+
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 6px 12px;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-family: var(--font-main);
+            font-size: 0.82rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .lang-btn img {
+            width: 18px;
+            height: 14px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            border-color: var(--primary-color);
+            color: #fff;
+            background: rgba(59, 130, 246, 0.12);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                height: 70px;
+            }
+            .header-container {
+                padding: 0 16px;
+            }
+            .header-logo-img {
+                height: 44px;
+            }
+            .header-actions {
+                gap: 8px;
+            }
+            .progress-container {
+                top: 70px;
+            }
+            
+            /* Circular Language buttons on mobile */
+            .lang-text {
+                display: none;
+            }
+            .lang-btn {
+                width: 34px;
+                height: 34px;
+                border-radius: 50%;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .lang-btn img {
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                margin: 0;
+                object-fit: cover;
+            }
+            
+            /* Circular Back button on mobile */
+            .back-link {
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0;
+            }
+            .back-link .back-text {
+                display: none;
+            }
+            .back-link i {
+                font-size: 0.95rem;
+                margin: 0;
+            }
+            
+            /* Prevent inputs and textareas zoom on focus on iOS mobile screens */
+            .form-group input[type="text"],
+            .form-group input[type="email"],
+            .form-group input[type="tel"],
+            .form-group input[type="date"],
+            .form-group textarea,
+            .form-group select {
+                font-size: 16px !important;
+            }
+        }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 24px 30px;
+            text-align: center;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            padding: 6px 18px;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary-color);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 15px;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        /* ── PROGRESS BAR ── */
+        .progress-container {
+            position: sticky;
+            top: 90px;
+            z-index: 99;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--accent-gradient);
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            transition: width 0.3s ease;
+        }
+
+        /* ── FORM WRAPPER ── */
+        .form-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto 100px;
+            padding: 20px 24px 0;
+        }
+
+        /* ── SECTION CARD ── */
+        .form-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--section-radius);
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        .form-section:hover {
+            border-color: rgba(59, 130, 246, 0.2);
+            box-shadow: 0 20px 50px rgba(59, 130, 246, 0.05);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title .s-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--accent-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #fff;
+            box-shadow: 0 8px 16px rgba(59, 130, 246, 0.25);
+            flex-shrink: 0;
+        }
+
+        /* ── ALERT BLOCKS ── */
+        .alert-box {
+            background: rgba(59, 130, 246, 0.06);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-top: 15px;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .alert-box.alert-success {
+            background: rgba(16, 185, 129, 0.06);
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+
+        .alert-box.alert-info-tech {
+            background: rgba(6, 182, 212, 0.06);
+            border-color: rgba(6, 182, 212, 0.2);
+            margin-bottom: 25px;
+            margin-top: 0;
+        }
+
+        .alert-box i {
+            font-size: 1.15rem;
+            color: var(--primary-color);
+            margin-top: 3px;
+        }
+
+        .alert-box.alert-success i {
+            color: #10b981;
+        }
+
+        .alert-box.alert-info-tech i {
+            color: var(--accent-color);
+        }
+
+        .alert-box p {
+            font-size: 0.88rem;
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── GRID SYSTEM ── */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .form-grid .full {
+            grid-column: 1 / -1;
+        }
+
+        @media (max-width: 768px) {
+            .form-section {
+                padding: 25px 20px;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-grid .full {
+                grid-column: 1;
+            }
+        }
+
+        /* ── INPUT FIELDS ── */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-color);
+            letter-spacing: 0.02em;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group input[type="date"],
+        .form-group textarea,
+        .form-group select {
+            background: rgba(5, 5, 5, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 14px 18px;
+            color: var(--text-color);
+            font-family: var(--font-main);
+            font-size: 0.98rem;
+            transition: var(--transition);
+            outline: none;
+            width: 100%;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary-color);
+            background: rgba(59, 130, 246, 0.03);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        /* Helper hints */
+        .hint {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            opacity: 0.8;
+            margin-top: 2px;
+        }
+
+        /* Required star styling */
+        .required-star {
+            color: var(--primary-color);
+            margin-left: 2px;
+        }
+
+        /* ── INTERACTIVE PILLS (Visual Options) ── */
+        .pill-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 4px;
+        }
+
+        .pill-btn {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .pill-input {
+            display: none;
+        }
+
+        .pill-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 12px 20px;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: var(--transition);
+            user-select: none;
+        }
+
+        .pill-btn:hover .pill-content {
+            border-color: rgba(59, 130, 246, 0.4);
+            background: rgba(59, 130, 246, 0.04);
+            color: var(--text-color);
+        }
+
+        /* Radio & Checkbox checked styles */
+        .pill-input:checked + .pill-content {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(139, 92, 246, 0.12) 100%);
+            border-color: var(--primary-color);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.15);
+        }
+
+        /* Interactive icons inside pills */
+        .pill-content i.check-icon {
+            font-size: 0.95rem;
+            color: var(--primary-color);
+            opacity: 0;
+            width: 0;
+            transform: scale(0.5);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .pill-input:checked + .pill-content i.check-icon {
+            opacity: 1;
+            width: auto;
+            transform: scale(1);
+        }
+
+        /* Brands social icons styling inside pills */
+        .pill-content i.fab {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+        .pill-input:checked + .pill-content i.fab {
+            color: #fff;
+        }
+
+        /* ── CONDITIONAL SECTIONS ── */
+        .conditional-section {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 0;
+        }
+
+        .conditional-section.show {
+            max-height: 2500px;
+            opacity: 1;
+            margin-bottom: 30px;
+        }
+
+        .conditional-upload {
+            max-height: 500px;
+            opacity: 1;
+            overflow: hidden;
+            transition: all 0.5s ease-in-out;
+            margin-top: 24px;
+        }
+
+        .conditional-upload.hide {
+            max-height: 0;
+            opacity: 0;
+            margin-top: 0;
+            pointer-events: none;
+        }
+
+        /* ── UPLOADCARE STYLING OVERRIDES ── */
+        uc-file-uploader-regular {
+            --uc-font-family: var(--font-main);
+            --uc-primary: var(--primary-color);
+            --uc-primary-foreground: #fff;
+            --uc-background: rgba(5, 5, 5, 0.5);
+            --uc-foreground: var(--text-color);
+            --uc-muted: rgba(255, 255, 255, 0.05);
+            --uc-muted-foreground: var(--text-muted);
+            --uc-border: var(--border-color);
+            --uc-border-radius: 12px;
+            width: 100%;
+        }
+
+        .upload-block {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        /* ── SUBMIT BUTTON ── */
+        .submit-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--section-radius);
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .submit-section p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: var(--accent-gradient);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 16px 50px;
+            font-family: var(--font-main);
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.35);
+            transition: var(--transition);
+            min-width: 280px;
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.5);
+        }
+
+        .btn-submit:active:not(:disabled) {
+            transform: translateY(-1px);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* ── SUCCESS SCREEN ── */
+        .success-box {
+            display: none;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: var(--section-radius);
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        .success-box i.success-icon {
+            font-size: 4rem;
+            color: #10b981;
+            margin-bottom: 25px;
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.1);
+            width: 90px;
+            height: 90px;
+            line-height: 90px;
+            border-radius: 50%;
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.25);
+        }
+
+        .success-box h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .success-box p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 35px;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── FOOTER ── */
+        .footer {
+            position: relative;
+            z-index: 1;
+            border-top: 1px solid var(--border-color);
+            padding: 40px 24px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            background: #050505;
+        }
+
+        .footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="Imagenes/LogoAlta.png" alt="Nouweb Logo" class="header-logo-img">
+            </a>
+            
+            <div class="header-actions">
+                <!-- Translation Switcher -->
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="es" onclick="setLang('es')">
+                        <img src="Imagenes/Espana.png" alt="ES"> <span class="lang-text">ES</span>
+                    </button>
+                    <button class="lang-btn" data-lang="de" onclick="setLang('de')">
+                        <img src="Imagenes/Deutschland.png" alt="DE"> <span class="lang-text">DE</span>
+                    </button>
+                    <button class="lang-btn" data-lang="en" onclick="setLang('en')">
+                        <img src="Imagenes/England.png" alt="EN"> <span class="lang-text">EN</span>
+                    </button>
+                </div>
+
+                <a href="es/index.html" class="back-link" id="btn-back-link">
+                    <i class="fas fa-arrow-left"></i> <span data-t="backToSite" class="back-text">Volver al sitio</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="badge" data-t="badgeText">Intake de Clientes</div>
+        <h1><span data-t="heroTitlePrefix">Ficha de </span><span class="text-gradient" data-t="heroTitleMain">Briefing de Proyecto</span></h1>
+        <p data-t="heroDesc">Por favor, rellena este formulario con el mayor detalle posible. Esta información será la base estratégica sobre la que construiremos la identidad y diseño a medida de tu nuevo sitio web.</p>
+    </div>
+
+    <!-- FORM WRAPPER -->
+    <div class="form-wrapper">
+
+        <!-- SUCCESS SCREEN -->
+        <div class="success-box" id="success-box">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h2 data-t="successTitle">¡Briefing Recibido con Éxito!</h2>
+            <p data-t="successDesc">Muchas gracias por compartir todos los detalles estratégicos de tu negocio. Hemos recibido la información correctamente. Analizaremos tu propuesta y nos pondremos en contacto contigo en un plazo máximo de 24 horas.</p>
+            <a href="es/index.html" class="back-link btn-back-success" style="display: inline-flex; width: auto;">
+                <i class="fas fa-home"></i> <span data-t="backToSite">Volver al sitio web</span>
+            </a>
+        </div>
+
+        <!-- FORM -->
+        <form id="briefing-form" action="https://formspree.io/f/xqeeevyv" method="POST">
+            <!-- Formspree metadata -->
+            <input type="hidden" name="_subject" value="🚀 NUEVO BRIEFING DETALLADO DE CLIENTE - Nouweb">
+            <input type="hidden" name="logo_url" id="logo-url-field" value="">
+
+            <!-- ── SECCIÓN 1: CONTACTO Y GESTIÓN ── -->
+            <div class="form-section">
+                <div class="section-title">
+                    <div class="s-icon"><i class="fas fa-user-tie"></i></div>
+                    <span data-t="s1title">1. Información de Contacto y Gestión</span>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label><span data-t="s1responsable">Nombre y Apellidos del responsable</span> <span class="required-star">*</span></label>
+                        <input type="text" name="nombre_responsable" required placeholder="Ej: Juan Pérez">
+                    </div>
+                    <div class="form-group">
+                        <label data-t="s1cargo">Cargo en la empresa</label>
+                        <input type="text" name="cargo_responsable" placeholder="Ej: CEO, Director de Marketing, Propietario...">
+                    </div>
+                    <div class="form-group">
+                        <label><span data-t="s1empresa">Nombre comercial de la empresa</span> <span class="required-star">*</span></label>
+                        <input type="text" name="empresa_nombre" required placeholder="Ej: Mi Negocio S.L.">
+                    </div>
+                    <div class="form-group">
+                        <label><span data-t="s1email">Correo electrónico principal</span> <span class="required-star">*</span></label>
+                        <input type="email" name="email" required placeholder="Ej: contacto@miempresa.com">
+                    </div>
+                    <div class="form-group">
+                        <label><span data-t="s1phone">Teléfono / WhatsApp</span> <span class="required-star">*</span></label>
+                        <input type="tel" name="telefono" required placeholder="Ej: +34 612 345 678">
+                    </div>
+                    <div class="form-group">
+                        <label data-t="s1channel">Canal de comunicación preferido</label>
+                        <div class="pill-group">
+                            <label class="pill-btn">
+                                <input type="radio" name="canal_preferido" value="WhatsApp" checked class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i>WhatsApp</span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="canal_preferido" value="Email" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i>Email</span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="canal_preferido" value="Videollamada" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="videocall">Videollamada</span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group full">
+                        <label data-t="s1aprobador">¿Quién tiene la última palabra para aprobar los diseños?</label>
+                        <input type="text" name="aprobador_final" placeholder="Indica el nombre o cargo de la persona responsable de la aprobación final">
+                        <span class="hint" data-t="s1aprobadorHint">Esto nos ayuda a asegurar agilidad en las fases de revisión del proyecto.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── SECCIÓN 2: ADN DEL NEGOCIO Y MERCADO ── -->
+            <div class="form-section">
+                <div class="section-title">
+                    <div class="s-icon"><i class="fas fa-rocket"></i></div>
+                    <span data-t="s2title">2. ADN del Negocio y Mercado</span>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label><span data-t="s2actividad">¿A qué se dedica exactamente la empresa?</span> <span class="required-star">*</span></label>
+                        <textarea name="actividad_empresa" required placeholder="Explícalo de forma clara y sencilla, como si se lo contaras a un niño."></textarea>
+                    </div>
+                    <div class="form-group full">
+                        <label><span data-t="s2publico">¿Cuál es tu público objetivo / cliente ideal?</span> <span class="required-star">*</span></label>
+                        <textarea name="publico_objetivo" required placeholder="Edad, género, sector profesional, qué problemas específicos o necesidades tiene que tu empresa les resuelve."></textarea>
+                    </div>
+                    <div class="form-group full">
+                        <label><span data-t="s2propuesta">¿Cuál es tu propuesta de valor única?</span> <span class="required-star">*</span></label>
+                        <textarea name="propuesta_valor" required placeholder="¿Por qué un cliente debería comprarte a ti y no a tu competencia? ¿Qué te hace especial?"></textarea>
+                    </div>
+                    <div class="form-group full">
+                        <label><span data-t="s2personalidad">Define la personalidad de tu marca (3 o 4 palabras clave)</span> <span class="required-star">*</span></label>
+                        <input type="text" name="personalidad_marca" required placeholder="Ej: Elegante, disruptiva, ecológica, tradicional, tecnológica...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── SECCIÓN 3: OBJETIVOS DEL SITIO WEB ── -->
+            <div class="form-section">
+                <div class="section-title">
+                    <div class="s-icon"><i class="fas fa-bullseye"></i></div>
+                    <span data-t="s3title">3. Objetivos del Sitio Web</span>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label><span data-t="s3objetivo">¿Cuál es el objetivo principal que debe cumplir la web?</span> <span class="required-star">*</span></label>
+                        <div class="pill-group">
+                            <label class="pill-btn">
+                                <input type="radio" name="objetivo_principal" value="Vender productos" class="pill-input" id="obj-ecommerce">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="g1">Vender productos online (Tienda)</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="objetivo_principal" value="Captar leads" checked class="pill-input" id="obj-lead">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="g2">Conseguir llamadas o formularios (Leads)</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="objetivo_principal" value="Reservar citas" class="pill-input" id="obj-booking">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="g3">Que reserven una cita o servicio directo</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="objetivo_principal" value="Portafolio" class="pill-input" id="obj-portfolio">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="g4">Servir como portafolio / Mostrar trabajos</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="objetivo_principal" value="Imagen corporativa" class="pill-input" id="obj-corp">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="g5">Presencia corporativa / Imagen de marca</span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group full">
+                        <label><span data-t="s3accion">¿Qué acción exacta quieres que haga el usuario nada más entrar?</span> <span class="required-star">*</span></label>
+                        <input type="text" name="accion_inmediata" required placeholder="Ej: Hacer clic en 'Pedir presupuesto', suscribirse al newsletter, ver catálogo...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── SECCIÓN 4: IMAGEN CORPORATIVA Y DISEÑO VISUAL ── -->
+            <div class="form-section">
+                <div class="section-title">
+                    <div class="s-icon"><i class="fas fa-palette"></i></div>
+                    <span data-t="s4title">4. Imagen Corporativa y Diseño Visual</span>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label><span data-t="s4logo">¿Dispones de un logotipo profesional?</span> <span class="required-star">*</span></label>
+                        <div class="pill-group">
+                            <label class="pill-btn">
+                                <input type="radio" name="tiene_logo" value="Si, original" checked class="pill-input" id="logo-opt-original">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="l1">Sí, y tengo el archivo original (SVG, PNG sin fondo, vectorial)</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="tiene_logo" value="Si, baja calidad" class="pill-input" id="logo-opt-baja">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="l2">Sí, pero solo lo tengo en baja calidad / JPG</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="tiene_logo" value="No, necesita diseño" class="pill-input" id="logo-opt-necesita">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="l3">No, necesito que diseñéis el logotipo</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="tiene_logo" value="No, usar existente" class="pill-input" id="logo-opt-existente">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="l4">No, usa el que ya tienes (no es necesario subir imagen)</span></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group full conditional-upload" id="logo-uploader-wrapper">
+                        <label data-t="s4upload">Sube tu Logotipo y Manual de Marca (si dispones de él)</label>
+                        <div class="upload-block">
+                            <!-- Uploadcare Config -->
+                            <uc-config
+                                ctx-name="logo-uploader"
+                                source-list="local, camera, gdrive"
+                                cdn-cname="https://5ydn76n4d7.ucarecd.net/"
+                                pubkey="a626c850c1b19031e552"
+                                multiple="false"
+                                img-only="false"
+                            ></uc-config>
+                            <uc-file-uploader-regular ctx-name="logo-uploader" class="uc-dark"></uc-file-uploader-regular>
+                            <uc-upload-ctx-provider ctx-name="logo-uploader" id="logo-provider"></uc-upload-ctx-provider>
+                            <span class="hint" data-t="s4uploadHint">Formatos sugeridos: PNG transparente, SVG, PDF o Illustrator.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label data-t="s4colors">Colores corporativos</label>
+                        <input type="text" name="colores_corporativos" placeholder="Si tienes los códigos HEX (ej: #3b82f6), añádelos aquí">
+                    </div>
+                    <div class="form-group">
+                        <label data-t="s4colorsOdiados">¿Colores que NO quieres ver en la web?</label>
+                        <input type="text" name="colores_odiados" placeholder="Indica colores que rechazas totalmente">
+                    </div>
+
+                    <div class="form-group full">
+                        <label data-t="s4refs">Referencias web de inspiración (2 o 3 enlaces de webs que te encanten)</label>
+                        <textarea name="referencias_webs" rows="2" placeholder="Copia las URLs completas (https://...) de webs que te gusten por diseño, estructura o estilo."></textarea>
+                    </div>
+
+                    <div class="form-group full">
+                        <label><span data-t="s4style">¿Qué estilo visual prefieres para tu web?</span> <span class="required-star">*</span></label>
+                        <div class="pill-group">
+                            <label class="pill-btn">
+                                <input type="checkbox" name="estilos[]" value="Minimalista" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="st1">Minimalista (limpio, mucho espacio blanco)</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="estilos[]" value="Corporativo" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="st2">Corporativo/Serio (confianza, profesionalidad)</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="estilos[]" value="Moderno" checked class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="st3">Moderno/Tecnológico (animado, modo oscuro, futurista)</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="estilos[]" value="Creativo" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="st4">Creativo/Colorido (llamativo, tipografías grandes)</span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── SECCIÓN 5: ESTRUCTURA Y CONTENIDOS ── -->
+            <div class="form-section">
+                <div class="section-title">
+                    <div class="s-icon"><i class="fas fa-sitemap"></i></div>
+                    <span data-t="s5title">5. Estructura de la Web y Contenidos</span>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label><span data-t="s5menu">¿Qué páginas/secciones debe tener el menú de tu web?</span> <span class="required-star">*</span></label>
+                        <div class="pill-group">
+                            <label class="pill-btn">
+                                <input type="checkbox" name="secciones_menu[]" value="Inicio" checked class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="sec1">Inicio (Home)</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="secciones_menu[]" value="Sobre nosotros" checked class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="sec2">Sobre nosotros / Quiénes somos</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="secciones_menu[]" value="Servicios generales" checked class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="sec3">Servicios (Página general)</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="secciones_menu[]" value="Servicios individuales" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="sec4">Páginas individuales por cada servicio</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="secciones_menu[]" value="Tienda" class="pill-input" id="check-seccion-ecommerce">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="sec5">Tienda online / Catálogo</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="secciones_menu[]" value="Calendario reservas" class="pill-input" id="check-seccion-calendario">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="sec6">Calendario para reservas</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="secciones_menu[]" value="Portafolio" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="sec7">Portafolio / Casos de éxito / Galería</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="secciones_menu[]" value="Blog" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="sec8">Blog / Noticias</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="secciones_menu[]" value="Contacto" checked class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="sec9">Contacto</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="secciones_menu[]" value="FAQ" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="sec10">Preguntas Frecuentes (FAQ)</span></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group full">
+                        <label><span data-t="s5copy">¿Quién proporcionará los textos (Copywriting) de la web?</span> <span class="required-star">*</span></label>
+                        <div class="pill-group">
+                            <label class="pill-btn">
+                                <input type="radio" name="textos_autor" value="Tengo listos" checked class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="c1">Ya los tengo redactados y listos para copiar</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="textos_autor" value="Los redacto con guia" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="c2">Los redactaré yo, pero necesito una guía / plantilla</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="textos_autor" value="Contratar Nouweb" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="c3">Quiero contratar el servicio de redacción profesional contigo (ya incluido)</span></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group full">
+                        <label><span data-t="s5fotos">¿Quién proporcionará las imágenes y fotografías?</span> <span class="required-star">*</span></label>
+                        <div class="pill-group">
+                            <label class="pill-btn">
+                                <input type="radio" name="fotos_autor" value="Tengo profesionales" checked class="pill-input" id="fotos-opt-pro">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="f1">Tengo fotografías profesionales de mi negocio / productos</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="fotos_autor" value="Tengo no profesionales" class="pill-input" id="fotos-opt-nopro">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="f2">Usaremos fotografías mías no profesionales</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="fotos_autor" value="Stock" class="pill-input" id="fotos-opt-stock">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="f3">Necesito que busques imágenes de stock profesionales</span></span>
+                            </label>
+                        </div>
+                        
+                        <!-- Dynamic Alert on Professional Photos selection -->
+                        <div class="alert-box" id="photos-shared-folder-alert">
+                            <i class="fas fa-folder-open"></i>
+                            <p data-t="f1Alert">Se te brindará un enlace a una carpeta compartida para que puedas subir las imágenes y vídeos que tengas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── SECCIÓN 6: MÓDULO ESPECIAL TIENDAS EN LÍNEA (E-COMMERCE) [CONDICIONAL] ── -->
+            <div class="form-section conditional-section" id="section-ecommerce-wrapper">
+                <div class="section-title">
+                    <div class="s-icon"><i class="fas fa-shopping-bag"></i></div>
+                    <span data-t="s6title">6. Módulo Especial para Tiendas en Línea (E-commerce)</span>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label data-t="s6ecomTipos">¿Qué tipo de producto vas a vender?</label>
+                        <div class="pill-group">
+                            <label class="pill-btn">
+                                <input type="checkbox" name="ecom_tipos[]" value="Fisicos" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="ec1">Productos físicos (ropa, tecnología, comida, etc.)</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="ecom_tipos[]" value="Digitales" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="ec2">Productos digitales (Ebooks, cursos, plantillas, descargas)</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="ecom_tipos[]" value="Servicios" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="ec3">Servicios empaquetados (consultorías, asesorías)</span></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group full">
+                        <label data-t="s6ecomCant">¿Cuántos productos vas a vender inicialmente en la web?</label>
+                        <div class="pill-group">
+                            <label class="pill-btn">
+                                <input type="radio" name="ecom_cantidad" value="<10" checked class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="eca1">Menos de 10 productos</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="ecom_cantidad" value="10-50" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="eca2">Entre 10 y 50 productos</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="ecom_cantidad" value="50-200" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="eca3">Entre 50 y 200 productos</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="ecom_cantidad" value=">200" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="eca4">Más de 200 productos</span></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group full">
+                        <label data-t="s6ecomVar">¿Tus productos tienen variaciones? (Ej: Diferentes tallas, colores o packs)</label>
+                        <div class="pill-group">
+                            <label class="pill-btn">
+                                <input type="radio" name="ecom_variaciones" value="Si" checked class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="yes">Sí</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="ecom_variaciones" value="No" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="no">No</span></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group full">
+                        <label data-t="s6ecomPagos">¿Qué pasarelas de pago quieres ofrecer a tus clientes?</label>
+                        <div class="pill-group">
+                            <label class="pill-btn">
+                                <input type="checkbox" name="ecom_pagos[]" value="Tarjeta Stripe/Redsys" checked class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i>Tarjeta de crédito/débito (Stripe / Redsys)</span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="ecom_pagos[]" value="PayPal" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i>PayPal</span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="ecom_pagos[]" value="Bizum" checked class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i>Bizum</span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="ecom_pagos[]" value="Transferencia" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="transfer">Transferencia bancaria</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="ecom_pagos[]" value="Contra reembolso" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="reembolso">Contra reembolso</span></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group full">
+                        <label data-t="s6ecomEnvios">¿Cómo gestionarás los envíos?</label>
+                        <textarea name="ecom_envios" placeholder="Ej: Tarifa plana de 5€, envío gratis a partir de 50€, precios según el peso del paquete, envíos internacionales..."></textarea>
+                    </div>
+
+                    <div class="form-group full">
+                        <label data-t="s6ecomTransp">¿Tienes ya contratada la empresa de transporte? Indica cuál.</label>
+                        <input type="text" name="ecom_empresa_transporte" placeholder="Ej: Correos Express, Seur, DHL, MRW...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── SECCIÓN 7: INTEGRACIONES Y FUNCIONALIDADES TÉCNICAS (NO OBLIGATORIAS) ── -->
+            <div class="form-section">
+                <div class="section-title">
+                    <div class="s-icon"><i class="fas fa-plug"></i></div>
+                    <span data-t="s7title">7. Funcionalidades Técnicas e Integraciones</span>
+                </div>
+
+                <!-- Info Help Alert (Reassuring they don't have to know this) -->
+                <div class="alert-box alert-info-tech">
+                    <i class="fas fa-info-circle"></i>
+                    <p data-t="s7Notice">Nota: Los campos de esta sección técnica no son obligatorios ya que son temas avanzados. Si no los conoces, puedes saltarte estas preguntas o consultarlas directamente con el desarrollador.</p>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label data-t="s7integraciones">¿Qué herramientas externas necesitas conectar a la web?</label>
+                        <div class="pill-group">
+                            <label class="pill-btn">
+                                <input type="checkbox" name="integraciones[]" value="Email Marketing" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="int1">Sistema de Email Marketing (Mailchimp, ActiveCampaign, etc.)</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="integraciones[]" value="WhatsApp Chat" checked class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="int2">WhatsApp Chat (botón flotante interactivo)</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="integraciones[]" value="Reservas" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="int3">Sistema de reservas / citas (Calendly, Bookly, etc.)</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="integraciones[]" value="Pixel/Ads" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="int4">Píxeles de Facebook / Google Ads</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="integraciones[]" value="CRM" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="int5">CRM externo (Hubspot, Salesforce, etc.)</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="checkbox" name="integraciones[]" value="Resenas Google" checked class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="int6">Integración de reseñas de Google My Business</span></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group full">
+                        <label data-t="s7multiidioma">¿La web necesita ser Multiidioma? Indica cuáles en caso afirmativo.</label>
+                        <input type="text" name="multiidioma_detalles" placeholder="Ej: Sí, en Español e Inglés / No, solo Español.">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── SECCIÓN 8: ESTADO TÉCNICO ACTUAL (NO OBLIGATORIAS) ── -->
+            <div class="form-section">
+                <div class="section-title">
+                    <div class="s-icon"><i class="fas fa-server"></i></div>
+                    <span data-t="s8title">8. Estado Técnico Actual</span>
+                </div>
+
+                <!-- Info Help Alert (Reassuring they don't have to know this) -->
+                <div class="alert-box alert-info-tech">
+                    <i class="fas fa-info-circle"></i>
+                    <p data-t="s8Notice">Nota: Si no conoces los datos técnicos de tu dominio o hosting, puedes saltarte este apartado por completo o consultarlo directamente con el desarrollador.</p>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label data-t="s8tieneDom">¿Tienes ya comprado el dominio?</label>
+                        <div class="pill-group">
+                            <label class="pill-btn">
+                                <input type="radio" name="tiene_dominio" value="Si" checked class="pill-input" id="dom-si">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="yes">Sí</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="tiene_dominio" value="No" class="pill-input" id="dom-no">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="no">No</span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label data-t="s8domProv">Si ya lo tienes, ¿con qué proveedor está registrado?</label>
+                        <input type="text" name="dominio_proveedor" placeholder="Ej: GoDaddy, Raiola, Nominalia, Hostinger...">
+                    </div>
+
+                    <div class="form-group">
+                        <label data-t="s8tieneHost">¿Tienes contratado el Hosting (servidor)?</label>
+                        <div class="pill-group">
+                            <label class="pill-btn">
+                                <input type="radio" name="tiene_hosting" value="Si" checked class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="yes">Sí</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="tiene_hosting" value="No" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="no">No</span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label data-t="s8hostProv">Si ya lo tienes, ¿con qué proveedor y tienes los accesos?</label>
+                        <input type="text" name="hosting_proveedor" placeholder="Ej: Hostinger, Webempresa, Raiola... Indícanos si tienes claves">
+                    </div>
+
+                    <div class="form-group full">
+                        <label data-t="s8webAct">¿Existe una página web actual activa bajo ese dominio?</label>
+                        <div class="pill-group">
+                            <label class="pill-btn">
+                                <input type="radio" name="web_actual" value="Si, borrar" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="wa1">Sí, y se puede borrar por completo</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="web_actual" value="Si, mantener contenido" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="wa2">Sí, pero hay que mantener o migrar el contenido antiguo</span></span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="web_actual" value="No, vacio" checked class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i><span data-t="wa3">No, está completamente vacío</span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── SECCIÓN 9: PLAZOS Y PRESUPUESTO ── -->
+            <div class="form-section">
+                <div class="section-title">
+                    <div class="s-icon"><i class="fas fa-clock"></i></div>
+                    <span data-t="s9title">9. Plazos, Presupuesto y Cierre</span>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label data-t="s9fecha">¿Tienes una fecha límite fija para el lanzamiento?</label>
+                        <input type="text" name="fecha_limite" placeholder="Ej: Campaña de Navidad, fecha de inauguración local...">
+                    </div>
+                    <div class="form-group">
+                        <label><span data-t="s9presupuesto">Rango de presupuesto estimado del proyecto</span> <span class="required-star">*</span></label>
+                        <div class="pill-group">
+                            <label class="pill-btn">
+                                <input type="radio" name="rango_presupuesto" value="500-800" checked class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i>500€ - 800€</span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="rango_presupuesto" value="800-1200" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i>800€ - 1.200€</span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="rango_presupuesto" value="1200-2500" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i>1.200€ - 2.500€</span>
+                            </label>
+                            <label class="pill-btn">
+                                <input type="radio" name="rango_presupuesto" value=">2500" class="pill-input">
+                                <span class="pill-content"><i class="fas fa-check-circle check-icon"></i>+2.500€</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group full">
+                        <label data-t="s9comentarios">¿Hay algo más relevante que debamos saber sobre el proyecto?</label>
+                        <textarea name="comentarios_finales" placeholder="Comentarios adicionales, dudas, expectativas, integraciones que no hayamos listado..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUBMIT BOX -->
+            <div class="submit-section">
+                <p data-t="submitNote">Al hacer clic en Enviar, todos los datos estratégicos serán enviados a nuestro equipo. Garantizamos absoluta privacidad y confidencialidad en el tratamiento de los datos del proyecto.</p>
+                <button type="submit" class="btn-submit" id="submit-btn">
+                    <i class="fas fa-paper-plane"></i> <span data-t="submitBtn">Enviar Briefing Estratégico</span>
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2026 Nouweb · <span data-t="footerMade">Hecho en Alicante y Valencia</span> · <a href="es/aviso-legal.html" data-t="legal">Aviso Legal</a> · <a href="es/politica-privacidad.html" data-t="privacy">Privacidad</a></p>
+    </footer>
+
+    <script>
+        // ── TRANSLATIONS DICTIONARY (ES, EN, DE) ──
+        const translations = {
+            es: {
+                backToSite: 'Volver al sitio',
+                badgeText: 'Intake de Clientes',
+                heroTitlePrefix: 'Ficha de ',
+                heroTitleMain: 'Briefing de Proyecto',
+                heroDesc: 'Por favor, rellena este formulario con el mayor detalle posible. Esta información será la base estratégica sobre la que construiremos la identidad y diseño a medida de tu nuevo sitio web.',
+                successTitle: '¡Briefing Recibido con Éxito!',
+                successDesc: 'Muchas gracias por compartir todos los detalles estratégicos de tu negocio. Hemos recibido la información correctamente. Analizaremos tu propuesta y nos pondremos en contacto contigo en un plazo máximo de 24 horas.',
+                
+                s1title: '1. Información de Contacto y Gestión',
+                s1responsable: 'Nombre y Apellidos del responsable',
+                s1cargo: 'Cargo en la empresa',
+                s1empresa: 'Nombre comercial de la empresa',
+                s1email: 'Correo electrónico principal',
+                s1phone: 'Teléfono / WhatsApp',
+                s1channel: 'Canal de comunicación preferido',
+                videocall: 'Videollamada',
+                s1aprobador: '¿Quién tiene la última palabra para aprobar los diseños?',
+                s1aprobadorHint: 'Esto nos ayuda a asegurar agilidad en las fases de revisión del proyecto.',
+
+                s2title: '2. ADN del Negocio y Mercado',
+                s2actividad: '¿A qué se dedica exactamente la empresa?',
+                s2publico: '¿Cuál es tu público objetivo / cliente ideal?',
+                s2propuesta: '¿Cuál es tu propuesta de valor única?',
+                s2personalidad: 'Define la personalidad de tu marca (3 o 4 palabras clave)',
+
+                s3title: '3. Objetivos del Sitio Web',
+                s3objetivo: '¿Cuál es el objetivo principal que debe cumplir la web?',
+                g1: 'Vender productos online (Tienda)',
+                g2: 'Conseguir llamadas o formularios (Leads)',
+                g3: 'Que reserven una cita o servicio directo',
+                g4: 'Servir como portafolio / Mostrar trabajos',
+                g5: 'Presencia corporativa / Imagen de marca',
+                s3accion: '¿Qué acción exacta quieres que haga el usuario nada más entrar?',
+
+                s4title: '4. Imagen Corporativa y Diseño Visual',
+                s4logo: '¿Dispones de un logotipo profesional?',
+                l1: 'Sí, y tengo el archivo original (SVG, PNG sin fondo, vectorial)',
+                l2: 'Sí, pero solo lo tengo en baja calidad / JPG',
+                l3: 'No, necesito que diseñéis el logotipo',
+                l4: 'No, usa el que ya tienes (no es necesario subir imagen)',
+                s4upload: 'Sube tu Logotipo y Manual de Marca (si dispones de él)',
+                s4uploadHint: 'Formatos sugeridos: PNG transparente, SVG, PDF o Illustrator.',
+                s4colors: 'Colores corporativos',
+                s4colorsOdiados: '¿Colores que NO quieres ver en la web?',
+                s4refs: 'Referencias web de inspiración (2 o 3 enlaces de webs que te encanten)',
+                s4style: '¿Qué estilo visual prefieres para tu web?',
+                st1: 'Minimalista (limpio, mucho espacio blanco)',
+                st2: 'Corporativo/Serio (confianza, profesionalidad)',
+                st3: 'Moderno/Tecnológico (animado, modo oscuro, futurista)',
+                st4: 'Creativo/Colorido (llamativo, tipografías grandes)',
+
+                s5title: '5. Estructura de la Web y Contenidos',
+                s5menu: '¿Qué páginas/secciones debe tener el menú de tu web?',
+                sec1: 'Inicio (Home)',
+                sec2: 'Sobre nosotros / Quiénes somos',
+                sec3: 'Servicios (Página general)',
+                sec4: 'Páginas individuales por cada servicio',
+                sec5: 'Tienda online / Catálogo',
+                sec6: 'Calendario para reservas',
+                sec7: 'Portafolio / Casos de éxito / Galería',
+                sec8: 'Blog / Noticias',
+                sec9: 'Contacto',
+                sec10: 'Preguntas Frecuentes (FAQ)',
+                s5copy: '¿Quién proporcionará los textos (Copywriting) de la web?',
+                c1: 'Ya los tengo redactados y listos para copiar',
+                c2: 'Los redactaré yo, pero necesito una guía / plantilla',
+                c3: 'Quiero contratar el servicio de redacción profesional contigo (ya incluido)',
+                s5fotos: '¿Quién proporcionará las imágenes y fotografías?',
+                f1: 'Tengo fotografías profesionales de mi negocio / productos',
+                f2: 'Usaremos fotografías mías no profesionales',
+                f3: 'Necesito que busques imágenes de stock profesionales',
+                f1Alert: 'Se te brindará un enlace a una carpeta compartida para que puedas subir las imágenes y vídeos que tengas.',
+
+                s6title: '6. Módulo Especial para Tiendas en Línea (E-commerce)',
+                s6ecomTipos: '¿Qué tipo de producto vas a vender?',
+                ec1: 'Productos físicos (ropa, tecnología, comida, etc.)',
+                ec2: 'Productos digitales (Ebooks, cursos, plantillas, descargas)',
+                ec3: 'Servicios empaquetados (consultorías, asesorías)',
+                s6ecomCant: '¿Cuántos productos vas a vender inicialmente en la web?',
+                eca1: 'Menos de 10 productos',
+                eca2: 'Entre 10 y 50 productos',
+                eca3: 'Entre 50 y 200 productos',
+                eca4: 'Más de 200 productos',
+                s6ecomVar: '¿Tus productos tienen variaciones? (Ej: Diferentes tallas, colores o packs)',
+                s6ecomPagos: '¿Qué pasarelas de pago quieres ofrecer a tus clientes?',
+                transfer: 'Transferencia bancaria',
+                reembolso: 'Contra reembolso',
+                s6ecomEnvios: '¿Cómo gestionarás los envíos?',
+                s6ecomTransp: '¿Tienes ya contratada la empresa de transporte? Indica cuál.',
+
+                s7title: '7. Funcionalidades Técnicas e Integraciones',
+                s7Notice: 'Nota: Los campos de esta sección técnica no son obligatorios ya que son temas avanzados. Si no los conoces, puedes saltarte estas preguntas o consultarlas directamente con el desarrollador.',
+                s7integraciones: '¿Qué herramientas externas necesitas conectar a la web?',
+                int1: 'Sistema de Email Marketing (Mailchimp, ActiveCampaign, etc.)',
+                int2: 'WhatsApp Chat (botón flotante interactivo)',
+                int3: 'Sistema de reservas / citas (Calendly, Bookly, etc.)',
+                int4: 'Píxeles de Facebook / Google Ads',
+                int5: 'CRM externo (Hubspot, Salesforce, etc.)',
+                int6: 'Integración de reseñas de Google My Business',
+                s7multiidioma: '¿La web necesita ser Multiidioma? Indica cuáles en caso afirmativo.',
+
+                s8title: '8. Estado Técnico Actual',
+                s8Notice: 'Nota: Si no conoces los datos técnicos de tu dominio o hosting, puedes saltarte este apartado por completo o consultarlo directamente con el desarrollador.',
+                s8tieneDom: '¿Tienes ya comprado el dominio?',
+                s8domProv: 'Si ya lo tienes, ¿con qué proveedor está registrado?',
+                s8tieneHost: '¿Tienes contratado el Hosting (servidor)?',
+                s8hostProv: 'Si ya lo tienes, ¿con qué proveedor y tienes los accesos?',
+                s8webAct: '¿Existe una página web actual activa bajo ese dominio?',
+                wa1: 'Sí, y se puede borrar por completo',
+                wa2: 'Sí, pero hay que mantener o migrar el contenido antiguo',
+                wa3: 'No, está completamente vacío',
+
+                s9title: '9. Plazos, Presupuesto y Cierre',
+                s9fecha: '¿Tienes una fecha límite fija para el lanzamiento?',
+                s9presupuesto: 'Rango de presupuesto estimado del proyecto',
+                s9comentarios: '¿Hay algo más relevante que debamos saber sobre el proyecto?',
+
+                yes: 'Sí',
+                no: 'No',
+                submitNote: 'Al hacer clic en Enviar, todos los datos estratégicos serán enviados a nuestro equipo. Garantizamos absoluta privacidad y confidencialidad en el tratamiento de los datos del proyecto.',
+                submitBtn: 'Enviar Briefing Estratégico',
+                footerMade: 'Hecho en Alicante y Valencia',
+                legal: 'Aviso Legal',
+                privacy: 'Privacidad',
+
+                ph_responsable: 'Ej: Juan Pérez',
+                ph_cargo: 'Ej: CEO, Director de Marketing, Propietario...',
+                ph_empresa: 'Ej: Mi Negocio S.L.',
+                ph_email: 'Ej: contacto@miempresa.com',
+                ph_telefono: 'Ej: +34 612 345 678',
+                ph_aprobador: 'Indica el nombre o cargo de la persona de aprobación final',
+                ph_actividad: 'Explícalo de forma clara y sencilla, como si se lo contaras a un niño.',
+                ph_publico: 'Edad, género, sector profesional, qué problemas o necesidades tiene que tu empresa les resuelve.',
+                ph_propuesta: '¿Por qué un cliente debería comprarte a ti y no a tu competencia? ¿Qué te hace especial?',
+                ph_personalidad: 'Ej: Elegante, disruptiva, ecológica, tradicional, tecnológica...',
+                ph_accion: 'Ej: Hacer clic en \'Pedir presupuesto\', suscribirse al newsletter, ver catálogo...',
+                ph_colores: 'Si tienes los códigos HEX (ej: #3b82f6), añádelos aquí',
+                ph_coloresOdiados: 'Indica colores que rechazas totalmente',
+                ph_refs: 'Copia las URLs completas (https://...) de webs que te gusten por diseño, estructura o estilo.',
+                ph_ecomEnvios: 'Ej: Tarifa plana de 5€, envío gratis a partir de 50€, precios según el peso del paquete, envíos internacionales...',
+                ph_ecomTransp: 'Ej: Correos Express, Seur, DHL, MRW...',
+                ph_multiidioma: 'Ej: Sí, en Español e Inglés / No, solo Español.',
+                ph_domProv: 'Ej: GoDaddy, Raiola, Nominalia, Hostinger...',
+                ph_hostProv: 'Ej: Hostinger, Webempresa, Raiola... Indícanos si tienes claves',
+                ph_fecha: 'Ej: Campaña de Navidad, fecha de inauguración local...',
+                ph_comentarios: 'Comentarios adicionales, dudas, expectativas, integraciones que no hayamos listado...'
+            },
+            en: {
+                backToSite: 'Back to site',
+                badgeText: 'Client Intake',
+                heroTitlePrefix: 'Project ',
+                heroTitleMain: 'Briefing Sheet',
+                heroDesc: 'Please fill in this form with as much detail as possible. This information will be the strategic foundation upon which we will build your tailored website.',
+                successTitle: 'Briefing Successfully Received!',
+                successDesc: 'Thank you very much for sharing your business strategy details. We have received the information correctly. We will analyze your proposal and get in touch with you within a maximum of 24 hours.',
+                
+                s1title: '1. Contact & Management Info',
+                s1responsable: 'Full Name of the contact person',
+                s1cargo: 'Role in the company',
+                s1empresa: 'Company brand name',
+                s1email: 'Primary email address',
+                s1phone: 'Phone / WhatsApp',
+                s1channel: 'Preferred communication channel',
+                videocall: 'Video Call',
+                s1aprobador: 'Who has the final sign-off to approve designs?',
+                s1aprobadorHint: 'This helps us ensure speed during project review phases.',
+
+                s2title: '2. Business DNA & Market',
+                s2actividad: 'What exactly does the company do?',
+                s2publico: 'Who is your target audience / ideal customer?',
+                s2propuesta: 'What is your unique value proposition?',
+                s2personalidad: 'Define your brand personality (3 or 4 keywords)',
+
+                s3title: '3. Website Objectives',
+                s3objetivo: 'What is the main objective the website must achieve?',
+                g1: 'Sell products online (E-commerce)',
+                g2: 'Get phone calls or forms filled (Leads)',
+                g3: 'Book an appointment or service directly',
+                g4: 'Serve as a portfolio / Show work',
+                g5: 'Corporate presence / Brand image',
+                s3accion: 'What exact action do you want the user to take right after landing?',
+
+                s4title: '4. Corporate Identity & Visual Design',
+                s4logo: 'Do you have a professional logo?',
+                l1: 'Yes, and I have the original file (SVG, PNG transparent, vector)',
+                l2: 'Yes, but I only have it in low quality / JPG',
+                l3: 'No, I need you to design the logo',
+                l4: 'No, use the one you already have (no upload required)',
+                s4upload: 'Upload your Logo and Brand Manual (if available)',
+                s4uploadHint: 'Suggested formats: transparent PNG, SVG, PDF or Illustrator.',
+                s4colors: 'Brand colors',
+                s4colorsOdiados: 'Are there any colors you do NOT want to see on the site?',
+                s4refs: 'Inspirational reference websites (2 or 3 links you love)',
+                s4style: 'What visual style do you prefer for your website?',
+                st1: 'Minimalist (clean, plenty of white space)',
+                st2: 'Corporate/Serious (trust, professionalism)',
+                st3: 'Modern/Technological (animated, dark mode, futuristic)',
+                st4: 'Creative/Colorful (eye-catching, large typography)',
+
+                s5title: '5. Website Structure & Contents',
+                s5menu: 'What pages/sections should the menu of your website have?',
+                sec1: 'Home',
+                sec2: 'About us / Who we are',
+                sec3: 'Services (General page)',
+                sec4: 'Individual pages for each service',
+                sec5: 'Online Store / Catalog',
+                sec6: 'Booking calendar',
+                sec7: 'Portfolio / Success cases / Gallery',
+                sec8: 'Blog / News',
+                sec9: 'Contact',
+                sec10: 'Frequently Asked Questions (FAQ)',
+                s5copy: 'Who will provide the texts (Copywriting) for the website?',
+                c1: 'I already have them written and ready to copy',
+                c2: 'I will write them, but I need a guide / template',
+                c3: 'I want to hire professional copywriting services with you (already included)',
+                s5fotos: 'Who will provide the images and photographs?',
+                f1: 'I have professional photos of my business / products',
+                f2: 'We will use my non-professional photos',
+                f3: 'I need you to search for professional stock images',
+                f1Alert: 'A link to a shared folder will be provided for you to upload your images and videos.',
+
+                s6title: '6. Special E-commerce Module',
+                s6ecomTipos: 'What type of product are you going to sell?',
+                ec1: 'Physical products (clothes, tech, food, etc.)',
+                ec2: 'Digital products (Ebooks, courses, templates, downloads)',
+                ec3: 'Packaged services (consulting, advisory)',
+                s6ecomCant: 'How many products will you sell initially on the web?',
+                eca1: 'Less than 10 products',
+                eca2: 'Between 10 and 50 products',
+                eca3: 'Between 50 and 200 products',
+                eca4: 'More than 200 products',
+                s6ecomVar: 'Do your products have variations? (E.g. Sizes, colors or packs)',
+                s6ecomPagos: 'Which payment gateways do you want to offer to your customers?',
+                transfer: 'Bank Transfer',
+                reembolso: 'Cash on delivery',
+                s6ecomEnvios: 'How will you manage shipping?',
+                s6ecomTransp: 'Have you already hired the shipping company? Specify which.',
+
+                s7title: '7. Technical Features & Integrations',
+                s7Notice: 'Note: The fields in this technical section are optional as they are advanced topics. If you do not know them, you can skip these questions or consult directly with the developer.',
+                s7integraciones: 'What external tools do you need to connect to the website?',
+                int1: 'Email Marketing system (Mailchimp, ActiveCampaign, etc.)',
+                int2: 'WhatsApp Chat (interactive floating button)',
+                int3: 'Booking / appointment system (Calendly, Bookly, etc.)',
+                int4: 'Facebook Pixel / Google Ads',
+                int5: 'External CRM (Hubspot, Salesforce, etc.)',
+                int6: 'Google My Business reviews integration',
+                s7multiidioma: 'Does the website need to be Multilingual? Indicate which ones if yes.',
+
+                s8title: '8. Current Technical Status',
+                s8Notice: 'Note: If you do not know the technical details of your domain or hosting, you can skip this section entirely or consult directly with the developer.',
+                s8tieneDom: 'Have you already purchased the domain?',
+                s8domProv: 'If yes, which provider is it registered with?',
+                s8tieneHost: 'Have you already hired the Hosting (server)?',
+                s8hostProv: 'If yes, with which provider and do you have access?',
+                s8webAct: 'Is there an active website currently under that domain?',
+                wa1: 'Yes, and it can be completely deleted',
+                wa2: 'Yes, but we need to keep or migrate old content',
+                wa3: 'No, it is completely empty',
+
+                s9title: '9. Timeline, Budget & Closing',
+                s9fecha: 'Do you have a fixed deadline for the launch?',
+                s9presupuesto: 'Estimated budget range for the project',
+                s9comentarios: 'Is there anything else relevant we should know about the project?',
+
+                yes: 'Yes',
+                no: 'No',
+                submitNote: 'By clicking Send, all strategic data will be sent to our team. We guarantee absolute privacy and confidentiality in the handling of project data.',
+                submitBtn: 'Send Strategic Briefing',
+                footerMade: 'Made in Alicante and Valencia',
+                legal: 'Legal Notice',
+                privacy: 'Privacy',
+
+                ph_responsable: 'E.g.: John Doe',
+                ph_cargo: 'E.g.: CEO, Marketing Director, Owner...',
+                ph_empresa: 'E.g.: My Business Ltd.',
+                ph_email: 'E.g.: contact@mycompany.com',
+                ph_telefono: 'E.g.: +44 7700 900077',
+                ph_aprobador: 'Indicate name or role of the final approval person',
+                ph_actividad: 'Explain it clearly and simply, as if telling a child.',
+                ph_publico: 'Age, gender, professional sector, what specific problems or needs your business solves for them.',
+                ph_propuesta: 'Why should a customer buy from you and not your competitors? What makes you special?',
+                ph_personalidad: 'E.g.: Elegant, disruptive, eco-friendly, traditional, high-tech...',
+                ph_accion: 'E.g.: Click on \'Get Quote\', subscribe to newsletter, view catalog...',
+                ph_colores: 'If you have HEX codes (e.g. #3b82f6), add them here',
+                ph_coloresOdiados: 'Indicate colors you reject entirely',
+                ph_refs: 'Copy full URLs (https://...) of websites you like for design, layout or style.',
+                ph_ecomEnvios: 'E.g.: Flat rate of €5, free shipping over €50, pricing by package weight, international shipping...',
+                ph_ecomTransp: 'E.g.: DHL, UPS, FedEx...',
+                ph_multiidioma: 'E.g.: Yes, Spanish and English / No, Spanish only.',
+                ph_domProv: 'E.g.: GoDaddy, Namecheap, Hostinger...',
+                ph_hostProv: 'E.g.: Hostinger, Siteground, AWS... Let us know if you have credentials',
+                ph_fecha: 'E.g.: Christmas campaign, store opening date...',
+                ph_comentarios: 'Additional comments, doubts, expectations, integrations not listed...'
+            },
+            de: {
+                backToSite: 'Zurück zur Website',
+                badgeText: 'Kundenbriefing',
+                heroTitlePrefix: 'Projekt ',
+                heroTitleMain: 'Briefing-Formular',
+                heroDesc: 'Bitte füllen Sie dieses Formular so detailliert wie möglich aus. Diese Informationen sind die strategische Grundlage, auf der wir Ihre maßgeschneiderte Website erstellen.',
+                successTitle: 'Briefing erfolgreich erhalten!',
+                successDesc: 'Vielen Dank, dass Sie die strategischen Details Ihres Unternehmens mit uns teilen. Wir haben die Informationen korrekt erhalten. Wir analysieren Ihren Vorschlag und melden uns innerhalb von maximal 24 Stunden bei Ihnen.',
+                
+                s1title: '1. Kontakt- und Managementinformationen',
+                s1responsable: 'Vor- und Nachname der verantwortlichen Person',
+                s1cargo: 'Position im Unternehmen',
+                s1empresa: 'Firmenname',
+                s1email: 'Primäre E-Mail-Adresse',
+                s1phone: 'Telefon / WhatsApp',
+                s1channel: 'Bevorzugter Kommunikationskanal',
+                videocall: 'Videoanruf',
+                s1aprobador: 'Wer hat das letzte Wort bei der Freigabe der Designs?',
+                s1aprobadorHint: 'Dies hilft uns, die Phasen des Projektreviews agil zu gestalten.',
+
+                s2title: '2. Unternehmens-DNA & Markt',
+                s2actividad: 'Was genau macht das Unternehmen?',
+                s2publico: 'Wer ist Ihre Zielgruppe / Ihr idealer Kunde?',
+                s2propuesta: 'Was ist Ihr einzigartiges Wertversprechen?',
+                s2personalidad: 'Definieren Sie Ihre Markenpersönlichkeit (3 oder 4 Schlüsselwörter)',
+
+                s3title: '3. Website-Ziele',
+                s3objetivo: 'Was ist das Hauptziel, das die Website erreichen soll?',
+                g1: 'Produkte online verkaufen (E-Shop)',
+                g2: 'Anrufe oder Formulare erhalten (Leads)',
+                g3: 'Direkt Termine oder Dienstleistungen buchen',
+                g4: 'Als Portfolio dienen / Arbeiten zeigen',
+                g5: 'Unternehmenspräsenz / Markenimage',
+                s3accion: 'Welche genaue Aktion soll der Nutzer direkt nach dem Aufrufen der Seite ausführen?',
+
+                s4title: '4. Corporate Identity & Visuelles Design',
+                s4logo: 'Verfügen Sie über ein professionelles Logo?',
+                l1: 'Ja, und ich habe die Originaldatei (SVG, PNG transparent, Vektordatei)',
+                l2: 'Ja, aber ich habe es nur in geringer Qualität / JPG',
+                l3: 'Nein, ich brauche Sie, um das Logo zu entwerfen',
+                l4: 'Nein, verwenden Sie das bereits vorhandene (kein Upload erforderlich)',
+                s4upload: 'Laden Sie Ihr Logo und Markenhandbuch hoch (falls vorhanden)',
+                s4uploadHint: 'Empfohlene Formate: transparentes PNG, SVG, PDF oder Illustrator.',
+                s4colors: 'Unternehmensfarben',
+                s4colorsOdiados: 'Gibt es Farben, die Sie auf keinen Fall auf der Website sehen wollen?',
+                s4refs: 'Inspirierende Referenzwebsites (2 oder 3 Links)',
+                s4style: 'Welchen visuellen Stil bevorzugen Sie für Ihre Website?',
+                st1: 'Minimalistisch (sauber, viel weißer Raum)',
+                st2: 'Korporativ/Seriös (Vertrauen, Professionalität)',
+                st3: 'Modern/Technologisch (animiert, dunkler Modus, futuristisch)',
+                st4: 'Kreativ/Farbenfroh (auffällig, große Typografie)',
+
+                s5title: '5. Website-Struktur & Inhalte',
+                s5menu: 'Welche Seiten/Bereiche soll das Menü Ihrer Website haben?',
+                sec1: 'Startseite (Home)',
+                sec2: 'Über uns / Wer wir sind',
+                sec3: 'Dienstleistungen (Allgemeine Seite)',
+                sec4: 'Einzelne Seiten pro Dienstleistung',
+                sec5: 'Online-Shop / Katalog',
+                sec6: 'Buchungskalender',
+                sec7: 'Portfolio / Erfolgsgeschichten / Galerie',
+                sec8: 'Blog / Neuigkeiten',
+                sec9: 'Kontakt',
+                sec10: 'Häufig gestellte Fragen (FAQ)',
+                s5copy: 'Wer wird die Texte (Copywriting) für die Website bereitstellen?',
+                c1: 'Ich habe sie bereits geschrieben und kopierfertig',
+                c2: 'Ich werde sie schreiben, brauche aber eine Anleitung / Vorlage',
+                c3: 'Ich möchte professionelles Copywriting bei Ihnen buchen (bereits enthalten)',
+                s5fotos: 'Wer wird die Bilder und Fotografien bereitstellen?',
+                f1: 'Ich habe professionelle Fotos von meinem Geschäft / meinen Produkten',
+                f2: 'Wir werden meine nicht-professionellen Fotos verwenden',
+                f3: 'Ich brauche Sie, um nach professionellen Stock-Bildern zu suchen',
+                f1Alert: 'Ein Link zu einem gemeinsamen Ordner wird bereitgestellt, damit Sie Ihre Bilder und Videos hochladen können.',
+
+                s6title: '6. Spezielles E-Commerce-Modul',
+                s6ecomTipos: 'Welche Art von Produkt verkaufen Sie?',
+                ec1: 'Physische Produkte (Kleidung, Tech, Lebensmittel etc.)',
+                ec2: 'Digitale Produkte (E-Books, Kurse, Vorlagen, Downloads)',
+                ec3: 'Verpackte Dienstleistungen (Beratung, Coaching)',
+                s6ecomCant: 'Wie viele Produkte werden Sie anfangs im Web verkaufen?',
+                eca1: 'Weniger als 10 Produkte',
+                eca2: 'Zwischen 10 und 50 Produkte',
+                eca3: 'Zwischen 50 und 200 Produkte',
+                eca4: 'Mehr als 200 Produkte',
+                s6ecomVar: 'Haben Ihre Produkte Varianten? (Z. B. Größen, Farben oder Packs)',
+                s6ecomPagos: 'Welche Zahlungsgateways möchten Sie Ihren Kunden anbieten?',
+                transfer: 'Banküberweisung',
+                reembolso: 'Nachnahme',
+                s6ecomEnvios: 'Wie werden Sie den Versand verwalten?',
+                s6ecomTransp: 'Haben Sie bereits das Transportunternehmen beauftragt? Nennen Sie welches.',
+
+                s7title: '7. Technische Funktionen & Integrationen',
+                s7Notice: 'Hinweis: Die Felder in diesem technischen Bereich sind optional, da es sich um fortgeschrittene Themen handelt. Wenn Sie diese nicht kennen, können Sie diese Fragen überspringen oder sich direkt an den Entwickler wenden.',
+                s7integraciones: 'Welche externen Tools müssen Sie mit der Website verbinden?',
+                int1: 'E-Mail-Marketing-System (Mailchimp, ActiveCampaign usw.)',
+                int2: 'WhatsApp Chat (interaktiver schwebender Button)',
+                int3: 'Buchungs- / Terminsystem (Calendly, Bookly usw.)',
+                int4: 'Facebook-Pixel / Google Ads',
+                int5: 'Externes CRM (Hubspot, Salesforce usw.)',
+                int6: 'Integration von Google My Business-Bewertungen',
+                s7multiidioma: 'Muss die Website mehrsprachig sein? Wenn ja, geben Sie an, welche.',
+
+                s8title: '8. Aktueller technischer Status',
+                s8Notice: 'Hinweis: Wenn Sie die technischen Details Ihrer Domain oder Ihres Hostings nicht kennen, können Sie diesen Abschnitt überspringen oder sich direkt an den Entwickler wenden.',
+                s8tieneDom: 'Haben Sie die Domain bereits gekauft?',
+                s8domProv: 'Wenn ja, bei welchem Anbieter ist sie registriert?',
+                s8tieneHost: 'Haben Sie das Hosting (Server) bereits gemietet?',
+                s8hostProv: 'Wenn ja, bei welchem Anbieter und haben Sie Zugriff?',
+                s8webAct: 'Gibt es derzeit eine aktive Website unter dieser Domain?',
+                wa1: 'Ja, und sie kann komplett gelöscht werden',
+                wa2: 'Ja, aber wir müssen alte Inhalte behalten oder migrieren',
+                wa3: 'Nein, sie ist völlig leer',
+
+                s9title: '9. Zeitplan, Budget & Abschluss',
+                s9fecha: 'Haben Sie eine feste Deadline für den Start?',
+                s9presupuesto: 'Geschätzter Budgetrahmen für das Projekt',
+                s9comentarios: 'Gibt es noch etwas Relevantes, das wir über das Projekt wissen sollten?',
+
+                yes: 'Ja',
+                no: 'Nein',
+                submitNote: 'Mit dem Klick auf Senden werden alle strategischen Daten an unser Team übermittelt. Wir garantieren absolute Privatsphäre und Vertraulichkeit bei der Behandlung von Projektdaten.',
+                submitBtn: 'Strategisches Briefing senden',
+                footerMade: 'Erstellt in Alicante und Valencia',
+                legal: 'Impressum',
+                privacy: 'Datenschutz',
+
+                ph_responsable: 'z.B.: Max Mustermann',
+                ph_cargo: 'z.B.: CEO, Marketing Director, Inhaber...',
+                ph_empresa: 'z.B.: Mein Unternehmen GmbH',
+                ph_email: 'z.B.: kontakt@meinunternehmen.de',
+                ph_telefono: 'z.B.: +49 170 1234567',
+                ph_aprobador: 'Geben Sie den Namen oder die Rolle der endgültigen Genehmigungsperson an',
+                ph_actividad: 'Erklären Sie es klar und einfach, als würden Sie es einem Kind erzählen.',
+                ph_publico: 'Alter, Geschlecht, Berufsfeld, welche spezifischen Probleme oder Bedürfnisse Ihr Unternehmen für sie löst.',
+                ph_propuesta: 'Warum sollte ein Kunde bei Ihnen kaufen und nicht bei der Konkurrenz? Was macht Sie besonders?',
+                ph_personalidad: 'z.B.: Elegant, disruptiv, umweltfreundlich, traditionell, Hightech...',
+                ph_accion: 'z.B.: Klick auf \'Angebot anfordern\', Newsletter abonnieren, Katalog ansehen...',
+                ph_colores: 'Wenn Sie HEX-Codes haben (z. B. #3b82f6), fügen Sie diese hier hinzu',
+                ph_coloresOdiados: 'Geben Sie Farben an, die Sie völlig ablehnen',
+                ph_refs: 'Kopieren Sie vollständige URLs (https://...) von Websites, die Ihnen von Design, Struktur oder Stil her gefallen.',
+                ph_ecomEnvios: 'z.B.: Pauschale von 5 €, kostenloser Versand ab 50 €, Preise nach Paketgewicht, internationaler Versand...',
+                ph_ecomTransp: 'z.B.: DHL, UPS, FedEx...',
+                ph_multiidioma: 'z.B.: Ja, Spanisch und Englisch / Nein, nur Spanisch.',
+                ph_domProv: 'z.B.: GoDaddy, Hostinger, Strato...',
+                ph_hostProv: 'z.B.: Hostinger, Siteground, AWS... Lassen Sie uns wissen, ob Sie Zugangsdaten haben',
+                ph_fecha: 'z.B.: Weihnachtsgeschäft, Datum der Filialöffnung...',
+                ph_comentarios: 'Zusätzliche Kommentare, Zweifel, Erwartungen, nicht aufgelistete Integrationen...'
+            }
+        };
+
+        let currentLang = localStorage.getItem('selectedLanguage');
+        if (!currentLang) {
+            const browserLang = navigator.language || navigator.userLanguage;
+            const langCode = browserLang.toLowerCase().substring(0, 2);
+            if (langCode === 'de' || langCode === 'en' || langCode === 'es') {
+                currentLang = langCode;
+            } else {
+                currentLang = 'es';
+            }
+        }
+
+        // ── SET LANGUAGE FUNCTION ──
+        function setLang(lang) {
+            currentLang = lang;
+            localStorage.setItem('selectedLanguage', lang);
+            document.documentElement.lang = lang;
+            
+            const t = translations[lang];
+            
+            // Translate all elements with data-t attribute
+            document.querySelectorAll('[data-t]').forEach(el => {
+                const key = el.getAttribute('data-t');
+                if (t[key] !== undefined) {
+                    el.textContent = t[key];
+                }
+            });
+
+            // Adjust language buttons active status
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+
+            // Update placeholders dynamically
+            const placeholderMap = {
+                'nombre_responsable':    t.ph_responsable,
+                'cargo_responsable':     t.ph_cargo,
+                'empresa_nombre':        t.ph_empresa,
+                'email':                 t.ph_email,
+                'telefono':              t.ph_telefono,
+                'aprobador_final':       t.ph_aprobador,
+                'actividad_empresa':     t.ph_actividad,
+                'publico_objetivo':      t.ph_publico,
+                'propuesta_valor':       t.ph_propuesta,
+                'personalidad_marca':    t.ph_personalidad,
+                'accion_inmediata':      t.ph_accion,
+                'colores_corporativos':  t.ph_colores,
+                'colores_odiados':       t.ph_coloresOdiados,
+                'referencias_webs':      t.ph_refs,
+                'ecom_envios':           t.ph_ecomEnvios,
+                'ecom_empresa_transporte': t.ph_ecomTransp,
+                'multiidioma_detalles':  t.ph_multiidioma,
+                'dominio_provider':      t.ph_domProv,
+                'hosting_provider':      t.ph_hostProv,
+                'fecha_limite':          t.ph_fecha,
+                'comentarios_finales':   t.ph_comentarios
+            };
+
+            Object.entries(placeholderMap).forEach(([name, ph]) => {
+                if (!ph) return;
+                document.querySelectorAll(`[name="${name}"]`).forEach(el => {
+                    el.placeholder = ph;
+                });
+            });
+
+            // Update subject for Formspree
+            const subjectField = document.querySelector('input[name="_subject"]');
+            if (subjectField) {
+                const subjects = {
+                    es: '🚀 NUEVO BRIEFING DETALLADO DE CLIENTE - Nouweb',
+                    en: '🚀 NEW DETAILED CLIENT BRIEFING - Nouweb',
+                    de: '🚀 NEUES DETAILLIERTES KUNDENBRIEFING - Nouweb'
+                };
+                subjectField.value = subjects[lang];
+            }
+
+            // Update Back Link href based on selected language
+            const backUrls = {
+                es: 'es/index.html',
+                en: 'en/index.html',
+                de: 'de/index.html'
+            };
+            const backBtn = document.getElementById('btn-back-link');
+            if (backBtn) {
+                backBtn.href = backUrls[lang] || 'es/index.html';
+            }
+            const successBackBtn = document.querySelector('.btn-back-success');
+            if (successBackBtn) {
+                successBackBtn.href = backUrls[lang] || 'es/index.html';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Initialize language
+            setLang(currentLang);
+
+            // ── CONDITIONAL SECTION LOGIC (E-COMMERCE) ──
+            const sectionEcom = document.getElementById('section-ecommerce-wrapper');
+            const radioEcomObj = document.getElementById('obj-ecommerce');
+            const checkEcomSec = document.getElementById('check-seccion-ecommerce');
+            const allRadioObjectives = document.querySelectorAll('input[name="objetivo_principal"]');
+
+            function updateEcomVisibility() {
+                // If either "Vender productos" is selected as main objective OR E-commerce is checked in pages/menu
+                if (radioEcomObj.checked || checkEcomSec.checked) {
+                    sectionEcom.classList.add('show');
+                } else {
+                    sectionEcom.classList.remove('show');
+                }
+            }
+
+            // Listeners for objective radio buttons
+            allRadioObjectives.forEach(radio => {
+                radio.addEventListener('change', updateEcomVisibility);
+            });
+
+            // Listener for sections menu checkbox
+            checkEcomSec.addEventListener('change', updateEcomVisibility);
+
+            // Run on load
+            updateEcomVisibility();
+
+
+            // ── CONDITIONAL LOGO UPLOADER HIDING ──
+            const uploaderWrapper = document.getElementById('logo-uploader-wrapper');
+            const logoOptOriginal = document.getElementById('logo-opt-original');
+            const logoOptBaja = document.getElementById('logo-opt-baja');
+            const logoOptNecesita = document.getElementById('logo-opt-necesita');
+            const logoOptExistente = document.getElementById('logo-opt-existente');
+            const allLogoRadios = document.querySelectorAll('input[name="tiene_logo"]');
+
+            function updateLogoUploaderVisibility() {
+                // Hide uploader if "No, necesito que diseñéis el logotipo" OR "No, usa el que ya tienes" is selected
+                if (logoOptNecesita.checked || logoOptExistente.checked) {
+                    uploaderWrapper.classList.add('hide');
+                } else {
+                    uploaderWrapper.classList.remove('hide');
+                }
+            }
+
+            allLogoRadios.forEach(radio => {
+                radio.addEventListener('change', updateLogoUploaderVisibility);
+            });
+
+            updateLogoUploaderVisibility();
+
+
+            // ── CONDITIONAL PHOTOS ALERT FOR PROFESSIONAL PHOTOS ──
+            const photosOptPro = document.getElementById('fotos-opt-pro');
+            const allPhotosRadios = document.querySelectorAll('input[name="fotos_autor"]');
+            const sharedFolderAlert = document.getElementById('photos-shared-folder-alert');
+
+            function updatePhotosAlertVisibility() {
+                if (photosOptPro.checked) {
+                    sharedFolderAlert.style.display = 'flex';
+                } else {
+                    sharedFolderAlert.style.display = 'none';
+                }
+            }
+
+            allPhotosRadios.forEach(radio => {
+                radio.addEventListener('change', updatePhotosAlertVisibility);
+            });
+
+            updatePhotosAlertVisibility();
+
+
+            // ── PROGRESS BAR PERCENTAGE UPDATE ──
+            const form = document.getElementById('briefing-form');
+            const progressBar = document.getElementById('progress-bar');
+            const requiredFields = form.querySelectorAll('[required]');
+
+            function updateProgress() {
+                let filledRequiredCount = 0;
+                requiredFields.forEach(field => {
+                    if (field.type === 'radio' || field.type === 'checkbox') {
+                        // Check if at least one in the same group is checked
+                        const groupName = field.name;
+                        const isChecked = form.querySelector(`input[name="${groupName}"]:checked`);
+                        if (isChecked) {
+                            filledRequiredCount++;
+                        }
+                    } else if (field.value.trim() !== '') {
+                        filledRequiredCount++;
+                    }
+                });
+
+                // Compute unique names for radio/checkbox groups to avoid counting each individual required button
+                const uniqueRequiredGroups = new Set();
+                requiredFields.forEach(field => {
+                    uniqueRequiredGroups.add(field.name);
+                });
+
+                let groupFilledCount = 0;
+                uniqueRequiredGroups.forEach(groupName => {
+                    const fieldsOfGroup = form.querySelectorAll(`[name="${groupName}"]`);
+                    const firstField = fieldsOfGroup[0];
+                    if (firstField.type === 'radio' || firstField.type === 'checkbox') {
+                        if (form.querySelector(`input[name="${groupName}"]:checked`)) {
+                            groupFilledCount++;
+                        }
+                    } else {
+                        if (firstField.value.trim() !== '') {
+                            groupFilledCount++;
+                        }
+                    }
+                });
+
+                const percentage = Math.min(Math.round((groupFilledCount / uniqueRequiredGroups.size) * 100), 100);
+                progressBar.style.width = `${percentage}%`;
+            }
+
+            // Attach input event to all inputs
+            form.querySelectorAll('input, textarea, select').forEach(input => {
+                input.addEventListener('input', updateProgress);
+                input.addEventListener('change', updateProgress);
+            });
+
+            // Run once at start
+            updateProgress();
+
+
+            // ── UPLOADCARE: COLLECT URL ──
+            const logoProvider = document.getElementById('logo-provider');
+            if (logoProvider) {
+                logoProvider.addEventListener('change', (e) => {
+                    const files = e.detail?.allEntries?.filter(f => f.status === 'success') || [];
+                    const cdnUrls = files.map(f => f.cdnUrl).join(', ');
+                    document.getElementById('logo-url-field').value = cdnUrls;
+                });
+            }
+
+
+            // ── FORM SUBMISSION VIA AJAX (Formspree) ──
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const btnSubmit = document.getElementById('submit-btn');
+                
+                // Disable button and show spinner
+                btnSubmit.disabled = true;
+                const originalText = btnSubmit.innerHTML;
+                
+                const sendingText = {
+                    es: '<i class="fas fa-spinner fa-spin"></i> Enviando briefing...',
+                    en: '<i class="fas fa-spinner fa-spin"></i> Sending briefing...',
+                    de: '<i class="fas fa-spinner fa-spin"></i> Briefing wird gesendet...'
+                };
+                btnSubmit.innerHTML = sendingText[currentLang] || sendingText['es'];
+
+                try {
+                    const formData = new FormData(form);
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        // Hide form and show success screen
+                        form.style.display = 'none';
+                        const successBox = document.getElementById('success-box');
+                        successBox.style.display = 'block';
+                        
+                        // Scroll to success screen smoothly
+                        successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        // Set progress bar to 100%
+                        progressBar.style.width = '100%';
+                    } else {
+                        throw new Error('Formspree response not OK');
+                    }
+                } catch (error) {
+                    // Re-enable button on error
+                    btnSubmit.disabled = false;
+                    btnSubmit.innerHTML = originalText;
+                    
+                    const errorText = {
+                        es: 'Hubo un problema al enviar el formulario. Por favor, compruébalo e inténtalo de nuevo.',
+                        en: 'There was a problem submitting the form. Please check it and try again.',
+                        de: 'Beim Senden des Formulars ist ein Problem aufgetreten. Bitte überprüfen Sie es und versuchen Sie es erneut.'
+                    };
+                    alert(errorText[currentLang] || errorText['es']);
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>

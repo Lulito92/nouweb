@@ -1,0 +1,49 @@
+# =============================================================================
+# Lo que NUNCA entra en el repositorio (2026-10-12, paso a GitHub + Vercel)
+#
+# ⚠️ Un archivo que llega a GitHub se queda en el historial aunque luego se
+# borre. Por eso lo sensible se para aquí, antes del primer commit.
+# =============================================================================
+
+# Secretos
+hostinger-recovery-codes.txt
+backend/config.php
+# Lleva la contraseña del admin escrita en claro
+backend/create_admin.php
+
+# Copias de seguridad: con git, el historial ya es la copia (444 MB de vídeos
+# repetidos que además superarían los límites de GitHub)
+Backup/
+
+# Prospección comercial: nombres y datos de personas y negocios reales (RGPD).
+# Es material de ventas, no parte de la web.
+Proceso de Contacto clientes/
+
+# Configuración local de cada máquina
+.claude/settings.local.json
+.vercel
+
+# Vídeos: solo los que alguna página carga de verdad. El resto (~200 MB) son
+# descartes que no usa nadie. Si una página empieza a usar uno nuevo, se añade
+# aquí con su "!".
+Videos/*
+!Videos/videoprincipal.mp4
+!Videos/5495845-hd_1920_1080_30fps.mp4
+!Videos/5495781-uhd_2560_1080_30fps.mp4
+!Videos/diseñoweb.mp4
+!Videos/videoecommers.mp4
+!Videos/mantenimientoweb.mp4
+!Videos/seo.mp4
+
+# Temporales
+*.tmp
+*.log
+
+# Backups de base de datos
+*.sql.bak
+backup.sql
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+desktop.ini

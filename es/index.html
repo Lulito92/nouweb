@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouweb | Diseño y Desarrollo Web en Alicante</title>
+    <meta name="description"
+        content="Agencia de diseño y desarrollo web a medida en Alicante. Expertos en Ecommerce, diseño gráfico y mantenimiento web.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../Imagenes/iconoweb.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../Imagenes/iconoweb.png">
+    <link rel="apple-touch-icon" href="../Imagenes/iconoweb.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#inicio" class="logo">
+                <img src="../Imagenes/LogoAlta.png" alt="Nouweb Logo">
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+                    <li><a href="#casos-exito" class="nav-link">Casos de Éxito</a></li>
+                    <li><a href="#proceso" class="nav-link">Proceso</a></li>
+                    <li><a href="#contacto" class="btn btn-primary">Contacto</a></li>
+                    <li><a href="login.html" target="_blank" class="login-icon" title="Acceso Clientes">
+                        <i class="fas fa-user-circle"></i>
+                    </a></li>
+                </ul>
+            </nav>
+
+            <button class="mobile-toggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="video-background">
+            <video autoplay muted loop playsinline id="hero-video">
+                <source src="../Videos/videoprincipal.mp4" type="video/mp4">
+                Tu navegador no soporta videos HTML5.
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+
+        <div class="container hero-container">
+            <div class="hero-content fade-in-up">
+                <span class="badge">Diseño Web y Marketing Digital en Alicante</span>
+                <h1>¿Necesitas una web que <span class="text-gradient">Venda</span>?</h1>
+                <p>Ayudamos a empresas y autónomos a conseguir más clientes con una página web profesional, rápida y
+                    optimizada.</p>
+                <div class="hero-buttons">
+                    <a href="#contacto" class="btn btn-primary">Quiero mi Web</a>
+                    <a href="#servicios" class="btn btn-outline">Ver Servicios</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="section services">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2>Nuestros Servicios</h2>
+                <p>Soluciones integrales para tu presencia digital</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Web Design & Development -->
+                <div class="service-card fade-in-up" data-service="web-design">
+                    <div class="icon-box">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Diseño y Desarrollo Web</h3>
+                    <p>Webs modernas, rápidas y adaptadas a todos los dispositivos. Enfocadas en la experiencia de
+                        usuario y la conversión.</p>
+                </div>
+
+                <!-- Custom Web Development -->
+                <div class="service-card fade-in-up delay-1" data-service="custom-web">
+                    <div class="icon-box">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web a Medida</h3>
+                    <p>Desarrollo de funcionalidades específicas y aplicaciones web complejas adaptadas 100% a tus
+                        necesidades.</p>
+                </div>
+
+                <!-- Ecommerce -->
+                <div class="service-card fade-in-up delay-2" data-service="ecommerce">
+                    <div class="icon-box">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>Ecommerce</h3>
+                    <p>Tiendas online robustas y seguras. Optimizadas para vender más y gestionar tu catálogo
+                        fácilmente.</p>
+                </div>
+
+                <!-- Graphic Design -->
+                <div class="service-card fade-in-up" data-service="graphic-design">
+                    <div class="icon-box">
+                        <i class="fas fa-pen-nib"></i>
+                    </div>
+                    <h3>Diseño Gráfico</h3>
+                    <p>Identidad corporativa, branding y material gráfico que transmite la esencia de tu marca.</p>
+                </div>
+
+                <!-- Web Maintenance -->
+                <div class="service-card fade-in-up delay-1" data-service="maintenance">
+                    <div class="icon-box">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Mantenimiento Web</h3>
+                    <p>Tu web siempre actualizada, segura y funcionando correctamente. Soporte técnico continuo.</p>
+                </div>
+
+                <!-- SEO Optimization -->
+                <div class="service-card fade-in-up delay-2" data-service="seo-optimization">
+                    <div class="icon-box">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Optimización SEO</h3>
+                    <p>¿Ya tienes una web? Optimizamos tu sitio existente para mejorar su posicionamiento en buscadores y atraer más tráfico cualificado.</p>
+                </div>
+            </div>
+
+            <!-- Service Modal -->
+            <div id="service-modal" class="service-modal">
+                <div class="modal-content">
+                    <button class="close-modal"><i class="fas fa-times"></i></button>
+                    <div class="modal-body">
+                        <div class="modal-image">
+                            <!-- Image will be injected here -->
+                            <i class="fas fa-laptop-code placeholder-icon"></i>
+                        </div>
+                        <div class="modal-text">
+                            <h3 id="modal-title">Service Title</h3>
+                            <p id="modal-description">Service description goes here.</p>
+                            <div class="modal-buttons">
+                                <a href="#contacto" class="btn btn-primary" onclick="closeServiceModal()">Solicitar
+                                    Presupuesto</a>
+                                <button id="learn-more-btn" class="btn btn-outline">Saber más</button>
+                            </div>
+
+                            <!-- Sección de detalles expandible -->
+                            <div id="modal-details" class="modal-details">
+                                <div id="details-text" class="details-content">
+                                    <!-- Los detalles se inyectarán aquí dinámicamente -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Location Section -->
+    <section id="nosotros" class="section about">
+        <div class="container about-container">
+            <div class="about-content fade-in-up">
+                <h2>Expertos en Valencia y Alicante</h2>
+                <p>Somos <strong>Nouweb</strong>, un equipo apasionado por la tecnología y el diseño ubicado en el
+                    corazón de <strong>Valencia y Alicante</strong>. Entendemos el mercado local y global, ofreciendo
+                    soluciones
+                    que conectan con tu audiencia.</p>
+                <p><strong>Desarrolladores Web Fullstack | Frontend & Backend</strong><br>
+                    Creación de sitios web desde cero, E-commerce, Chatbots y sistemas integrados. Soluciones a medida.</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Trato cercano y personalizado</li>
+                    <li><i class="fas fa-check-circle"></i> Resultados medibles</li>
+                    <li><i class="fas fa-check-circle"></i> Tecnología de vanguardia</li>
+                </ul>
+            </div>
+            <div class="about-image fade-in-up delay-1">
+                <div class="video-wrapper">
+                    <video autoplay muted loop playsinline>
+                        <source src="../Videos/5495845-hd_1920_1080_30fps.mp4" type="video/mp4">
+                        Tu navegador no soporta videos HTML5.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Cases Section -->
+    <section id="casos-exito" class="section success-cases">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2>Casos de Éxito</h2>
+                <p>Proyectos que han transformado negocios</p>
+            </div>
+
+            <div class="cases-grid">
+                <!-- Case 1 -->
+                <div class="case-card fade-in-up">
+                    <div class="case-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
+                            alt="Proyecto E-commerce">
+                        <div class="case-overlay">
+                            <span class="case-category">E-commerce</span>
+                        </div>
+                    </div>
+                    <div class="case-content">
+                        <h3>Tienda Online de Celdas</h3>
+                        <p>Desarrollo completo de e-commerce con integración de pasarela de pago y sistema de gestión de
+                            inventario.</p>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <strong>+250%</strong>
+                                <span>Ventas Online</span>
+                            </div>
+                            <div class="stat">
+                                <strong>15k</strong>
+                                <span>Usuarios/mes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="case-card fade-in-up delay-1">
+                    <div class="case-image">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop"
+                            alt="Proyecto Web Corporativa">
+                        <div class="case-overlay">
+                            <span class="case-category">Web Corporativa</span>
+                        </div>
+                    </div>
+                    <div class="case-content">
+                        <h3>Plataforma Empresarial</h3>
+                        <p>Diseño y desarrollo de web corporativa con sistema de gestión de contenidos y área de
+                            clientes.</p>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <strong>-40%</strong>
+                                <span>Tiempo de Carga</span>
+                            </div>
+                            <div class="stat">
+                                <strong>98%</strong>
+                                <span>Satisfacción</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="case-card fade-in-up delay-2">
+                    <div class="case-image">
+                        <img src="../Imagenes/reserva.jpg" alt="Proyecto App Web">
+                        <div class="case-overlay">
+                            <span class="case-category">Aplicación Web</span>
+                        </div>
+                    </div>
+                    <div class="case-content">
+                        <h3>Sistema de Reservas</h3>
+                        <p>Aplicación web personalizada para gestión de reservas con panel de administración completo.
+                        </p>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <strong>5k</strong>
+                                <span>Reservas/mes</span>
+                            </div>
+                            <div class="stat">
+                                <strong>24/7</strong>
+                                <span>Disponibilidad</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials -->
+            <div class="testimonials-section">
+                <h3 class="text-center fade-in-up">Lo que dicen nuestros clientes</h3>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card fade-in-up">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Excelente trabajo. Nuestra web ha superado todas las expectativas y las ventas online han
+                            crecido exponencialmente."</p>
+                        <div class="testimonial-author">
+                            <strong>María González</strong>
+                            <span>CEO, Fashion Store</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card fade-in-up delay-1">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Profesionales, creativos y muy atentos. El resultado final es una web moderna que refleja
+                            perfectamente nuestra marca."</p>
+                        <div class="testimonial-author">
+                            <strong>Carlos Martínez</strong>
+                            <span>Director, Tech Solutions</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card fade-in-up delay-2">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"La aplicación de reservas ha revolucionado nuestro negocio. Ahora todo es más eficiente y
+                            nuestros clientes están encantados."</p>
+                        <div class="testimonial-author">
+                            <strong>Ana López</strong>
+                            <span>Propietaria, Spa Wellness</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="precios" class="section pricing">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2>Nuestros Precios</h2>
+                <p>Opciones para todos los gustos y necesidades</p>
+            </div>
+
+            <!-- Carousel navigation for mobile -->
+            <div class="pricing-carousel-nav">
+                <button class="carousel-btn carousel-prev" aria-label="Anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="carousel-dots"></div>
+                <button class="carousel-btn carousel-next" aria-label="Siguiente">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Web a Medida -->
+                <div class="pricing-card fade-in-up">
+                    <div class="pricing-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web a Medida</h3>
+                    <p class="pricing-subtitle">Desarrollo personalizado 100%</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Funcionalidades específicas</li>
+                        <li><i class="fas fa-check"></i> Aplicaciones web complejas</li>
+                        <li><i class="fas fa-check"></i> Integración con sistemas</li>
+                        <li><i class="fas fa-check"></i> Chat bot</li>
+                        <li><i class="fas fa-check"></i> Panel de administración</li>
+                        <li><i class="fas fa-check"></i> Soporte técnico continuo</li>
+                    </ul>
+                    <a href="#contacto" class="btn btn-primary">Solicitar Presupuesto</a>
+                </div>
+
+                <!-- Web Completa - POPULAR -->
+                <div class="pricing-card popular fade-in-up delay-1">
+                    <div class="popular-badge">Popular</div>
+                    <div class="pricing-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Web Completa</h3>
+                    <div class="pricing-amount">
+                        <span class="price">Desde 599€</span>
+                    </div>
+                    <p class="pricing-subtitle">Tu mejor carta de presentación</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Hasta 10 secciones</li>
+                        <li><i class="fas fa-check"></i> Diseño efectivo y adaptado</li>
+                        <li><i class="fas fa-times no-include"></i> No incluye hosting</li>
+                        <li><i class="fas fa-check"></i> Optimización SEO básica</li>
+                        <li><i class="fas fa-check"></i> Máximo 2 semanas de entrega</li>
+                    </ul>
+                    <a href="#contacto" class="btn btn-primary">Solicitar Presupuesto</a>
+                </div>
+
+                <!-- E-commerce -->
+                <div class="pricing-card fade-in-up delay-2">
+                    <div class="pricing-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-commerce</h3>
+                    <p class="pricing-subtitle">Vende online 24/7</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Tienda online completa</li>
+                        <li><i class="fas fa-check"></i> Pasarela de pago integrada</li>
+                        <li><i class="fas fa-check"></i> Gestión de inventario</li>
+                        <li><i class="fas fa-check"></i> Panel de administración</li>
+                        <li><i class="fas fa-check"></i> Optimizado para conversión</li>
+                    </ul>
+                    <a href="#contacto" class="btn btn-outline">Solicitar Presupuesto</a>
+                </div>
+
+                <!-- SEO Avanzado -->
+                <div class="pricing-card fade-in-up">
+                    <div class="pricing-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO Avanzado</h3>
+                    <div class="pricing-amount">
+                        <span class="price">199€</span>
+                        <span class="price-monthly">+ 149€/mes</span>
+                    </div>
+                    <p class="pricing-subtitle">Aparece en Google</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Estudio de palabras clave</li>
+                        <li><i class="fas fa-check"></i> Optimización de contenido</li>
+                        <li><i class="fas fa-check"></i> Estrategia de linkbuilding</li>
+                        <li><i class="fas fa-check"></i> Análisis de competencia</li>
+                        <li><i class="fas fa-check"></i> Reportes mensuales</li>
+                    </ul>
+                    <a href="#contacto" class="btn btn-outline">Solicitar Presupuesto</a>
+                </div>
+
+                <!-- Diseño Gráfico -->
+                <div class="pricing-card fade-in-up delay-1">
+                    <div class="pricing-icon">
+                        <i class="fas fa-pen-nib"></i>
+                    </div>
+                    <h3>Diseño Gráfico</h3>
+                    <p class="pricing-subtitle">Identidad visual única</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Branding corporativo</li>
+                        <li><i class="fas fa-check"></i> Logotipo y papelería</li>
+                        <li><i class="fas fa-check"></i> Material publicitario</li>
+                        <li><i class="fas fa-check"></i> Diseño para redes sociales</li>
+                        <li><i class="fas fa-check"></i> Archivos fuente incluidos</li>
+                    </ul>
+                    <a href="#contacto" class="btn btn-outline">Solicitar Presupuesto</a>
+                </div>
+
+                <!-- Multi Idioma - NEW -->
+                <div class="pricing-card fade-in-up delay-2">
+                    <div class="pricing-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Multi Idioma</h3>
+                    <div class="pricing-amount">
+                        <span class="price">+10% del total</span>
+                    </div>
+                    <p class="pricing-subtitle">Tu web en varios idiomas</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Por cada idioma adicional</li>
+                        <li><i class="fas fa-check"></i> Diferentes opciones de dominio</li>
+                        <li><i class="fas fa-check"></i> Optimizado para SEO multilingüe</li>
+                        <li><i class="fas fa-check"></i> Traducción profesional disponible</li>
+                        <li><i class="fas fa-check"></i> Gestión de contenido por idioma</li>
+                    </ul>
+                    <a href="#contacto" class="btn btn-outline">Solicitar Presupuesto</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Process Section -->
+    <section id="proceso" class="section process">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2>Nuestro Proceso</h2>
+                <p>Así trabajamos paso a paso contigo</p>
+            </div>
+
+            <div class="process-timeline">
+                <!-- Step 1 -->
+                <div class="process-step fade-in-up">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Contacto</h3>
+                        <p>Cuéntanos tu proyecto y te asesoraremos sin compromiso.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="process-step fade-in-up delay-1">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Planificación</h3>
+                        <p>Diseñamos la estructura y te presentamos mockups para tu aprobación.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="process-step fade-in-up delay-2">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Desarrollo</h3>
+                        <p>Desarrollamos tu web y te mostramos avances regularmente.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="process-step fade-in-up">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <h3>Revisiones</h3>
+                        <p>Dos rondas de ajustes incluidas hasta tu completa satisfacción.</p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="process-step fade-in-up delay-1">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Lanzamiento</h3>
+                        <p>Publicamos tu sitio y te entregamos todas las credenciales.</p>
+                    </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="process-step fade-in-up delay-2">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>Soporte</h3>
+                        <p>Mantenimiento opcional para SEO continuo y cambios.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="section contact">
+        <div class="container">
+            <div class="contact-wrapper fade-in-up">
+                <div class="contact-info">
+                    <h2>Hablemos de tu proyecto</h2>
+                    <p>¿Tienes una idea? Cuéntanos y la haremos realidad.</p>
+
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Ubicación</h4>
+                            <p>Valencia, España</p>
+                            <p>Alicante, España</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p><a href="mailto:info@nouweb-es.com">info@nouweb-es.com</a></p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Teléfono</h4>
+                            <p><a href="tel:+34614942732">+34 614 94 27 32</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" action="https://formspree.io/f/xqeeevyv" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" name="name" required placeholder="Fernando Alonso">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="fernando@alonso.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Número de Contacto</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+34 612 123 456">
+                    </div>
+                    <div class="form-group">
+                        <label for="postal_code">Código Postal</label>
+                        <input type="text" id="postal_code" name="postal_code" placeholder="03000">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Mensaje"></textarea>
+                    </div>
+                    <!-- Campo oculto para personalizar el asunto del email -->
+                    <input type="hidden" name="_subject" value="Nuevo mensaje desde Nouweb">
+                    
+                    <!-- Checkbox de consentimiento -->
+                    <div class="form-group consent-group">
+                        <label class="consent-label">
+                            <input type="checkbox" id="consent-checkbox" name="consent" required>
+                            <span>Consiento el tratamiento de mis datos. <a href="#" id="read-more-consent" class="consent-link">Leer más...</a></span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <a href="#" class="logo-footer">Nouweb</a>
+                <p>Transformamos ideas en experiencias digitales excepcionales.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#">Diseño Web</a></li>
+                    <li><a href="#">Desarrollo a Medida</a></li>
+                    <li><a href="#">Ecommerce</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="aviso-legal.html">Aviso Legal</a></li>
+                    <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
+                    <li><a href="politica-cookies.html">Cookies</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Síguenos</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nouweb. Todos los derechos reservados. Hecho para ti en Alicante y Valencia.
+            </p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/34614942732?text=Quiero%20más%20información" target="_blank" class="whatsapp-float"
+        aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Modal de Consentimiento de Datos -->
+    <div id="consent-modal" class="consent-modal">
+        <div class="consent-modal-content">
+            <button class="close-consent-modal">&times;</button>
+            <h2>Consentimiento para el Tratamiento de Datos</h2>
+            <div class="consent-modal-body">
+                <p><strong>Responsable del Tratamiento:</strong> Nou Web España SL</p>
+                <p><strong>Finalidad:</strong> Atender su solicitud de información, gestionar su consulta y enviarle información relacionada con nuestros servicios.</p>
+                
+                <h3>Información Básica sobre Protección de Datos</h3>
+                <ul>
+                    <li><strong>Responsable:</strong> Nou Web España SL, con domicilio en Denia, Alicante, España.</li>
+                    <li><strong>Finalidad:</strong> Gestionar las solicitudes de información y/o consultas efectuadas a través del formulario de contacto.</li>
+                    <li><strong>Legitimación:</strong> Consentimiento del interesado.</li>
+                    <li><strong>Destinatarios:</strong> No se cederán datos a terceros, salvo obligación legal.</li>
+                    <li><strong>Derechos:</strong> Tiene derecho a acceder, rectificar y suprimir los datos, así como otros derechos, como se explica en la información adicional.</li>
+                    <li><strong>Conservación:</strong> Los datos se conservarán mientras se mantenga la relación o durante los años necesarios para cumplir con las obligaciones legales.</li>
+                </ul>
+
+                <h3>Sus Derechos</h3>
+                <p>Puede ejercer sus derechos de acceso, rectificación, supresión, limitación, portabilidad y oposición dirigiéndose a <strong>info@nouweb-es.com</strong> adjuntando copia de su DNI.</p>
+                
+                <p>Para más información, consulte nuestra <a href="politica-privacidad.html" target="_blank">Política de Privacidad</a> completa.</p>
+                
+                <div class="consent-modal-actions">
+                    <button id="accept-consent-modal" class="btn btn-primary">Acepto</button>
+                    <button id="close-consent-modal-btn" class="btn btn-outline">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h3>Uso de Cookies</h3>
+                <p>Utilizamos cookies propias y de terceros para mejorar tu experiencia de navegación y ofrecerte contenido personalizado. Al continuar navegando, aceptas su uso. Consulta nuestra <a href="politica-cookies.html">Política de Cookies</a>, <a href="aviso-legal.html">Aviso Legal</a> y <a href="politica-privacidad.html">Política de Privacidad</a> para más información.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn btn-primary">Aceptar</button>
+                <button id="decline-cookies" class="btn btn-outline-white">Rechazar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Language Selection Modal - Initial Load -->
+    <div id="language-modal" class="language-modal">
+        <div class="language-modal-content">
+            <h2 data-translate="selectLanguage">Selecciona tu idioma</h2>
+            <p data-translate="choosePreferred">Elige tu idioma preferido</p>
+            <div class="language-options">
+                <div class="language-option" data-lang="es">
+                    <div class="flag">
+                        <img src="../Imagenes/Espana.png" alt="España">
+                    </div>
+                    <div class="lang-name">Español</div>
+                    <div class="lang-code">ES</div>
+                </div>
+                <div class="language-option" data-lang="de">
+                    <div class="flag">
+                        <img src="../Imagenes/Deutschland.png" alt="Deutschland">
+                    </div>
+                    <div class="lang-name">Deutsch</div>
+                    <div class="lang-code">DE</div>
+                </div>
+                <div class="language-option" data-lang="en">
+                    <div class="flag">
+                        <img src="../Imagenes/England.png" alt="England">
+                    </div>
+                    <div class="lang-name">English</div>
+                    <div class="lang-code">EN</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-toggle-btn" aria-label="Cambiar idioma" onclick="document.querySelector('.lang-dropdown').classList.toggle('active'); event.stopPropagation();">
+            <i class="fas fa-language"></i>
+        </button>
+        <div class="lang-dropdown">
+            <div class="lang-dropdown-item" data-lang="es" onclick="event.stopPropagation(); this.closest('.lang-dropdown').classList.remove('active');" style="cursor: pointer;">
+                <span class="flag">
+                    <img src="../Imagenes/Espana.png" alt="España">
+                </span>
+                <span class="lang-name">Español</span>
+                <span class="lang-code">ES</span>
+            </div>
+            <div class="lang-dropdown-item" data-lang="de" onclick="event.stopPropagation(); window.location.href='../de/index.html';" style="cursor: pointer;">
+                <span class="flag">
+                    <img src="../Imagenes/Deutschland.png" alt="Deutschland">
+                </span>
+                <span class="lang-name">Deutsch</span>
+                <span class="lang-code">DE</span>
+            </div>
+            <div class="lang-dropdown-item" data-lang="en" onclick="event.stopPropagation(); window.location.href='../index.html';" style="cursor: pointer;">
+                <span class="flag">
+                    <img src="../Imagenes/England.png" alt="England">
+                </span>
+                <span class="lang-name">English</span>
+                <span class="lang-code">EN</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

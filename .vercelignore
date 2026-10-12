@@ -1,0 +1,43 @@
+# =============================================================================
+# Qué publica Vercel (2026-10-12). Es una LISTA BLANCA: la primera línea lo
+# excluye todo, y cada "!" vuelve a permitir una cosa.
+#
+# Por qué así y no al revés: el repositorio guarda cosas que no pueden ser
+# públicas (CLAUDE.md, docs/, backend/, los .php, notas). Vercel sirve como
+# archivo descargable todo lo que se le sube, y no lee el .htaccess que antes
+# las bloqueaba en IONOS. Con lista blanca, un archivo privado nuevo queda
+# fuera solo; con lista negra, habría que acordarse de añadirlo cada vez.
+#
+# ⚠️ Una PÁGINA o CARPETA NUEVA del sitio hay que añadirla aquí con "!", o
+#    dará 404 en la web.
+# =============================================================================
+
+/*
+!vercel.json
+
+# Páginas de la raíz
+!index.html
+!aviso-legal.html
+!politica-cookies.html
+!politica-privacidad.html
+!login.html
+!briefing.html
+!form_contact.html
+
+# Assets y SEO
+!styles.css
+!script.js
+!robots.txt
+!sitemap.xml
+!Imagenes
+!Videos
+
+# Carpetas del sitio
+!blog
+!es-es
+!en
+!de
+!es
+
+# Dentro de las carpetas permitidas, lo que tampoco se sirve
+blog/README.md

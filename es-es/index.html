@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<!-- ============================================================================
+     /es-es/ — LA VERSIÓN ESPAÑOLA (Fase 14, sesión 3 · 2026-08-10)
+
+     ⚠️ ESTA PÁGINA SE ESCRIBE PARA ESPAÑA, Y LAS REGLAS SON LAS OPUESTAS A LAS
+     DE LA RAÍZ. Antes de tocar una sola frase, leer CLAUDE.md § 4bis:
+       · IVA 21 %, no IGV 18 %      · euros, no soles
+       · Hacienda / AEAT, no SUNAT  · Verifactu, no OSE/PSE
+       · móvil, no celular          · coste, no costo
+       · WhatsApp NO es el canal de venta: aquí se vende por email, teléfono y
+         marketplace. El gancho peruano ("tus pedidos se pierden en un chat") no
+         se traduce, SE SUSTITUYE.
+     La raíz (`/`) es la versión Perú y se rige por § 4, que dice justo lo
+     contrario. Son dos mercados, no dos traducciones.
+
+     ⚠️ NO SE COPIA NI UN ASSET. Esta página reusa /styles.css y /script.js con
+     RUTA ABSOLUTA, igual que hizo el blog en la Fase 10. La triplicación de
+     /en, /de y /es es la deuda que este proyecto está pagando desde la Fase 1;
+     una cuarta copia sería empezar a pagarla otra vez.
+     ⚠️ Por eso TODA ruta a un archivo lleva `/` delante. Una ruta relativa
+     (`Videos/…`, `Imagenes/…`, `login.html`) se resolvería contra /es-es/ y
+     daría un 404 que no se ve leyendo el código.
+
+     ⚠️ LAS 7 REJILLAS NO SE ESCRIBEN AQUÍ. Hero, credenciales, casos, proceso,
+     CRM, migraciones y destinos se dibujan solos desde script.js, filtrados por
+     el `data-mercado` que escribe el <script> de abajo (sesión 2). Lo que sí
+     vive en este archivo son los bloques escritos a mano: SEO, JSON-LD,
+     #problema, #servicios, el sello fiscal, las pasarelas, #nosotros,
+     #auditoria, #contacto y las legales.
+
+     🔴 ANTES DE PUBLICAR ESTA PÁGINA hacen falta dos cosas de Luis:
+        · pendiente nº 21 — su contrato con la agencia (no competencia).
+          Captar clientes ESPAÑOLES es el escenario de CLAUDE.md § 5.
+        · backlog nº 22 — las legales de la raíz no nombran el RGPD ni la
+          LSSI-CE. Con la web mirando solo a Perú pasaba; ahora no.
+     ============================================================================ -->
+<!-- `es-ES` es lo que enciende el mercado español entero: lo lee el <script> de
+     abajo, que escribe data-mercado="es", y de ahí beben las 7 rejillas.
+     Si este atributo se escribiera mal, la página se dibujaría en peruano sin
+     dar ningún error. Por eso la comprobación de abajo es laxa con mayúsculas. -->
+<html lang="es-ES">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Mercado de la página (Fase 14, sesión 2). Copiado TAL CUAL de la raíz:
+         es la misma línea en las dos páginas a propósito, para que no haya dos
+         formas distintas de decidir el mercado. Va en línea y en el <head>
+         porque se tiene que escribir ANTES del primer pintado; si llegara con
+         script.js, las secciones se dibujarían un instante en peruano. -->
+    <script>document.documentElement.dataset.mercado = /^es-es\b/i.test(document.documentElement.lang) ? 'es' : 'pe';</script>
+
+    <title>Consultoría tecnológica e integración de sistemas para pymes | Nouweb</title>
+    <meta name="description"
+        content="Migramos tu eCommerce y conectamos tus pedidos a un CRM que encaja de verdad con tu negocio, con la facturación electrónica y Verifactu contemplados. No vendemos CRM propio. Auditoría gratuita.">
+    <meta name="keywords"
+        content="migración eCommerce España, integración CRM pymes, replatforming Shopify, migración PrestaShop, migración Magento, facturación electrónica Verifactu, consultoría tecnológica pymes">
+
+    <!-- Open Graph. ⚠️ og:locale es es_ES (la raíz pone es_PE) y og:url apunta a
+         ESTA página: si apuntara a la raíz, al compartir el enlace español se
+         previsualizaría la versión peruana. La imagen se comparte con la raíz:
+         es la marca, no el mercado. -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:url" content="https://nouweb-es.com/es-es/">
+    <meta property="og:site_name" content="Nouweb">
+    <meta property="og:title" content="Tu tienda se quedó atrás. Tus sistemas no se hablan entre ellos.">
+    <meta property="og:description"
+        content="Migramos tu eCommerce y conectamos tus procesos a un CRM que encaja de verdad con tu negocio. Consultoría independiente para pymes.">
+    <meta property="og:image" content="https://nouweb-es.com/Imagenes/og-nouweb.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Nouweb — migración de eCommerce e integración de CRM para pymes.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tu tienda se quedó atrás. Tus sistemas no se hablan entre ellos.">
+    <meta name="twitter:description"
+        content="Migramos tu eCommerce y conectamos tus procesos a un CRM que encaja de verdad con tu negocio. Consultoría independiente para pymes.">
+    <meta name="twitter:image" content="https://nouweb-es.com/Imagenes/og-nouweb.png">
+
+    <!-- Datos estructurados (SEO).
+         ⚠️ EL @id ES EL MISMO QUE EL DE LA RAÍZ, y es a propósito: Nouweb es UNA
+         empresa, no dos. El @id de schema.org identifica la entidad, no la
+         página. Si /es-es/ inventara un @id propio, Google leería dos negocios
+         distintos con el mismo nombre y el mismo teléfono.
+         Lo que sí cambia es la DESCRIPCIÓN, que aquí habla de Verifactu y no de
+         la SUNAT, y el orden de areaServed. -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "@id": "https://nouweb-es.com/#negocio",
+        "name": "Nouweb",
+        "url": "https://nouweb-es.com/",
+        "logo": "https://nouweb-es.com/Imagenes/LogoAlta.png",
+        "image": "https://nouweb-es.com/Imagenes/og-nouweb.png",
+        "description": "Consultora tecnológica e integrador de soluciones de negocio para pymes: migración de eCommerce e integración de CRM, con la facturación electrónica y Verifactu contemplados.",
+        "email": "info@nouweb-es.com",
+        "telephone": "+34614942732",
+        "areaServed": ["ES", "PE"],
+        "knowsLanguage": ["es", "en", "de"],
+        "serviceType": ["Migración de eCommerce", "Integración de CRM", "Consultoría tecnológica"]
+    }
+    </script>
+
+    <!-- Los tres servicios como Service enlazados al negocio.
+         ⚠️ El de migración NO nombra VTEX, al revés que la raíz: en España VTEX
+         no está en DESTINOS (script.js), así que ofrecerlo aquí contradiría a la
+         propia página tres pantallas más abajo. -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+            {
+                "@type": "Service",
+                "position": 1,
+                "name": "Diagnóstico de procesos de negocio",
+                "description": "Análisis de cómo opera hoy tu negocio: por dónde entran los pedidos, dónde se pierden y qué conviene arreglar primero.",
+                "provider": { "@id": "https://nouweb-es.com/#negocio" },
+                "areaServed": ["ES"]
+            },
+            {
+                "@type": "Service",
+                "position": 2,
+                "name": "Migración de eCommerce",
+                "description": "Replatforming de tiendas online obsoletas a Shopify o WooCommerce, con UX y responsive reales y sin perder posicionamiento.",
+                "provider": { "@id": "https://nouweb-es.com/#negocio" },
+                "areaServed": ["ES"]
+            },
+            {
+                "@type": "Service",
+                "position": 3,
+                "name": "Integración de CRM",
+                "description": "Selección e integración del CRM de pago que encaja con tu operación, conectado con tu web y con la facturación electrónica.",
+                "provider": { "@id": "https://nouweb-es.com/#negocio" },
+                "areaServed": ["ES"]
+            }
+        ]
+    }
+    </script>
+
+    <!-- FAQPage. Mismas cuatro preguntas que la raíz, con la segunda SUSTITUIDA:
+         allí pregunta por la SUNAT y aquí por Verifactu.
+         ⚠️ SIN NINGUNA FECHA de entrada en vigor (CLAUDE.md § 4bis y pendiente
+         nº 22): se han aplazado varias veces y Luis no las tiene verificadas.
+         En la web de quien vende integraciones de facturación, una fecha mal
+         puesta hace más daño que no mencionarla.
+         ⚠️ La tercera tampoco nombra VTEX, por lo mismo que el ItemList. -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "¿Nouweb vende su propio CRM?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Nouweb es consultora e integradora independiente: no vende software de gestión propio, por eso puede recomendar el CRM que de verdad encaja con tu operación en lugar del que le convenga vender."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Contempláis Verifactu y la facturación electrónica?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sí. La conexión con tu software de facturación se define en el mismo momento que el flujo de venta, para que la factura salga sola cuando el pedido se confirma, con su IVA y su registro. Trabajamos con el software adaptado que ya tengas o te ayudamos a elegirlo."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿A qué plataforma migráis mi tienda?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Depende de tu operación y tu volumen. No toda migración termina en la misma plataforma: primero analizamos tu caso y después decidimos entre Shopify, WooCommerce o un desarrollo a medida. A veces la conclusión es que no hace falta cambiar de plataforma."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿La auditoría inicial tiene coste?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "La auditoría es gratuita para negocios con intención real de implementar, ahora o a medio plazo. Incluye una videollamada y un documento con los hallazgos priorizados, que es tuyo lo contrates con Nouweb o no."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Canónica e idiomas.
+
+         ⚠️ EL GRUPO ES RECÍPROCO O NO VALE NADA. Estas cinco líneas son
+         EXACTAMENTE las mismas que las de /index.html, esta página incluida.
+         Google ignora por completo un hreflang que la otra página no devuelve:
+         no es medio trabajo hecho, vale cero. Si se toca una de las dos listas,
+         se tocan las dos.
+
+         Es la lección que dejó medida la Fase 6 al mirar /en/: la raíz la
+         apuntaba, ella no devolvía el apunte, y el grupo entero se ignoraba.
+
+         ⚠️ La canónica apunta AQUÍ, no a la raíz. Si apuntara a `/`, se estaría
+         diciendo que esta página es una copia de la peruana y Google no la
+         indexaría nunca — que es justo lo contrario de por qué existe. -->
+    <link rel="canonical" href="https://nouweb-es.com/es-es/">
+    <link rel="alternate" hreflang="x-default" href="https://nouweb-es.com/">
+    <link rel="alternate" hreflang="es-PE" href="https://nouweb-es.com/">
+    <link rel="alternate" hreflang="es-ES" href="https://nouweb-es.com/es-es/">
+    <link rel="alternate" hreflang="en" href="https://nouweb-es.com/en/">
+    <link rel="alternate" hreflang="de" href="https://nouweb-es.com/de/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/Imagenes/iconoweb.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/Imagenes/iconoweb.png">
+    <link rel="apple-touch-icon" href="/Imagenes/iconoweb.png">
+
+    <!-- Styles: la hoja de la raíz, con ruta absoluta. NO hay hoja propia.
+         El ?v= tiene que ir SIEMPRE igual que el de las otras 7 páginas: el
+         .htaccess cachea CSS y JS un año, así que un número desparejado dejaría
+         a esta página con una versión de styles.css distinta a la del resto. -->
+    <link rel="stylesheet" href="/styles.css?v=33">
+
+    <!-- Fuentes e iconos: igual que la raíz, sin bloquear el pintado (Fase 13).
+         `media="print"` + `onload` hace que el navegador les dé prioridad baja y
+         al llegar se pasan a `all`. El <noscript> cubre a quien no tenga JS. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" media="print" onload="this.media='all'"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap">
+    </noscript>
+
+    <link rel="stylesheet" media="print" onload="this.media='all'"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
+</head>
+
+<body>
+
+    <!-- Enlace de salto (Fase 12). Primer elemento tabulable de la página. -->
+    <a href="#hero" class="skip-link">Saltar al contenido</a>
+
+    <!-- Banner de idioma: solo se muestra si el navegador no está en español.
+         Es la misma pieza de la raíz y hace lo mismo, sin redirigir nunca. -->
+    <div id="lang-banner" class="lang-banner" hidden>
+        <span class="lang-banner-text">This page is also available in English and Deutsch.</span>
+        <a href="/en/" class="lang-banner-link" data-banner-choice="en">English</a>
+        <a href="/de/" class="lang-banner-link" data-banner-choice="de">Deutsch</a>
+        <button type="button" class="lang-banner-close" aria-label="Cerrar">
+            <svg class="icono" viewBox="0 0 384 512" aria-hidden="true" focusable="false">
+                <path
+                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Banner de país (Fase 14, sesión 4). El espejo del de la raíz: aquí se
+         enseña cuando la zona horaria es americana, y ofrece volver a `/`, que
+         es la versión Perú. Misma clase, mismos estilos, misma regla de oro:
+         SE OFRECE, NO SE REDIRIGE.
+
+         ⚠️ El texto no dice "IGV" ni "SUNAT" a propósito. La prueba de que esta
+         página no tiene fugas peruanas se hace barriendo el DOM en busca de esas
+         palabras; ponerlas aquí la rompería para siempre. -->
+    <div id="pais-banner" class="lang-banner" hidden>
+        <span class="lang-banner-text">¿Escribes desde Perú?</span>
+        <a href="/" class="lang-banner-link" data-banner-choice="pe">Ver la versión para Perú</a>
+        <button type="button" class="lang-banner-close" aria-label="Cerrar">
+            <svg class="icono" viewBox="0 0 384 512" aria-hidden="true" focusable="false">
+                <path
+                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Header. ⚠️ Sin "Blog" en el menú: el blog vive en /blog/ y está escrito
+         en español PERUANO, con el primer artículo montado sobre el gancho de
+         WhatsApp que § 4bis dice que aquí no aplica. La Fase 14 no lo traduce
+         (ficha § "Lo que esta fase NO hace") y enlazarlo desde aquí mandaría al
+         visitante español a leer la web del otro mercado. Queda anotado como
+         decisión de Luis en ESTADO.md. -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#hero" class="logo">
+                <!-- LogoAlta-2x.png (532x160, 63 KB), no el grande de 277 KB.
+                     width/height son las medidas naturales: reservan el hueco
+                     antes de que llegue el CSS y evitan que el header salte. -->
+                <img src="/Imagenes/LogoAlta-2x.png" alt="Nouweb" width="532" height="160" fetchpriority="high">
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#proceso" class="nav-link">Proceso</a></li>
+                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="#casos" class="nav-link">Casos</a></li>
+                    <li><a href="#stack-crm" class="nav-link">CRM</a></li>
+                    <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                    <li><a href="#auditoria" class="btn btn-primary">Auditoría gratuita</a></li>
+                    <li><a href="/login.html" target="_blank" rel="noopener" class="login-icon" title="Acceso Clientes"
+                            aria-label="Acceso Clientes">
+                            <svg class="icono" viewBox="0 0 496 512" aria-hidden="true" focusable="false">
+                                <path
+                                    d="M248 8C111 8 0 119 0 256S111 504 248 504 496 393 496 256 385 8 248 8zM248 128c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zm0 320c-52.9 0-100.3-24.7-131.3-63 15.6-29.6 46.5-50 82.3-50 2 0 4 .3 5.9 .9 14.1 4.6 28.8 7.1 43.1 7.1s29-2.5 43.1-7.1c1.9-.6 3.9-.9 5.9-.9 35.8 0 66.7 20.4 82.3 50-31 38.3-78.4 63-131.3 63z" />
+                            </svg>
+                        </a></li>
+                </ul>
+            </nav>
+
+            <button class="mobile-toggle" aria-label="Menu" aria-expanded="false">
+                <svg class="icono icono-barras" viewBox="0 0 448 512" aria-hidden="true" focusable="false">
+                    <path
+                        d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+                </svg>
+                <svg class="icono icono-cerrar" viewBox="0 0 384 512" aria-hidden="true" focusable="false">
+                    <path
+                        d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- 1. Hero -->
+    <section id="hero" class="hero" tabindex="-1">
+        <!-- ⚠️ data-src con ruta ABSOLUTA. script.js hace `video.src =
+             video.dataset.src` y el navegador la resuelve contra ESTA página:
+             con "Videos/…" pediría /es-es/Videos/… y daría un 404 silencioso
+             (el vídeo es decorativo, así que no se vería ningún error: solo se
+             quedaría el degradado para siempre). -->
+        <div class="video-background">
+            <video muted loop playsinline id="hero-video" preload="none"
+                data-video-hero data-src="/Videos/videoprincipal.mp4"></video>
+            <div class="video-overlay"></div>
+        </div>
+
+        <div class="container hero-container">
+            <div class="hero-content fade-in-up">
+                <span class="badge">Consultoría tecnológica e integración de sistemas</span>
+                <!-- El titular rota desde HERO_FRASES (script.js), ya filtrado a
+                     las 4 frases españolas. La frase que va ESCRITA aquí es la
+                     primera de esa lista: sin JS el titular sigue completo y con
+                     sentido, y Google lee texto real.
+                     ⚠️ Si se cambia el orden del array, cambiar también esta
+                     frase y su aria-label, o el primer fotograma de la página
+                     dirá una cosa y el tecleo otra. -->
+                <h1 aria-label="Tus pedidos se pierden entre correos y llamadas.">
+                    <span class="hero-rotativo" id="hero-rotativo"><span
+                            class="hero-rotativo-texto text-gradient">Tus pedidos se pierden entre correos y
+                            llamadas.</span></span>
+                </h1>
+                <p>Migramos tu eCommerce y conectamos tus procesos a un CRM que encaja de verdad con tu negocio.
+                    No vendemos software de gestión propio: por eso podemos recomendarte el correcto.</p>
+                <div class="hero-buttons">
+                    <!-- ⚠️ SIN data-cta="whatsapp", y no es un olvido. En la home
+                         peruana ese atributo convierte este botón en un enlace a
+                         wa.me; aquí el CTA decidido es FORMULARIO + TELÉFONO
+                         (decisión de Luis, 2026-08-09, pendiente nº 24), así que
+                         el botón baja al formulario como hace sin JS. WhatsApp
+                         sigue existiendo, pero como opción secundaria en
+                         #contacto. -->
+                    <a href="#auditoria" class="btn btn-primary">Quiero mi auditoría gratuita</a>
+                    <a href="#proceso" class="btn btn-outline">Ver cómo trabajamos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Banda de credenciales — se monta desde CREDENCIALES (script.js), ya
+         filtrada: aquí salen "Basado en España" y "Facturación electrónica y
+         Verifactu" en vez de "España · Perú" y "SUNAT e IGV integrados".
+         ⚠️ Comunica CAPACIDADES VERIFICABLES, no resultados (CLAUDE.md § 6.3). -->
+    <section id="credenciales" class="credenciales">
+        <div class="container">
+            <ul class="credenciales-banda" id="credenciales-grid"></ul>
+        </div>
+    </section>
+
+    <!-- 3. Rejilla de logos de clientes: NO se dibuja, igual que en la raíz.
+         Solo colaboraciones reales y con permiso (CLAUDE.md § 6.2); hoy hay una
+         (Misako) y ya se cuenta bien en #casos. Se monta cuando existan 4 logos
+         reales (ESTADO.md § Pendientes, nº 11). -->
+
+    <!-- 4. Problema — las 6 tarjetas (Anexo A.4).
+         ⚠️ DOS TARJETAS ESTÁN SUSTITUIDAS, no traducidas: la de WhatsApp y la de
+         la SUNAT. Las otras cuatro solo cambian vocabulario. -->
+    <section id="problema" class="section problema">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2>¿Te suena esto?</h2>
+                <p>Son las señales de que tu operación ya creció más que tus herramientas.
+                    Si reconoces tres o más, la conversación vale la pena.</p>
+            </div>
+
+            <div class="problema-grid">
+                <!-- SUSTITUYE a la tarjeta de WhatsApp de la home peruana. En
+                     España el pedido no entra por un chat: entra por email, por
+                     teléfono o por el marketplace (CLAUDE.md § 4bis). El icono
+                     cambia con ella: un fa-whatsapp aquí contradiría el texto. -->
+                <div class="problema-card fade-in-up">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <h3>Los pedidos se pierden entre correos y llamadas</h3>
+                    <p>Entran por email, por teléfono o por el marketplace, alguien los apunta donde puede, y al cierre
+                        del día nadie sabe con certeza cuáles quedaron pendientes.</p>
+                </div>
+
+                <div class="problema-card fade-in-up delay-1">
+                    <i class="fas fa-file-excel"></i>
+                    <h3>El stock vive en un Excel que nunca cuadra</h3>
+                    <p>Inventario, clientes y cobros en archivos distintos que solo entiende una persona del equipo.
+                        El día que esa persona no está, la operación se frena.</p>
+                </div>
+
+                <div class="problema-card fade-in-up delay-2">
+                    <i class="fas fa-mobile-screen"></i>
+                    <h3>La tienda va lenta y no vende en móvil</h3>
+                    <p>Casi todos tus clientes te compran desde el móvil, y es justo ahí donde la web tarda en cargar
+                        o el proceso de compra se rompe a medio camino.</p>
+                </div>
+
+                <!-- SUSTITUYE a la tarjeta de la SUNAT.
+                     ⚠️ SIN FECHAS de entrada en vigor de Verifactu (pendiente
+                     nº 22). "La normativa antifraude exige un registro" es
+                     cierto y no depende de ningún calendario. -->
+                <div class="problema-card fade-in-up">
+                    <i class="fas fa-file-invoice"></i>
+                    <h3>Verifactu llega y tu facturación no está preparada</h3>
+                    <p>Emitir las facturas es un trámite manual, desconectado de la venta. Se duplica el trabajo, se
+                        cuelan errores, y la normativa antifraude exige un registro que tu proceso de hoy no deja.</p>
+                </div>
+
+                <div class="problema-card fade-in-up delay-1">
+                    <i class="fas fa-plug-circle-exclamation"></i>
+                    <h3>Tus sistemas no se hablan entre ellos</h3>
+                    <p>La web por un lado, el CRM por otro y la contabilidad por un tercero. Alguien del equipo se pasa
+                        el día copiando y pegando los mismos datos de una pantalla a otra.</p>
+                </div>
+
+                <div class="problema-card fade-in-up delay-2">
+                    <i class="fas fa-user-slash"></i>
+                    <h3>Nadie sabe cuántos clientes repiten</h3>
+                    <p>Pasaste el presupuesto, respondiste y el cliente se enfrió. Nadie hizo seguimiento porque no hay
+                        dónde registrarlo, y no tienes forma de saber quién te vuelve a comprar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Proceso de 6 pasos — se monta desde PROCESO (script.js), ya filtrado.
+         En España el paso 4 habla de facturación electrónica y su registro (no
+         de OSE/PSE ni de WhatsApp), el 2 dice "costes" y el 5 "formación".
+         ⚠️ La numeración sale del índice del array YA filtrado: 01…06 sin
+         saltos. No escribir aquí el texto de ningún paso. -->
+    <section id="proceso" class="section proceso">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2>Cómo trabajamos, paso a paso</h2>
+                <p>Seis pasos, en este orden. No hace falta recorrerlos todos: se entra por el 1 y se decide
+                    hasta dónde llegar. Cada paso cierra con algo en la mano.</p>
+            </div>
+
+            <ol class="proceso-lista" id="proceso-grid"></ol>
+
+            <p class="text-center stack-nota">Los pasos 1, 3 y 4 son las tres fases de servicio de abajo.
+                El resto es el trabajo que va alrededor y que también hacemos nosotros.</p>
+        </div>
+    </section>
+
+    <!-- 6. Servicios: las tres fases. Son TRES, no seis (decisión de Luis del
+         2026-07-21). El texto del MODAL de cada tarjeta no está aquí: vive en
+         SERVICIOS_MODAL (script.js) y también se filtra por mercado. -->
+    <section id="servicios" class="section services">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2>Un recorrido de tres fases, no tres productos sueltos</h2>
+                <p>Primero entendemos tu operación, después arreglamos la tienda y al final conectamos todo.
+                    Empiezas por la fase 1 y decides hasta dónde llegar: cada una cierra sola y deja algo servible.</p>
+            </div>
+
+            <div class="services-grid services-grid-3">
+                <div class="service-card fade-in-up" data-service="diagnostico">
+                    <div class="icon-box">
+                        <i class="fas fa-magnifying-glass-chart"></i>
+                    </div>
+                    <span class="fase-num">Fase 1 · El punto de partida</span>
+                    <h3>Diagnóstico</h3>
+                    <p>Analizamos cómo funciona hoy tu negocio de verdad: dónde entran los pedidos, quién los toca y en
+                        qué punto se pierden.</p>
+                    <p class="fase-salida"><strong>Te llevas:</strong> el mapa de tus procesos con los puntos de fuga
+                        marcados y qué conviene arreglar primero.</p>
+                </div>
+
+                <div class="service-card fade-in-up delay-1" data-service="migracion">
+                    <div class="icon-box">
+                        <i class="fas fa-cart-shopping"></i>
+                    </div>
+                    <span class="fase-num">Fase 2 · Si la tienda frena la venta</span>
+                    <h3>Migración</h3>
+                    <p>Llevamos tu eCommerce antiguo a una plataforma actual, con una experiencia de compra pensada para
+                        el móvil, que es donde te compran.</p>
+                    <p class="fase-salida"><strong>Te llevas:</strong> una tienda rápida en móvil, con tu catálogo y
+                        tu posicionamiento intactos.</p>
+                </div>
+
+                <!-- ⚠️ Fase 3: fuera "tu WhatsApp" (Anexo A.5). Lo que se
+                     conecta aquí es la web y la facturación electrónica. -->
+                <div class="service-card fade-in-up delay-2" data-service="integracion">
+                    <div class="icon-box">
+                        <i class="fas fa-diagram-project"></i>
+                    </div>
+                    <span class="fase-num">Fase 3 · Adiós al trabajo manual</span>
+                    <h3>Integración</h3>
+                    <p>Elegimos contigo el CRM de pago que encaja con tu operación y lo conectamos con tu web y con tu
+                        facturación electrónica.</p>
+                    <p class="fase-salida"><strong>Te llevas:</strong> los pedidos entrando solos, cada conversación
+                        registrada y la facturación dentro del mismo flujo.</p>
+                </div>
+            </div>
+
+            <p class="text-center servicios-nota">¿No sabes en qué fase estás? Para eso es la auditoría gratuita:
+                te lo decimos nosotros.</p>
+
+            <!-- Modal de servicio (contenido en script.js, filtrado por mercado) -->
+            <div id="service-modal" class="service-modal">
+                <div class="modal-content">
+                    <!-- El aria-label lo añadió el repaso de accesibilidad de la sesión 4:
+                         sin él el botón no tiene nombre accesible, porque dentro solo hay un
+                         icono de Font Awesome. Se corrigió en las dos páginas a la vez, que
+                         es la única forma de que no vuelvan a divergir. -->
+                    <button class="close-modal" aria-label="Cerrar"><i class="fas fa-times" aria-hidden="true"></i></button>
+                    <div class="modal-body">
+                        <div class="modal-image">
+                            <i class="fas fa-magnifying-glass-chart placeholder-icon"></i>
+                        </div>
+                        <div class="modal-text">
+                            <h3 id="modal-title">Servicio</h3>
+                            <p id="modal-description">Descripción del servicio.</p>
+                            <div class="modal-buttons">
+                                <a href="#auditoria" class="btn btn-primary" onclick="closeServiceModal()">Quiero mi
+                                    auditoría</a>
+                                <button id="learn-more-btn" class="btn btn-outline">Saber más</button>
+                            </div>
+
+                            <div id="modal-details" class="modal-details">
+                                <div id="details-text" class="details-content"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Casos — se monta desde CASOS (script.js).
+         ⚠️ Misako va SIN TOCAR UNA COMA, y es el único bloque de la página que
+         aquí es MÁS fuerte que en la home peruana: es una marca española, que
+         el visitante reconoce de la calle (hallazgo de la sesión 1).
+         🔴 Antes de publicar: pendientes nº 21 (contrato) y nº 7 (permiso
+         escrito del cliente). -->
+    <section id="casos" class="section success-cases">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2>Casos</h2>
+                <p>Solo publicamos trabajos reales y con permiso del cliente. Preferimos un caso bien contado
+                    que una pared de logos sin historia.</p>
+            </div>
+
+            <div id="casos-grid" class="casos-grid"></div>
+        </div>
+    </section>
+
+    <!-- 8a. Stack CRM — se monta desde CRMS (script.js).
+         ⚠️ Los 9 salen en los dos mercados; lo que cambia es el REALCE: aquí van
+         destacados Klaviyo y HubSpot, y Kommo NO (su gancho es "WhatsApp
+         primero", que en España contradice a la propia página). -->
+    <section id="stack-crm" class="section stack-crm">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2>Integramos con las principales plataformas CRM</h2>
+                <p>No vendemos nuestro propio CRM. Por eso podemos recomendarte el que de verdad te encaja.</p>
+            </div>
+
+            <div class="stack-grid" id="crm-grid">
+                <noscript>Kommo · Klaviyo · HubSpot · Zoho · Odoo · Bitrix24 · Pipedrive · monday · Clientify</noscript>
+            </div>
+
+            <!-- ⚠️ "Partner en proceso de certificación" es el texto puente que
+                 permite CLAUDE.md § 6.1. La palabra "Partner" a secas solo
+                 aparece con el programa aprobado de verdad, y hoy Luis no lo
+                 está con ninguno de los tres. -->
+            <p class="text-center stack-nota">Partner en proceso de certificación con HubSpot, Zoho y Kommo.</p>
+        </div>
+    </section>
+
+    <!-- 8b. Migración eCommerce — la matriz y los destinos se montan desde
+         MIGRACIONES y DESTINOS (script.js), ya filtrados: 10 orígenes y 3
+         destinos (VTEX fuera de España), con Magento y PrestaShop destacados,
+         que es el caladero real de replatforming aquí. -->
+    <section id="migracion-ecommerce" class="section migracion">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2>Migración de eCommerce</h2>
+                <p>De una plataforma que ya no da más a una que aguanta tu volumen actual,
+                    sin perder catálogo, histórico ni posicionamiento.</p>
+            </div>
+
+            <!-- La tesis de la sección, y la diferencia con el competidor
+                 (Shopify-exclusive). No depende del país: se queda igual. -->
+            <p class="migracion-tesis fade-in-up">No toda migración termina en la misma plataforma.
+                Primero miramos tu operación y tu volumen; después decidimos a dónde.</p>
+
+            <h3 class="migracion-subtitulo fade-in-up">Desde dónde se migra, y por qué</h3>
+            <p class="migracion-intro fade-in-up">Estos son los puntos de partida que encontramos de verdad.
+                Si el tuyo está aquí, ya sabemos qué te está pasando antes de la primera reunión.</p>
+
+            <ul class="migracion-matriz" id="migracion-matriz"></ul>
+
+            <h3 class="migracion-subtitulo fade-in-up">A dónde migramos</h3>
+
+            <ul class="destinos-grid" id="migracion-destinos"></ul>
+
+            <p class="migracion-independencia fade-in-up" id="migracion-independencia"></p>
+
+            <!-- Sello fiscal — SUSTITUYE entero al sello SUNAT de la raíz.
+                 ⚠️ LA CLASE SIGUE SIENDO `sunat-sello` A PROPÓSITO: es el gancho
+                 de estilo que ya existe en styles.css (línea ~3572) y renombrarla
+                 obligaría a tocar el CSS, que esta sesión no toca. El nombre es
+                 deuda cosmética, está anotada en ESTADO.md § Backlog; el texto,
+                 que es lo que lee el visitante, no dice SUNAT en ningún sitio.
+                 ⚠️ NI UNA FECHA de Verifactu (pendiente nº 22). -->
+            <div class="sunat-sello fade-in-up">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <div>
+                    <h3>La facturación electrónica y Verifactu van contempladas desde el diseño</h3>
+                    <p>No es un añadido al final. La conexión con tu software de facturación se define en el mismo
+                        momento en que se define el flujo de venta, para que la factura salga sola cuando el pedido se
+                        confirma, con su <strong>IVA</strong> y con el registro que exige la normativa antifraude.
+                        Si aún no tienes software adaptado, te ayudamos a elegirlo — no vendemos ninguno.</p>
+                </div>
+            </div>
+
+            <!-- ⚠️ Pasarelas ESPAÑOLAS. Ni Yape, ni Plin, ni Niubiz, ni Izipay,
+                 ni Culqi: son peruanas y aquí no las conoce nadie
+                 (CLAUDE.md § 4bis). La lista viene de MERCADOS.es.pasarelas. -->
+            <div class="pasarelas fade-in-up">
+                <h3 class="text-center">Y con los medios de pago que tu cliente sí usa</h3>
+                <ul class="pasarelas-lista">
+                    <li>Redsys</li>
+                    <li>Bizum</li>
+                    <li>Stripe</li>
+                    <li>PayPal</li>
+                    <li>Apple Pay</li>
+                    <li>Google Pay</li>
+                </ul>
+                <p class="text-center stack-nota">Integrar Bizum no es un detalle menor: es la diferencia entre que el
+                    cliente termine la compra o la deje a medias.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Blog: esta página NO lo enlaza ni carga blog.js. Ver el comentario
+         del header. Si algún día Luis quiere blog en España, es contenido nuevo
+         en español de España, no un enlace a /blog/. -->
+
+    <!-- 10. Nosotros (Anexo A.8).
+         ⚠️ AQUÍ EL PITCH SE INVIERTE. En Perú el argumento es "peruano que
+         conoce el terreno desde Europa"; aquí es "está en tu mercado, tu horario
+         y tu marco legal".
+
+         🔴 Y FALTA UNA FRASE A PROPÓSITO: la home peruana dice "Trabajo en una
+         agencia digital española". En una página que capta clientes ESPAÑOLES
+         esa frase pone al empleador de Luis y a su cliente potencial en la misma
+         sala (CLAUDE.md § 5). Está retirada hasta que Luis cierre el pendiente
+         nº 21 mirando su contrato. NO devolverla sin esa decisión suya. -->
+    <section id="nosotros" class="section about">
+        <div class="container about-container">
+            <div class="about-content fade-in-up">
+                <h2>Quién está detrás de Nouweb</h2>
+                <p>Soy <strong>Luis</strong>, ingeniero de software full stack afincado en España, especializado en
+                    soluciones de gestión empresarial.</p>
+                <p>Trabajo en dos mercados a la vez: la exigencia técnica europea y la operativa latinoamericana. Esa
+                    mezcla es justo lo que hace falta para que una integración no se quede a medias.</p>
+                <p>Trabajas conmigo directamente. No hay capa de comerciales ni un equipo distinto al que arranca el
+                    proyecto: quien te explica la propuesta es quien la ejecuta.</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Independientes: no vendemos CRM propio, así que
+                        recomendamos el que te encaja</li>
+                    <li><i class="fas fa-check-circle"></i> Mismo huso horario, mismo marco legal: RGPD, IVA y
+                        facturación electrónica</li>
+                    <li><i class="fas fa-check-circle"></i> Trato directo con quien hace el trabajo</li>
+                </ul>
+            </div>
+            <div class="about-image fade-in-up delay-1">
+                <div class="video-wrapper">
+                    <!-- ⚠️ data-src ABSOLUTO, mismo motivo que el vídeo del hero.
+                         Se carga solo cuando la sección se acerca a la pantalla
+                         (3,79 MB muy por debajo del pliegue). -->
+                    <video muted loop playsinline preload="none" data-video-diferido>
+                        <source data-src="/Videos/5495845-hd_1920_1080_30fps.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. Auditoría (Anexo A.9). Las tres tarjetas se mantienen; cambia la
+         segunda (fuera WhatsApp y la boleta SUNAT) y el vocabulario:
+         costo→coste, celular→móvil, mediano plazo→medio plazo. -->
+    <section id="auditoria" class="section auditoria">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2>Auditoría gratuita</h2>
+                <p>Antes de proponerte nada, miramos cómo funciona hoy tu operación. Sin coste y sin
+                    compromiso de contratar.</p>
+            </div>
+
+            <div class="auditoria-grid">
+                <article class="auditoria-card fade-in-up">
+                    <i class="fas fa-magnifying-glass-chart"></i>
+                    <h3>Revisión de tu tienda online</h3>
+                    <p>Velocidad, checkout, comportamiento en móvil y pasarelas de pago. Qué se está
+                        cayendo hoy y cuánto te está costando.</p>
+                </article>
+                <article class="auditoria-card fade-in-up delay-1">
+                    <i class="fas fa-diagram-project"></i>
+                    <h3>Mapa de tus procesos</h3>
+                    <p>Del pedido que entra hasta la entrega y la factura emitida. Dónde se
+                        pierde la información y quién la vuelve a escribir a mano.</p>
+                </article>
+                <article class="auditoria-card fade-in-up delay-2">
+                    <i class="fas fa-scale-balanced"></i>
+                    <h3>Recomendación de CRM</h3>
+                    <p>Cuál encaja con tu negocio y cuál no, con su coste mensual real. No vendemos CRM
+                        propio: por eso podemos decirte que no necesitas uno, si es el caso.</p>
+                </article>
+            </div>
+
+            <div class="auditoria-cierre fade-in-up">
+                <p class="auditoria-entregable"><strong>Te llevas:</strong> una videollamada y un documento
+                    con los hallazgos priorizados y el orden en que los atacaríamos. Es tuyo, lo contrates
+                    con nosotros o no.</p>
+
+                <p class="auditoria-filtro">La auditoría es gratuita para negocios con intención real de
+                    implementar, ahora o a medio plazo.</p>
+
+                <!-- ⚠️ SIN data-cta="whatsapp": este botón lleva al formulario,
+                     que es el CTA decidido para España. -->
+                <div class="auditoria-cta">
+                    <a href="#contacto" class="btn btn-primary">Pedir mi auditoría</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. Contacto — aquí está el cambio de CTA de la sesión 1 (Anexo A.9):
+         FORMULARIO + TELÉFONO. El +34 en España es un número local, justo al
+         revés que en Perú, donde era una llamada internacional. -->
+    <section id="contacto" class="section contact">
+        <div class="container">
+            <div class="contact-wrapper fade-in-up">
+                <div class="contact-info">
+                    <h2>Hablamos</h2>
+                    <p>Cuéntanos cómo funciona hoy tu operación y te decimos por dónde empezaríamos.</p>
+
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p><a href="mailto:info@nouweb-es.com">info@nouweb-es.com</a></p>
+                        </div>
+                    </div>
+
+                    <!-- BLOQUE NUEVO, no existe en la home peruana. Es la mitad
+                         del CTA decidido para España. Va escrito a mano y no
+                         desde CONTACTO (script.js) a propósito: el número del
+                         pie ya está en el HTML de las 7 páginas y este es el
+                         mismo dato, no un interruptor. -->
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>¿Prefieres hablarlo?</h4>
+                            <p><a href="tel:+34614942732">+34 614 94 27 32</a> · Horario peninsular</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-globe"></i>
+                        <div>
+                            <h4>Dónde trabajamos</h4>
+                            <!-- Orden invertido respecto a la home peruana. -->
+                            <p>España · Perú</p>
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp, SECUNDARIO. script.js lo revela y le pone el
+                         enlace desde CONTACTO, igual que en la raíz.
+                         ⚠️ Aquí NO hay botón flotante (#whatsapp-float no existe
+                         en esta página) y ningún botón principal apunta a
+                         WhatsApp: en España es una comodidad más, no el canal de
+                         venta. El texto peruano que justificaba el número
+                         español desaparece: aquí no hay nada que justificar. -->
+                    <div class="contacto-whatsapp" id="contacto-whatsapp" hidden>
+                        <p>Si te resulta más cómodo, también respondo por WhatsApp en ese mismo número.</p>
+                        <a href="#" class="btn btn-whatsapp" data-cta="whatsapp"
+                            data-cta-wa="Escríbenos por WhatsApp">
+                            <i class="fab fa-whatsapp"></i> Escríbenos por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <form class="contact-form" action="https://formspree.io/f/xqeeevyv" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" name="name" required placeholder="Nombre y apellidos">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="tucorreo@empresa.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+34 612 34 56 78">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Empresa</label>
+                        <input type="text" id="company" name="company" placeholder="Nombre de tu empresa">
+                    </div>
+                    <!-- Preguntas de calificación (Fase 5). Los `value` se
+                         quedan en castellano neutro: son los que viajan al
+                         correo de Luis y a los eventos de conversión
+                         (`formulario_enviado`), así que cambiarlos partiría en
+                         dos las estadísticas de las campañas. -->
+                    <div class="form-group">
+                        <label for="plazo">¿Cuándo planea implementar?</label>
+                        <select id="plazo" name="plazo" required>
+                            <option value="" disabled selected>Elige una opción</option>
+                            <option value="Ahora">Ahora</option>
+                            <option value="En 3-6 meses">En 3-6 meses</option>
+                            <option value="Solo explorando">Solo estoy explorando</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pedidos">¿Cuántos pedidos maneja al mes?</label>
+                        <select id="pedidos" name="pedidos" required>
+                            <option value="" disabled selected>Elige una opción</option>
+                            <option value="Menos de 100">Menos de 100</option>
+                            <option value="100-500">Entre 100 y 500</option>
+                            <option value="Más de 500">Más de 500</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" rows="5" required
+                            placeholder="Cuéntanos qué necesitas"></textarea>
+                    </div>
+                    <!-- Distingue en la bandeja de Luis de qué mercado vino el
+                         mensaje sin tener que deducirlo del texto. -->
+                    <input type="hidden" name="_subject" value="Nuevo mensaje desde Nouweb (España)">
+
+                    <div class="form-group consent-group">
+                        <label class="consent-label">
+                            <input type="checkbox" id="consent-checkbox" name="consent" required>
+                            <span>Consiento el tratamiento de mis datos. <a href="#" id="read-more-consent"
+                                    class="consent-link">Leer más...</a></span>
+                        </label>
+                    </div>
+
+                    <!-- ⚠️ Ni una palabra de la Ley 29733: es la peruana
+                         (Anexo A.10). Aquí manda el RGPD y la LOPDGDD. -->
+                    <p class="form-nota-legal">Tratamos tus datos conforme al RGPD (Reglamento UE 2016/679) y a la
+                        LOPDGDD (Ley Orgánica 3/2018). No los cedemos a terceros.</p>
+
+                    <button type="submit" class="btn btn-primary btn-block">Enviar mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer. ⚠️ Las tres legales apuntan a las de la RAÍZ con ruta absoluta:
+         esta fase NO las duplica (Anexo A.10).
+         🟠 Y hay una deuda abierta: aviso-legal.html y politica-cookies.html no
+         nombran el RGPD ni una vez, y el aviso legal tampoco la LSSI-CE, que es
+         la que obliga a los datos identificativos de quien vende desde España.
+         Con la web mirando solo a Perú pasaba; captando clientes españoles, no.
+         Es el backlog nº 22 y hay que cerrarlo ANTES de publicar esta página. -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <a href="#hero" class="logo-footer">Nouweb</a>
+                <p>Consultora tecnológica e integrador de soluciones de negocio para pymes.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#servicios">Diagnóstico</a></li>
+                    <li><a href="#servicios">Migración de eCommerce</a></li>
+                    <li><a href="#servicios">Integración de CRM</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="/aviso-legal.html">Aviso Legal</a></li>
+                    <li><a href="/politica-privacidad.html">Política de Privacidad</a></li>
+                    <li><a href="/politica-cookies.html">Cookies</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="mailto:info@nouweb-es.com">info@nouweb-es.com</a></li>
+                    <li><a href="tel:+34614942732">+34 614 94 27 32</a>
+                        <span class="footer-nota">(España · también WhatsApp)</span></li>
+                </ul>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nouweb. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal de consentimiento de datos.
+         ⚠️ El encabezado y el párrafo de en medio son los que cambian de país:
+         donde la raíz dice "Si escribes desde Perú" y cita la Ley 29733, aquí se
+         cita el RGPD, la LOPDGDD y la AEPD. El resto —y sobre todo el "no se
+         ceden datos a terceros"— se queda PALABRA POR PALABRA: es la promesa que
+         sostiene el muro de consentimiento de la Fase 13. -->
+    <div id="consent-modal" class="consent-modal">
+        <div class="consent-modal-content">
+            <button class="close-consent-modal">&times;</button>
+            <h2>Consentimiento para el tratamiento de datos</h2>
+            <div class="consent-modal-body">
+                <p><strong>Responsable del tratamiento:</strong> Nou Web España SL</p>
+                <p><strong>Finalidad:</strong> atender tu solicitud de información, gestionar tu consulta y enviarte
+                    información relacionada con nuestros servicios.</p>
+
+                <h3>Información básica sobre protección de datos</h3>
+                <ul>
+                    <li><strong>Responsable:</strong> Nou Web España SL, con domicilio en Denia, Alicante, España.</li>
+                    <li><strong>Finalidad:</strong> gestionar las solicitudes de información y consultas hechas a través
+                        del formulario de contacto.</li>
+                    <li><strong>Legitimación:</strong> consentimiento del interesado.</li>
+                    <li><strong>Destinatarios:</strong> no se ceden datos a terceros, salvo obligación legal.</li>
+                    <li><strong>Derechos:</strong> acceder, rectificar y suprimir los datos, además de los demás
+                        derechos que se explican en la información adicional.</li>
+                    <li><strong>Conservación:</strong> mientras se mantenga la relación o durante los años necesarios
+                        para cumplir con las obligaciones legales.</li>
+                </ul>
+
+                <h3>Si escribes desde España</h3>
+                <p>Nou Web España SL está establecida en España, así que el tratamiento se rige por el
+                    <strong>RGPD</strong> (Reglamento UE 2016/679) y por la <strong>LOPDGDD</strong> (Ley Orgánica
+                    3/2018): tus datos se tratan solo para la finalidad que aceptaste, no se venden ni se ceden a
+                    terceros con fines comerciales, y puedes ejercer tus derechos en la dirección de abajo. Si
+                    consideras que no se han atendido, puedes reclamar ante la <strong>Agencia Española de Protección
+                        de Datos (AEPD)</strong>.</p>
+
+                <h3>Tus derechos</h3>
+                <p>Puedes ejercer tus derechos de acceso, rectificación, supresión, limitación, portabilidad y oposición
+                    escribiendo a <strong>info@nouweb-es.com</strong>.</p>
+
+                <p>Para más información, revisa nuestra <a href="/politica-privacidad.html" target="_blank" rel="noopener">Política de
+                        Privacidad</a> completa.</p>
+
+                <div class="consent-modal-actions">
+                    <button id="accept-consent-modal" class="btn btn-primary">Acepto</button>
+                    <button id="close-consent-modal-btn" class="btn btn-outline">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Banner de cookies. Solo aparece si el objeto MARKETING de script.js
+         tiene algún identificador puesto; hoy están los cuatro en null, así que
+         esta página no pone ni una cookie de tercero y el banner no se enseña.
+         ⚠️ Ningún píxel carga antes del "Aceptar" (Fase 13). Innegociable. -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h3>Uso de cookies</h3>
+                <p>Usamos cookies propias y de terceros para mejorar tu navegación. Si sigues navegando, aceptas su uso.
+                    Revisa nuestra <a href="/politica-cookies.html">Política de Cookies</a>, el <a
+                        href="/aviso-legal.html">Aviso Legal</a> y la <a href="/politica-privacidad.html">Política de
+                        Privacidad</a>.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn btn-primary">Aceptar</button>
+                <button id="decline-cookies" class="btn btn-outline-white">Rechazar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ⚠️ SIN botón flotante de WhatsApp, y sin blog.js.
+         · El flotante es el CTA más insistente de la home peruana y aquí
+           WhatsApp no es el canal de venta (decisión de la sesión 1). script.js
+           no lo echa de menos: comprueba que exista antes de tocarlo.
+         · blog.js tampoco se carga: sin sección #blog no tendría dónde pintar,
+           y el blog está escrito en español peruano. -->
+
+    <!-- Script: el de la raíz, con ruta absoluta y el MISMO ?v= que el resto. -->
+    <script src="/script.js?v=33"></script>
+</body>
+
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Blog | Nouweb — migración de eCommerce e integración de CRM</title>
+    <meta name="description"
+        content="Lo que vamos aprendiendo migrando tiendas online e integrando CRM, WhatsApp y facturación SUNAT en pymes del Perú. Sin humo y sin recetas de manual.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_PE">
+    <meta property="og:url" content="https://nouweb-es.com/blog/">
+    <meta property="og:site_name" content="Nouweb">
+    <meta property="og:title" content="Blog | Nouweb">
+    <meta property="og:description"
+        content="Lo que vamos aprendiendo migrando tiendas online e integrando sistemas en Perú.">
+    <meta property="og:image" content="https://nouweb-es.com/Imagenes/LogoAlta.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Canónica.
+         ⚠️ SIN hreflang a /en/blog ni /de/blog: no existen (FASE-10). Declarar
+         un alternate que devuelve 404 es peor que no declarar ninguno. Cuando
+         las fases 6 y 7 traduzcan el blog, se añaden aquí. -->
+    <link rel="canonical" href="https://nouweb-es.com/blog/">
+    <link rel="alternate" hreflang="x-default" href="https://nouweb-es.com/blog/">
+    <link rel="alternate" hreflang="es" href="https://nouweb-es.com/blog/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/Imagenes/iconoweb.png">
+    <link rel="apple-touch-icon" href="/Imagenes/iconoweb.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" media="print" onload="this.media='all'"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"></noscript>
+
+    <!-- Icons -->
+    <link rel="stylesheet" media="print" onload="this.media='all'"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+    <!-- La MISMA hoja de la home, con ruta absoluta. El blog no tiene CSS
+         propio a propósito: el sitio ya arrastra la deuda de un styles.css
+         triplicado (CLAUDE.md § 7) y no se le añade una cuarta copia.
+         Subir el ?v= en cada publicación, aquí y en la home a la vez. -->
+    <link rel="stylesheet" href="/styles.css?v=33">
+</head>
+
+<body>
+    <!-- Enlace de salto (Fase 12). Primer elemento tabulable de la pagina:
+         sin el hay que pasar por las 9 entradas del menu para llegar al
+         contenido. Vive fuera de pantalla hasta que recibe el foco. -->
+    <a href="#contenido" class="skip-link">Saltar al contenido</a>
+
+    <!-- Header: mismo markup que la home para que herede su CSS y su JS (menú
+         móvil, ocultar al bajar). Los anclas llevan "/" delante porque desde
+         /blog/ un "#proceso" a secas buscaría la sección en esta página. -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="/" class="logo">
+                <img src="/Imagenes/LogoAlta-2x.png" alt="Nouweb">
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="/#proceso" class="nav-link">Proceso</a></li>
+                    <li><a href="/#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="/#casos" class="nav-link">Casos</a></li>
+                    <li><a href="/#stack-crm" class="nav-link">CRM</a></li>
+                    <li><a href="/blog/" class="nav-link nav-link-activo" aria-current="page">Blog</a></li>
+                    <li><a href="/#contacto" class="nav-link">Contacto</a></li>
+                    <li><a href="/#auditoria" class="btn btn-primary">Auditoría gratuita</a></li>
+                    <li><a href="/login.html" target="_blank" class="login-icon" title="Acceso Clientes">
+                            <i class="fas fa-user-circle"></i>
+                        </a></li>
+                </ul>
+            </nav>
+
+            <button class="mobile-toggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="pagina-interior" id="contenido" tabindex="-1">
+        <div class="container">
+
+            <div class="section-header fade-in-up">
+                <h1>Del blog</h1>
+                <p>Lo que vamos aprendiendo migrando tiendas online e integrando sistemas en el Perú.
+                    Escribimos sobre lo que nos encontramos de verdad en los proyectos, no sobre lo que
+                    se lleva.</p>
+            </div>
+
+            <!-- La rejilla se monta desde el array ARTICULOS de blog.js.
+                 NO escribir aquí ningún artículo: publicar es añadir un objeto
+                 al array y subir el HTML del artículo. -->
+            <div class="blog-index-grid" id="blog-index-grid"></div>
+
+            <!-- Estado vacío. Solo se revela si el array queda sin artículos;
+                 blog.js esconde entonces la rejilla. Nunca las dos cosas a la
+                 vez, y nunca una rejilla vacía. -->
+            <p class="blog-vacio" id="blog-vacio" hidden>
+                Todavía no hay artículos publicados. Mientras tanto, la
+                <a href="/#auditoria">auditoría gratuita</a> te da el diagnóstico de tu operación
+                sin que tengas que leer nada.
+            </p>
+
+            <div class="blog-cierre fade-in-up">
+                <h2>¿Te pasa lo que cuentan estos artículos?</h2>
+                <p>Escribirlos sale de los proyectos, así que casi siempre describen algo que ya vimos
+                    antes. Si te reconociste en alguno, la auditoría gratuita es el camino corto:
+                    miramos tu operación y te decimos por dónde empezaríamos.</p>
+                <a href="/#auditoria" class="btn btn-primary" data-cta="whatsapp"
+                    data-cta-wa="Pedir mi auditoría por WhatsApp">Pedir mi auditoría gratuita</a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer: copia del de la home, con las rutas en absoluto. -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <a href="/" class="logo-footer">Nouweb</a>
+                <p>Consultora tecnológica e integrador de soluciones de negocio para pymes.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="/#servicios">Diagnóstico</a></li>
+                    <li><a href="/#servicios">Migración de eCommerce</a></li>
+                    <li><a href="/#servicios">Integración de CRM</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="/aviso-legal.html">Aviso Legal</a></li>
+                    <li><a href="/politica-privacidad.html">Política de Privacidad</a></li>
+                    <li><a href="/politica-cookies.html">Cookies</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="mailto:info@nouweb-es.com">info@nouweb-es.com</a></li>
+                    <li><a href="tel:+34614942732">+34 614 94 27 32</a>
+                        <span class="footer-nota">(España · también WhatsApp)</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nouweb. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Banner de cookies: el mismo de la home. Va aquí porque un visitante
+         puede aterrizar en el blog desde Google sin pasar por la portada, y el
+         consentimiento se guarda por dominio, no por página. -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h3>Uso de cookies</h3>
+                <p>Usamos cookies propias y de terceros para mejorar tu navegación. Si sigues navegando, aceptas su uso.
+                    Revisa nuestra <a href="/politica-cookies.html">Política de Cookies</a>, el <a
+                        href="/aviso-legal.html">Aviso Legal</a> y la <a href="/politica-privacidad.html">Política de
+                        Privacidad</a>.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn btn-primary">Aceptar</button>
+                <button id="decline-cookies" class="btn btn-outline-white">Rechazar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Va DESPUÉS del banner de cookies a propósito: el CSS lo esconde con un
+         selector de hermano mientras el banner está arriba. Si se sube, queda
+         atrapado detrás y deja de poderse pulsar. -->
+    <a href="#" class="whatsapp-float" id="whatsapp-float" hidden
+        aria-label="Escríbenos por WhatsApp" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ⚠️ blog.js ANTES que script.js, siempre. blog.js inyecta las tarjetas
+         con .fade-in-up y script.js las entrega al IntersectionObserver en su
+         DOMContentLoaded. Al revés, las tarjetas se quedarían invisibles y sin
+         ningún error en consola. -->
+    <script src="/blog/blog.js?v=33"></script>
+    <script src="/script.js?v=33"></script>
+</body>
+
+</html>

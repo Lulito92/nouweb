@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Proyecto | Nouweb</title>
+    <meta name="description" content="Rellena tu ficha de proyecto web para que podamos darte un presupuesto exacto.">
+    <link rel="icon" type="image/png" href="Imagenes/iconoweb.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Uploadcare -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@uploadcare/file-uploader@1/web/uc-file-uploader-regular.min.css">
+    <script type="module">
+      import * as UC from 'https://cdn.jsdelivr.net/npm/@uploadcare/file-uploader@1/web/uc-file-uploader-regular.min.js';
+      UC.defineComponents(UC);
+    </script>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #0f172a;
+            --bg-card: #1e293b;
+            --bg-input: rgba(15,23,42,0.6);
+            --border: rgba(255,255,255,0.1);
+            --border-focus: #3b82f6;
+            --text-primary: #f8fafc;
+            --text-secondary: rgba(255,255,255,0.65);
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            --section-radius: 16px;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-card) 100%);
+            min-height: 100vh;
+            color: var(--text-primary);
+        }
+
+        /* Background dots */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle, rgba(59,130,246,0.06) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── HEADER ── */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15,23,42,0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+        }
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .logo { position: absolute; left: 50%; transform: translateX(-50%); }
+        .logo img { height: 52px; }
+        /* Logo más grande propio de esta página */
+        .logo-form img { height: 50px; }
+        .lang-switcher { margin-left: auto; }
+
+        /* ── LANGUAGE SWITCHER ── */
+        .lang-switcher {
+            display: flex;
+            gap: 6px;
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                padding: 8px 0;
+            }
+            .header-container {
+                justify-content: space-between;
+                padding: 0 14px;
+            }
+            .logo {
+                position: static;
+                transform: none;
+            }
+            .logo img { height: 52px; }
+            .logo-form img { height: 52px; }
+            .lang-switcher {
+                flex-direction: column;
+                gap: 3px;
+                align-items: flex-end;
+            }
+            .lang-btn {
+                font-size: 0.72rem;
+                padding: 3px 7px;
+                gap: 4px;
+            }
+            .lang-btn img { width: 14px; height: 11px; }
+        }
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 5px 10px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .lang-btn img { width: 18px; height: 14px; object-fit: cover; border-radius: 2px; }
+        .lang-btn:hover, .lang-btn.active {
+            border-color: var(--accent-blue);
+            color: var(--text-primary);
+            background: rgba(59,130,246,0.12);
+        }
+
+        /* ── PAGE HERO ── */
+        .page-hero {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 60px 24px 40px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .page-hero .badge {
+            display: inline-block;
+            background: rgba(59,130,246,0.15);
+            border: 1px solid rgba(59,130,246,0.35);
+            color: var(--accent-blue);
+            border-radius: 50px;
+            padding: 6px 18px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+        .page-hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 14px;
+        }
+        .page-hero h1 span {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .page-hero p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* ── FORM WRAPPER ── */
+        .form-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 860px;
+            margin: 0 auto 60px;
+            padding: 0 24px;
+        }
+
+        /* ── SECTION CARD ── */
+        .form-section {
+            background: rgba(30,41,59,0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: var(--section-radius);
+            padding: 32px;
+            margin-bottom: 24px;
+            transition: border-color 0.3s;
+        }
+        .form-section:hover { border-color: rgba(59,130,246,0.3); }
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 26px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        .section-title .s-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: var(--accent-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* ── GRID ── */
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        .form-grid .full { grid-column: 1 / -1; }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } .form-grid .full { grid-column: 1; } }
+
+        /* ── FORM ELEMENTS ── */
+        .form-group { display: flex; flex-direction: column; gap: 7px; }
+        .form-group label {
+            font-size: 0.87rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 16px;
+            color: var(--text-primary);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+            width: 100%;
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+        }
+        .form-group select option { background: var(--bg-card); }
+        .form-group textarea { resize: vertical; min-height: 90px; }
+
+        /* ── RADIO/CHECKBOX GROUP ── */
+        .radio-group, .check-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 4px;
+        }
+        .radio-pill, .check-pill {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 14px;
+            cursor: pointer;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .radio-pill input, .check-pill input { display: none; }
+        .radio-pill:hover, .check-pill:hover { border-color: var(--accent-blue); color: var(--text-primary); }
+        .radio-pill.selected, .check-pill.selected {
+            border-color: var(--accent-blue);
+            background: rgba(59,130,246,0.15);
+            color: var(--text-primary);
+        }
+
+        /* ── HELPERS ── */
+        .hint { font-size: 0.78rem; color: var(--text-secondary); margin-top: 4px; opacity: 0.7; }
+
+        /* ── SUBMIT ── */
+        .submit-section {
+            background: rgba(30,41,59,0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: var(--section-radius);
+            padding: 36px 32px;
+            text-align: center;
+        }
+        .submit-section p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 24px; }
+        .btn-submit {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-gradient);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            padding: 16px 48px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 24px rgba(59,130,246,0.35);
+        }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(59,130,246,0.5); }
+        .btn-submit:active { transform: translateY(0); }
+
+        /* ── FOOTER ── */
+        .footer {
+            position: relative;
+            z-index: 1;
+            border-top: 1px solid var(--border);
+            padding: 28px 24px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+        .footer a { color: var(--accent-blue); text-decoration: none; }
+
+        /* ── SUCCESS MESSAGE ── */
+        .success-box {
+            display: none;
+            background: rgba(16,185,129,0.12);
+            border: 1px solid rgba(16,185,129,0.4);
+            border-radius: var(--section-radius);
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .success-box i { font-size: 3rem; color: #10b981; margin-bottom: 16px; }
+        .success-box h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .success-box p { color: var(--text-secondary); }
+
+        /* ── WHATSAPP ── */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 56px;
+            height: 56px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: #fff;
+            text-decoration: none;
+            z-index: 999;
+            box-shadow: 0 6px 20px rgba(37,211,102,0.45);
+            transition: transform 0.2s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        /* ── UPLOADCARE OVERRIDES ── */
+        uc-file-uploader-regular {
+            --uc-font-family: 'Outfit', sans-serif;
+            --uc-primary: #3b82f6;
+            --uc-primary-foreground: #fff;
+            --uc-background: rgba(15,23,42,0.7);
+            --uc-foreground: #f8fafc;
+            --uc-muted: rgba(255,255,255,0.1);
+            --uc-muted-foreground: rgba(255,255,255,0.5);
+            --uc-border: rgba(255,255,255,0.12);
+            --uc-border-radius: 10px;
+            width: 100%;
+        }
+        .upload-subsection {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .upload-label {
+            font-size: 0.87rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+            margin-bottom: 6px;
+            display: block;
+        }
+        .upload-block {
+            display: flex;
+            flex-direction: column;
+        }
+        .upload-block .hint { margin-top: 6px; }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-container">
+        <a href="index.html" class="logo logo-form">
+            <img src="Imagenes/Logopeq.png" alt="Nouweb Logo">
+        </a>
+
+        <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="es" onclick="setLang('es')">
+                <img src="Imagenes/Espana.png" alt="ES"> ES
+            </button>
+            <button class="lang-btn" data-lang="de" onclick="setLang('de')">
+                <img src="Imagenes/Deutschland.png" alt="DE"> DE
+            </button>
+            <button class="lang-btn" data-lang="en" onclick="setLang('en')">
+                <img src="Imagenes/England.png" alt="EN"> EN
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+    <div class="badge" data-t="badgeText">Ficha de Proyecto Web</div>
+    <h1><span data-t="heroTitle">Cuéntanos tu proyecto</span></h1>
+    <p data-t="heroDesc">Rellena los datos que puedas — no es obligatorio completar todo — y te enviaremos un presupuesto a medida sin compromiso.</p>
+</div>
+
+<!-- FORM WRAPPER -->
+<div class="form-wrapper">
+
+    <!-- SUCCESS BOX -->
+    <div class="success-box" id="success-box">
+        <i class="fas fa-check-circle"></i>
+        <h3 data-t="successTitle">¡Ficha recibida!</h3>
+        <p data-t="successDesc">Gracias por tu tiempo. Te contactaremos en menos de 24 horas con tu presupuesto personalizado.</p>
+    </div>
+
+    <form id="project-form" action="https://formspree.io/f/xqeeevyv" method="POST">
+        <!-- Hidden fields for Formspree -->
+        <input type="hidden" name="_subject" value="🚀 Nueva Ficha de Proyecto Web - Nouweb">
+        <input type="hidden" name="_next" value="">
+
+        <!-- ── SECTION 1: ABOUT YOUR BUSINESS ── -->
+        <div class="form-section">
+            <div class="section-title">
+                <div class="s-icon"><i class="fas fa-building"></i></div>
+                <span>1. <span data-t="s1title">Sobre tu negocio</span></span>
+            </div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label data-t="s1projectName">Nombre del proyecto / empresa</label>
+                    <input type="text" name="empresa" placeholder="Ej: Mi Empresa SL">
+                </div>
+                <div class="form-group">
+                    <label data-t="s1activity">¿A qué os dedicáis?</label>
+                    <input type="text" name="actividad" placeholder="Ej: Restaurante, tienda de ropa...">
+                </div>
+                <div class="form-group full">
+                    <label data-t="s1goal">Objetivo principal de la web</label>
+                    <div class="radio-group" id="goal-group">
+                        <label class="radio-pill" onclick="togglePill(this,'goal_radio')">
+                            <input type="radio" name="objetivo" value="vender"> <span data-t="g1">Vender productos</span>
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'goal_radio')">
+                            <input type="radio" name="objetivo" value="llamadas"> <span data-t="g2">Conseguir llamadas</span>
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'goal_radio')">
+                            <input type="radio" name="objetivo" value="conocer"> <span data-t="g3">Que me conozcan</span>
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'goal_radio')">
+                            <input type="radio" name="objetivo" value="reservas"> <span data-t="g4">Reservar citas</span>
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'goal_radio')">
+                            <input type="radio" name="objetivo" value="otro"> <span data-t="g5">Otro</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group full">
+                    <label data-t="s1goalDetail">Detalle adicional del objetivo (opcional)</label>
+                    <textarea name="objetivo_detalle" rows="2" placeholder="..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── SECTION 2: DESIGN & STYLE ── -->
+        <div class="form-section">
+            <div class="section-title">
+                <div class="s-icon"><i class="fas fa-paint-brush"></i></div>
+                <span>2. <span data-t="s2title">Diseño y estilo</span></span>
+            </div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label data-t="s2logo">Logotipo en alta calidad</label>
+                    <div class="radio-group">
+                        <label class="radio-pill" onclick="togglePill(this,'logo_radio')">
+                            <input type="radio" name="logo" value="si"> <span data-t="yes">Sí, lo tengo</span>
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'logo_radio')">
+                            <input type="radio" name="logo" value="no"> <span data-t="no">No, necesito uno</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label data-t="s2colors">Colores corporativos / preferencias</label>
+                    <input type="text" name="colores" placeholder="Ej: azul y blanco, #1a73e8...">
+                </div>
+                <div class="form-group full">
+                    <label data-t="s2refs">Referencias web (2-3 enlaces que te gusten)</label>
+                    <textarea name="referencias" rows="3" placeholder="https://...&#10;https://...&#10;https://..."></textarea>
+                    <span class="hint" data-t="s2refsHint">Por diseño, estructura o estilo. No es necesario que sean de tu sector.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── SECTION 2.5: MEDIA UPLOAD ── -->
+        <div class="form-section">
+            <div class="section-title">
+                <div class="s-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                <span><span data-t="s25num">2b.</span> <span data-t="s25title">Sube tus imágenes y logo</span></span>
+            </div>
+            <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:20px;" data-t="s25desc">Adjunta el logo de tu empresa y las fotos que quieras usar en la web. No es obligatorio — puedes enviárnoslas más adelante.</p>
+
+            <!-- Uploadcare config (shared) -->
+            <uc-config
+                ctx-name="logo-uploader"
+                source-list="local, camera, gdrive"
+                cdn-cname="https://5ydn76n4d7.ucarecd.net/"
+                pubkey="a626c850c1b19031e552"
+                multiple="false"
+                img-only="true"
+            ></uc-config>
+            <uc-config
+                ctx-name="photos-uploader"
+                source-list="local, camera, facebook, gdrive"
+                cdn-cname="https://5ydn76n4d7.ucarecd.net/"
+                pubkey="a626c850c1b19031e552"
+                multiple="true"
+                img-only="true"
+            ></uc-config>
+
+            <div class="upload-subsection">
+                <!-- LOGO -->
+                <div class="upload-block">
+                    <span class="upload-label" data-t="s25logoLabel">Logo de la empresa</span>
+                    <uc-file-uploader-regular ctx-name="logo-uploader" class="uc-dark"></uc-file-uploader-regular>
+                    <uc-upload-ctx-provider ctx-name="logo-uploader" id="logo-provider"></uc-upload-ctx-provider>
+                    <span class="hint" data-t="s25logoHint">Formato PNG o SVG preferiblemente, en alta resolución.</span>
+                    <input type="hidden" name="logo_url" id="logo-url-field" value="">
+                </div>
+
+                <!-- PHOTOS -->
+                <div class="upload-block">
+                    <span class="upload-label" data-t="s25photosLabel">Fotos para la web</span>
+                    <uc-file-uploader-regular ctx-name="photos-uploader" class="uc-dark"></uc-file-uploader-regular>
+                    <uc-upload-ctx-provider ctx-name="photos-uploader" id="photos-provider"></uc-upload-ctx-provider>
+                    <span class="hint" data-t="s25photosHint">Puedes subir varias imágenes a la vez. JPG, PNG o WebP.</span>
+                    <input type="hidden" name="photos_urls" id="photos-url-field" value="">
+                </div>
+            </div>
+        </div>
+
+        <!-- ── SECTION 3: STRUCTURE & CONTENT ── -->
+        <div class="form-section">
+            <div class="section-title">
+                <div class="s-icon"><i class="fas fa-sitemap"></i></div>
+                <span>3. <span data-t="s3title">Estructura y contenido</span></span>
+            </div>
+            <div class="form-grid">
+                <div class="form-group full">
+                    <label data-t="s3sections">Secciones necesarias</label>
+                    <div class="check-group" id="sections-group">
+                        <label class="check-pill" onclick="toggleCheck(this)">
+                            <input type="checkbox" name="secciones[]" value="inicio"> <span data-t="sec1">Inicio</span>
+                        </label>
+                        <label class="check-pill" onclick="toggleCheck(this)">
+                            <input type="checkbox" name="secciones[]" value="sobre-nosotros"> <span data-t="sec2">Sobre nosotros</span>
+                        </label>
+                        <label class="check-pill" onclick="toggleCheck(this)">
+                            <input type="checkbox" name="secciones[]" value="servicios"> <span data-t="sec3">Servicios</span>
+                        </label>
+                        <label class="check-pill" onclick="toggleCheck(this)">
+                            <input type="checkbox" name="secciones[]" value="galeria"> <span data-t="sec4">Galería</span>
+                        </label>
+                        <label class="check-pill" onclick="toggleCheck(this)">
+                            <input type="checkbox" name="secciones[]" value="precios"> <span data-t="sec5">Precios</span>
+                        </label>
+                        <label class="check-pill" onclick="toggleCheck(this)">
+                            <input type="checkbox" name="secciones[]" value="blog"> <span data-t="sec6">Blog</span>
+                        </label>
+                        <label class="check-pill" onclick="toggleCheck(this)">
+                            <input type="checkbox" name="secciones[]" value="tienda"> <span data-t="sec7">Tienda</span>
+                        </label>
+                        <label class="check-pill" onclick="toggleCheck(this)">
+                            <input type="checkbox" name="secciones[]" value="contacto"> <span data-t="sec8">Contacto</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label data-t="s3otherSections">Otras secciones (especificar)</label>
+                    <input type="text" name="otras_secciones" placeholder="Ej: FAQs, Equipo, Mapa...">
+                </div>
+                <div class="form-group">
+                    <label data-t="s3languages">¿En cuántos idiomas?</label>
+                    <div class="radio-group">
+                        <label class="radio-pill" onclick="togglePill(this,'lang_radio')">
+                            <input type="radio" name="idiomas" value="1"> 1
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'lang_radio')">
+                            <input type="radio" name="idiomas" value="2"> 2
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'lang_radio')">
+                            <input type="radio" name="idiomas" value="3"> 3
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'lang_radio')">
+                            <input type="radio" name="idiomas" value="+3"> +3
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group full">
+                    <label data-t="s3content">Textos y fotos</label>
+                    <div class="radio-group">
+                        <label class="radio-pill" onclick="togglePill(this,'content_radio')">
+                            <input type="radio" name="contenido" value="propio"> <span data-t="c1">Tengo el material preparado</span>
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'content_radio')">
+                            <input type="radio" name="contenido" value="necesito"> <span data-t="c2">Necesito que busques imágenes y textos</span>
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'content_radio')">
+                            <input type="radio" name="contenido" value="mixto"> <span data-t="c3">Tengo parte del material</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── SECTION 4: SPECIAL FEATURES ── -->
+        <div class="form-section">
+            <div class="section-title">
+                <div class="s-icon"><i class="fas fa-cogs"></i></div>
+                <span>4. <span data-t="s4title">Funcionalidades especiales</span></span>
+            </div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label data-t="s4whatsapp">Botón de WhatsApp</label>
+                    <div class="radio-group">
+                        <label class="radio-pill" onclick="togglePill(this,'wa_radio')">
+                            <input type="radio" name="whatsapp" value="si"> <span data-t="yes">Sí</span>
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'wa_radio')">
+                            <input type="radio" name="whatsapp" value="no"> <span data-t="no">No</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label data-t="s4contactForm">Formulario de contacto</label>
+                    <div class="radio-group">
+                        <label class="radio-pill" onclick="togglePill(this,'form_radio')">
+                            <input type="radio" name="formulario_contacto" value="si"> <span data-t="yes">Sí</span>
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'form_radio')">
+                            <input type="radio" name="formulario_contacto" value="no"> <span data-t="no">No</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label data-t="s4blog">Blog / Noticias</label>
+                    <div class="radio-group">
+                        <label class="radio-pill" onclick="togglePill(this,'blog_radio')">
+                            <input type="radio" name="blog" value="si"> <span data-t="yes">Sí</span>
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'blog_radio')">
+                            <input type="radio" name="blog" value="no"> <span data-t="no">No</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label data-t="s4payment">Pasarela de pago / Reservas</label>
+                    <div class="radio-group">
+                        <label class="radio-pill" onclick="togglePill(this,'pay_radio')">
+                            <input type="radio" name="pasarela_pago" value="si"> <span data-t="yes">Sí</span>
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'pay_radio')">
+                            <input type="radio" name="pasarela_pago" value="no"> <span data-t="no">No</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group full">
+                    <label data-t="s4social">Redes sociales a enlazar</label>
+                    <div class="check-group">
+                        <label class="check-pill" onclick="toggleCheck(this)">
+                            <input type="checkbox" name="rrss[]" value="instagram"> <i class="fab fa-instagram"></i> Instagram
+                        </label>
+                        <label class="check-pill" onclick="toggleCheck(this)">
+                            <input type="checkbox" name="rrss[]" value="facebook"> <i class="fab fa-facebook"></i> Facebook
+                        </label>
+                        <label class="check-pill" onclick="toggleCheck(this)">
+                            <input type="checkbox" name="rrss[]" value="linkedin"> <i class="fab fa-linkedin"></i> LinkedIn
+                        </label>
+                        <label class="check-pill" onclick="toggleCheck(this)">
+                            <input type="checkbox" name="rrss[]" value="tiktok"> <i class="fab fa-tiktok"></i> TikTok
+                        </label>
+                        <label class="check-pill" onclick="toggleCheck(this)">
+                            <input type="checkbox" name="rrss[]" value="youtube"> <i class="fab fa-youtube"></i> YouTube
+                        </label>
+                        <label class="check-pill" onclick="toggleCheck(this)">
+                            <input type="checkbox" name="rrss[]" value="twitter"> <i class="fab fa-x-twitter"></i> X / Twitter
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group full">
+                    <label data-t="s4otherFeatures">Otras funcionalidades que necesites</label>
+                    <textarea name="otras_funcionalidades" rows="2" placeholder="Chatbot, mapa interactivo, galería de fotos, área privada..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── SECTION 5: TECHNICAL DATA ── -->
+        <div class="form-section">
+            <div class="section-title">
+                <div class="s-icon"><i class="fas fa-server"></i></div>
+                <span>5. <span data-t="s5title">Datos técnicos</span></span>
+            </div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label data-t="s5domain">Dominio (ej: www.tunombre.com)</label>
+                    <div class="radio-group" style="margin-bottom:10px;">
+                        <label class="radio-pill" onclick="togglePill(this,'dom_radio')">
+                            <input type="radio" name="dominio_tiene" value="si"> <span data-t="d1">Ya lo tengo comprado</span>
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'dom_radio')">
+                            <input type="radio" name="dominio_tiene" value="no"> <span data-t="d2">Aún no lo tengo</span>
+                        </label>
+                    </div>
+                    <input type="text" name="dominio_url" placeholder="www.tunombre.com">
+                </div>
+                <div class="form-group">
+                    <label data-t="s5hosting">Hosting / Servidor</label>
+                    <div class="radio-group">
+                        <label class="radio-pill" onclick="togglePill(this,'host_radio')">
+                            <input type="radio" name="hosting" value="propio"> <span data-t="h1">Ya tengo uno contratado</span>
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'host_radio')">
+                            <input type="radio" name="hosting" value="gestion"> <span data-t="h2">Quiero que lo gestionéis vosotros</span>
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'host_radio')">
+                            <input type="radio" name="hosting" value="duda"> <span data-t="h3">No lo sé todavía</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── SECTION 6: TIMELINE & BUDGET ── -->
+        <div class="form-section">
+            <div class="section-title">
+                <div class="s-icon"><i class="fas fa-clock"></i></div>
+                <span>6. <span data-t="s6title">Plazos y presupuesto</span></span>
+            </div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label data-t="s6deadline">Fecha de lanzamiento</label>
+                    <div class="radio-group">
+                        <label class="radio-pill" onclick="togglePill(this,'dead_radio')">
+                            <input type="radio" name="fecha_lanzamiento" value="1mes"> <span data-t="dl1">Antes de 1 mes</span>
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'dead_radio')">
+                            <input type="radio" name="fecha_lanzamiento" value="3meses"> <span data-t="dl2">1-3 meses</span>
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'dead_radio')">
+                            <input type="radio" name="fecha_lanzamiento" value="sin_prisa"> <span data-t="dl3">Sin prisa</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label data-t="s6budget">Presupuesto estimado <span style="opacity:0.5;font-weight:400" data-t="optional">(opcional)</span></label>
+                    <div class="radio-group">
+                        <label class="radio-pill" onclick="togglePill(this,'budget_radio')">
+                            <input type="radio" name="presupuesto" value="<500"> <span data-t="bud1">&lt;500€ o menos</span>
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'budget_radio')">
+                            <input type="radio" name="presupuesto" value=">500"> <span data-t="bud2">&gt;500€ o más</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group full">
+                    <label data-t="s6extra">Algo más que quieras contarnos</label>
+                    <textarea name="comentarios_extra" rows="3" placeholder="Ideas, referencias adicionales, dudas..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── CONTACT INFO ── -->
+        <div class="form-section">
+            <div class="section-title">
+                <div class="s-icon"><i class="fas fa-user"></i></div>
+                <span data-t="s7title">Tus datos de contacto</span>
+            </div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label data-t="s7name">Nombre *</label>
+                    <input type="text" name="nombre" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label data-t="s7email">Email *</label>
+                    <input type="email" name="email" required placeholder="tu@email.com">
+                </div>
+                <div class="form-group">
+                    <label data-t="s7phone">Teléfono / WhatsApp</label>
+                    <input type="tel" name="telefono" placeholder="+34 612 345 678">
+                </div>
+                <div class="form-group">
+                    <label data-t="s7prefContact">Preferencia de contacto</label>
+                    <div class="radio-group">
+                        <label class="radio-pill" onclick="togglePill(this,'pref_radio')">
+                            <input type="radio" name="preferencia_contacto" value="email"> Email
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'pref_radio')">
+                            <input type="radio" name="preferencia_contacto" value="whatsapp"> WhatsApp
+                        </label>
+                        <label class="radio-pill" onclick="togglePill(this,'pref_radio')">
+                            <input type="radio" name="preferencia_contacto" value="llamada"> <span data-t="call">Llamada</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── SUBMIT ── -->
+        <div class="submit-section">
+            <p data-t="submitNote">Recibirás tu presupuesto personalizado en menos de 24 horas. Ningún campo es obligatorio salvo nombre y email.</p>
+            <button type="submit" class="btn-submit">
+                <i class="fas fa-paper-plane"></i>
+                <span data-t="submitBtn">Enviar ficha de proyecto</span>
+            </button>
+        </div>
+
+    </form>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>© 2026 Nouweb · <a href="es/aviso-legal.html" data-t="legal">Aviso Legal</a> · <a href="es/politica-privacidad.html" data-t="privacy">Privacidad</a></p>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/34614942732?text=Hola%2C%20quiero%20más%20información" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+// ── TRANSLATIONS ──
+const translations = {
+    es: {
+        backToSite: 'Volver al sitio',
+        badgeText: 'Ficha de Proyecto Web',
+        heroTitle: 'Cuéntanos tu proyecto',
+        heroDesc: 'Rellena los datos que puedas — no es obligatorio completar todo — y te enviaremos un presupuesto a medida sin compromiso.',
+        s1title: 'Sobre tu negocio', s1projectName: 'Nombre del proyecto / empresa',
+        s1activity: '¿A qué os dedicáis?', s1goal: 'Objetivo principal de la web',
+        s1goalDetail: 'Detalle adicional del objetivo (opcional)',
+        g1:'Vender productos', g2:'Conseguir llamadas', g3:'Que me conozcan', g4:'Reservar citas', g5:'Otro',
+        s2title:'Diseño y estilo', s2logo:'Logotipo en alta calidad',
+        yes:'Sí', no:'No',
+        s2colors:'Colores corporativos / preferencias',
+        s2refs:'Referencias web (2-3 enlaces que te gusten)',
+        s2refsHint:'Por diseño, estructura o estilo.',
+        s3title:'Estructura y contenido', s3sections:'Secciones necesarias',
+        sec1:'Inicio', sec2:'Sobre nosotros', sec3:'Servicios', sec4:'Galería',
+        sec5:'Precios', sec6:'Blog', sec7:'Tienda', sec8:'Contacto',
+        s3otherSections:'Otras secciones (especificar)',
+        s3languages:'¿En cuántos idiomas?',
+        s3content:'Textos y fotos',
+        c1:'Tengo el material preparado', c2:'Necesito que busques imágenes y textos', c3:'Tengo parte del material',
+        s4title:'Funcionalidades especiales', s4whatsapp:'Botón de WhatsApp',
+        s4contactForm:'Formulario de contacto', s4blog:'Blog / Noticias',
+        s4payment:'Pasarela de pago / Reservas', s4social:'Redes sociales a enlazar',
+        s4otherFeatures:'Otras funcionalidades que necesites',
+        s5title:'Datos técnicos', s5domain:'Dominio (ej: www.tunombre.com)',
+        d1:'Ya lo tengo comprado', d2:'Aún no lo tengo',
+        s5hosting:'Hosting / Servidor',
+        h1:'Ya tengo uno contratado', h2:'Quiero que lo gestionéis vosotros', h3:'No lo sé todavía',
+        s6title:'Plazos y presupuesto', s6deadline:'Fecha de lanzamiento',
+        dl1:'Antes de 1 mes', dl2:'1-3 meses', dl3:'Sin prisa',
+        s6budget:'Presupuesto estimado', optional:'(opcional)', s6extra:'Algo más que quieras contarnos',
+        s7title:'Tus datos de contacto', s7name:'Nombre *', s7email:'Email *',
+        s7phone:'Teléfono / WhatsApp', s7prefContact:'Preferencia de contacto', call:'Llamada',
+        submitNote:'Recibirás tu presupuesto personalizado en menos de 24 horas. Ningún campo es obligatorio salvo nombre y email.',
+        submitBtn:'Enviar ficha de proyecto',
+        successTitle:'¡Ficha recibida!', successDesc:'Gracias por tu tiempo. Te contactaremos en menos de 24 horas con tu presupuesto personalizado.',
+        legal:'Aviso Legal', privacy:'Privacidad',
+        s25num:'2b.', s25title:'Sube tus imágenes y logo',
+        s25desc:'Adjunta el logo de tu empresa y las fotos que quieras usar en la web. No es obligatorio — puedes enviárnoslas más adelante.',
+        s25logoLabel:'Logo de la empresa', s25logoHint:'Formato PNG o SVG preferiblemente, en alta resolución.',
+        s25photosLabel:'Fotos para la web', s25photosHint:'Puedes subir varias imágenes a la vez. JPG, PNG o WebP.',
+        ph_empresa:'Ej: Mi Empresa SL', ph_actividad:'Ej: Restaurante, tienda de ropa...',
+        ph_objetivo_detalle:'Detalla aquí tu objetivo principal...',
+        ph_colores:'Ej: azul y blanco, #1a73e8...',
+        ph_referencias:'https://...',
+        ph_otras_secciones:'Ej: FAQs, Equipo, Mapa...',
+        ph_dominio:'www.tunombre.com',
+        ph_otras_funcionalidades:'Chatbot, mapa interactivo, galería de fotos, área privada...',
+        ph_comentarios:'Ideas, referencias adicionales, dudas...',
+        ph_nombre:'Tu nombre', ph_email:'tu@email.com', ph_telefono:'+34 612 345 678',
+        bud1:'<500€ o menos', bud2:'>500€ o más'
+    },
+    de: {
+        backToSite: 'Zurück zur Website',
+        badgeText: 'Webprojekt-Formular',
+        heroTitle: 'Erzähl uns von deinem Projekt',
+        heroDesc: 'Füll so viel aus wie du kannst — kein Feld ist Pflicht — und wir senden dir ein maßgeschneidertes Angebot.',
+        s1title: 'Über dein Unternehmen', s1projectName: 'Projekt- / Firmenname',
+        s1activity: 'Was macht ihr?', s1goal: 'Hauptziel der Website',
+        s1goalDetail: 'Weiteres zum Ziel (optional)',
+        g1:'Produkte verkaufen', g2:'Anrufe generieren', g3:'Bekanntheit steigern', g4:'Termine buchen', g5:'Sonstiges',
+        s2title:'Design & Stil', s2logo:'Logo in hoher Qualität',
+        yes:'Ja', no:'Nein',
+        s2colors:'Unternehmensfarben / Präferenzen',
+        s2refs:'Referenz-Websites (2-3 Links)',
+        s2refsHint:'Für Design, Struktur oder Stil.',
+        s3title:'Struktur & Inhalt', s3sections:'Benötigte Bereiche',
+        sec1:'Startseite', sec2:'Über uns', sec3:'Leistungen', sec4:'Galerie',
+        sec5:'Preise', sec6:'Blog', sec7:'Shop', sec8:'Kontakt',
+        s3otherSections:'Weitere Bereiche (angeben)',
+        s3languages:'In wie vielen Sprachen?',
+        s3content:'Texte und Fotos',
+        c1:'Ich habe das Material bereit', c2:'Ich brauche Bilder und Texte', c3:'Ich habe einen Teil des Materials',
+        s4title:'Spezielle Funktionen', s4whatsapp:'WhatsApp-Button',
+        s4contactForm:'Kontaktformular', s4blog:'Blog / Neuigkeiten',
+        s4payment:'Zahlungsgateway / Buchungen', s4social:'Soziale Netzwerke verlinken',
+        s4otherFeatures:'Weitere benötigte Funktionen',
+        s5title:'Technische Daten', s5domain:'Domain (z.B.: www.deinname.com)',
+        d1:'Bereits gekauft', d2:'Noch nicht vorhanden',
+        s5hosting:'Hosting / Server',
+        h1:'Ich habe bereits einen', h2:'Ich möchte, dass ihr das übernehmt', h3:'Noch nicht sicher',
+        s6title:'Zeitplan & Budget', s6deadline:'Gewünschtes Startdatum',
+        dl1:'Vor 1 Monat', dl2:'1-3 Monate', dl3:'Kein Zeitdruck',
+        s6budget:'Geschätztes Budget', optional:'(optional)', s6extra:'Sonst noch etwas?',
+        s7title:'Deine Kontaktdaten', s7name:'Name *', s7email:'E-Mail *',
+        s7phone:'Telefon / WhatsApp', s7prefContact:'Kontaktpräferenz', call:'Anruf',
+        submitNote:'Du erhältst dein personalisiertes Angebot in weniger als 24 Stunden.',
+        submitBtn:'Projektformular absenden',
+        successTitle:'Formular erhalten!', successDesc:'Vielen Dank. Wir melden uns in weniger als 24 Stunden mit deinem Angebot.',
+        legal:'Impressum', privacy:'Datenschutz',
+        s25num:'2b.', s25title:'Lade deine Bilder und dein Logo hoch',
+        s25desc:'Füge das Logo deines Unternehmens und Fotos für die Website hinzu. Kein Pflichtfeld — du kannst sie uns auch später schicken.',
+        s25logoLabel:'Unternehmenslogo', s25logoHint:'Bevorzugt PNG oder SVG, in hoher Auflösung.',
+        s25photosLabel:'Fotos für die Website', s25photosHint:'Du kannst mehrere Bilder gleichzeitig hochladen. JPG, PNG oder WebP.',
+        ph_empresa:'z.B.: Mein Unternehmen GmbH', ph_actividad:'z.B.: Restaurant, Bekleidungsgeschäft...',
+        ph_objetivo_detalle:'Beschreibe dein Hauptziel hier...',
+        ph_colores:'z.B.: Blau und Weiß, #1a73e8...',
+        ph_referencias:'https://...',
+        ph_otras_secciones:'z.B.: FAQ, Team, Karte...',
+        ph_dominio:'www.deinname.com',
+        ph_otras_funcionalidades:'Chatbot, interaktive Karte, Fotogalerie, privater Bereich...',
+        ph_comentarios:'Ideen, weitere Referenzen, Fragen...',
+        ph_nombre:'Dein Name', ph_email:'du@email.com', ph_telefono:'+49 123 456789',
+        bud1:'Unter 500€', bud2:'Über 500€'
+    },
+    en: {
+        backToSite: 'Back to site',
+        badgeText: 'Web Project Brief',
+        heroTitle: 'Tell us about your project',
+        heroDesc: 'Fill in what you can — nothing is mandatory — and we\'ll send you a custom quote with no commitment.',
+        s1title: 'About your business', s1projectName: 'Project / company name',
+        s1activity: 'What do you do?', s1goal: 'Main website goal',
+        s1goalDetail: 'Extra goal details (optional)',
+        g1:'Sell products', g2:'Get calls/leads', g3:'Brand awareness', g4:'Booking appointments', g5:'Other',
+        s2title:'Design & style', s2logo:'High-quality logo',
+        yes:'Yes', no:'No',
+        s2colors:'Brand colours / preferences',
+        s2refs:'Reference websites (2-3 links you like)',
+        s2refsHint:'For design, layout or style.',
+        s3title:'Structure & content', s3sections:'Sections needed',
+        sec1:'Home', sec2:'About us', sec3:'Services', sec4:'Gallery',
+        sec5:'Pricing', sec6:'Blog', sec7:'Shop', sec8:'Contact',
+        s3otherSections:'Other sections (specify)',
+        s3languages:'How many languages?',
+        s3content:'Texts and photos',
+        c1:'I already have the content ready', c2:'I need you to source images & write texts', c3:'I have part of the content',
+        s4title:'Special features', s4whatsapp:'WhatsApp button',
+        s4contactForm:'Contact form', s4blog:'Blog / News',
+        s4payment:'Payment gateway / Bookings', s4social:'Social networks to link',
+        s4otherFeatures:'Other features needed',
+        s5title:'Technical data', s5domain:'Domain (e.g.: www.yourname.com)',
+        d1:'Already purchased', d2:'Not yet',
+        s5hosting:'Hosting / Server',
+        h1:'I already have one', h2:'I\'d like you to manage it', h3:'Not sure yet',
+        s6title:'Timeline & budget', s6deadline:'Launch date',
+        dl1:'Within 1 month', dl2:'1-3 months', dl3:'No rush',
+        s6budget:'Estimated budget', optional:'(optional)', s6extra:'Anything else you\'d like to add?',
+        s7title:'Your contact details', s7name:'Name *', s7email:'Email *',
+        s7phone:'Phone / WhatsApp', s7prefContact:'Contact preference', call:'Phone call',
+        submitNote:'You\'ll receive your personalised quote in less than 24 hours. Only name and email are required.',
+        submitBtn:'Send project brief',
+        successTitle:'Brief received!', successDesc:'Thank you for your time. We\'ll get back to you within 24 hours with your personalised quote.',
+        legal:'Legal Notice', privacy:'Privacy Policy',
+        s25num:'2b.', s25title:'Upload your images & logo',
+        s25desc:'Attach your company logo and any photos you want to use on the website. Not required — you can send them later.',
+        s25logoLabel:'Company logo', s25logoHint:'PNG or SVG preferred, in high resolution.',
+        s25photosLabel:'Photos for the website', s25photosHint:'You can upload multiple images at once. JPG, PNG or WebP.',
+        ph_empresa:'E.g.: My Company Ltd', ph_actividad:'E.g.: Restaurant, clothing store...',
+        ph_objetivo_detalle:'Describe your main goal here...',
+        ph_colores:'E.g.: blue and white, #1a73e8...',
+        ph_referencias:'https://...',
+        ph_otras_secciones:'E.g.: FAQs, Team, Map...',
+        ph_dominio:'www.yourname.com',
+        ph_otras_funcionalidades:'Chatbot, interactive map, photo gallery, private area...',
+        ph_comentarios:'Ideas, extra references, questions...',
+        ph_nombre:'Your name', ph_email:'you@email.com', ph_telefono:'+44 7700 900000',
+        bud1:'Under €500', bud2:'Over €500'
+    }
+};
+
+let currentLang = localStorage.getItem('selectedLanguage') || 'es';
+
+function setLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('selectedLanguage', lang);
+    document.documentElement.lang = lang;
+    const t = translations[lang];
+    document.querySelectorAll('[data-t]').forEach(el => {
+        const key = el.getAttribute('data-t');
+        if (t[key] !== undefined) el.textContent = t[key];
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+    // Update placeholders
+    const placeholderMap = {
+        'empresa':              t.ph_empresa,
+        'actividad':            t.ph_actividad,
+        'objetivo_detalle':     t.ph_objetivo_detalle,
+        'colores':              t.ph_colores,
+        'referencias':          t.ph_referencias,
+        'otras_secciones':      t.ph_otras_secciones,
+        'dominio_url':          t.ph_dominio,
+        'otras_funcionalidades':t.ph_otras_funcionalidades,
+        'comentarios_extra':    t.ph_comentarios,
+        'nombre':               t.ph_nombre,
+        'email':                t.ph_email,
+        'telefono':             t.ph_telefono
+    };
+    Object.entries(placeholderMap).forEach(([name, ph]) => {
+        if (!ph) return;
+        document.querySelectorAll(`[name="${name}"]`).forEach(el => { el.placeholder = ph; });
+    });
+    // Update hidden subject
+    const subjectField = document.querySelector('input[name="_subject"]');
+    if (subjectField) {
+        const subjects = { es: '🚀 Nueva Ficha de Proyecto Web - Nouweb', de: '🚀 Neues Webprojekt-Formular - Nouweb', en: '🚀 New Web Project Brief - Nouweb' };
+        subjectField.value = subjects[lang];
+    }
+}
+
+// ── PILL TOGGLE (radio) ──
+function togglePill(clickedLabel, groupName) {
+    const value = clickedLabel.querySelector('input').value;
+    // Unselect siblings in same group
+    document.querySelectorAll(`input[name="${clickedLabel.querySelector('input').name}"]`).forEach(inp => {
+        inp.closest('.radio-pill').classList.remove('selected');
+    });
+    clickedLabel.classList.add('selected');
+    clickedLabel.querySelector('input').checked = true;
+}
+
+// ── CHECKBOX TOGGLE ──
+function toggleCheck(clickedLabel) {
+    const cb = clickedLabel.querySelector('input[type="checkbox"]');
+    cb.checked = !cb.checked;
+    clickedLabel.classList.toggle('selected', cb.checked);
+}
+
+// ── FORM SUBMIT (AJAX via Formspree) ──
+document.getElementById('project-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('.btn-submit');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>' + (currentLang === 'es' ? 'Enviando...' : currentLang === 'de' ? 'Senden...' : 'Sending...') + '</span>';
+
+    try {
+        const formData = new FormData(this);
+        const response = await fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+            this.style.display = 'none';
+            document.getElementById('success-box').style.display = 'block';
+            document.getElementById('success-box').scrollIntoView({ behavior: 'smooth' });
+        } else {
+            throw new Error('Error');
+        }
+    } catch {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> <span>' + (translations[currentLang].submitBtn) + '</span>';
+        alert(currentLang === 'es' ? 'Error al enviar. Por favor, inténtalo de nuevo.' : currentLang === 'de' ? 'Fehler beim Senden. Bitte erneut versuchen.' : 'Error sending. Please try again.');
+    }
+});
+
+// ── UPLOADCARE: collect uploaded file URLs into hidden fields ──
+document.addEventListener('DOMContentLoaded', () => {
+    const logoProvider = document.getElementById('logo-provider');
+    const photosProvider = document.getElementById('photos-provider');
+
+    if (logoProvider) {
+        logoProvider.addEventListener('change', (e) => {
+            const files = e.detail?.allEntries?.filter(f => f.status === 'success') || [];
+            document.getElementById('logo-url-field').value = files.map(f => f.cdnUrl).join(', ');
+        });
+    }
+    if (photosProvider) {
+        photosProvider.addEventListener('change', (e) => {
+            const files = e.detail?.allEntries?.filter(f => f.status === 'success') || [];
+            document.getElementById('photos-url-field').value = files.map(f => f.cdnUrl).join(', ');
+        });
+    }
+});
+
+// ── INIT ──
+setLang(currentLang);
+</script>
+</body>
+</html>

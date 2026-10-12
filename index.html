@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<!-- ⚠️ `es-PE`, no `es` (Fase 14, sesión 3 — cierra el backlog nº 24).
+     Desde que existe /es-es/ hay DOS versiones en español y el grupo hreflang
+     de abajo las distingue por país. Un `lang="es"` a secas aquí diría "esta
+     es la versión en español" mientras el hreflang dice "esta es la de Perú":
+     dos afirmaciones distintas sobre la misma página.
+     Se movió A LA VEZ que el hreflang a propósito; por separado, el grupo de
+     idiomas se queda diciendo dos cosas.
+     Ojo: el <script> de mercado de abajo comprueba `es-es`, así que este
+     valor da 'pe', que es justo lo que sirve la raíz. -->
+<html lang="es-PE">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Mercado de la página (Fase 14, sesión 2).
+         Nouweb vende a Perú y a España en el mismo idioma, y son dos marcos
+         legales distintos: IGV/SUNAT/soles frente a IVA/Verifactu/euros. El
+         objeto MERCADOS de script.js y las 7 rejillas que se dibujan solas
+         leen este atributo para saber a quién le están hablando.
+
+         ⚠️ Va EN LÍNEA y en el <head> a propósito: se escribe antes del primer
+         pintado, así que ninguna sección llega a dibujarse con el mercado
+         equivocado. Son dos líneas; no compite con lo que la Fase 13 sacó de
+         la ruta crítica.
+
+         ⚠️ El mercado sale del `lang` de la página, NUNCA de la IP ni de la
+         zona horaria (FASE-14-mercados.md § Arquitectura). Googlebot rastrea
+         desde EE.UU.: una página cuyo contenido cambiara según quién la pide
+         solo se indexaría en una de sus dos variantes. La zona horaria llega
+         en la sesión 4 y solo sirve para ofrecer un banner, no para cambiar
+         nada de lo que se lee.
+
+         La comparación es laxa (`es-ES`, `es-es`, `es-ES-…`) porque el valor lo
+         escribe una persona en el <html lang> de cada página, y un fallo de
+         mayúsculas dejaría /es-es/ hablando en peruano sin avisar. -->
+    <script>document.documentElement.dataset.mercado = /^es-es\b/i.test(document.documentElement.lang) ? 'es' : 'pe';</script>
+
+    <title>Migración de eCommerce e integración de CRM para pymes | Nouweb</title>
+    <meta name="description"
+        content="Migramos tu tienda online y conectamos tus pedidos de WhatsApp a un CRM que sí encaja con tu negocio, con la facturación SUNAT contemplada. No vendemos CRM propio. Auditoría gratuita.">
+    <meta name="keywords"
+        content="migración eCommerce Perú, integración CRM pymes, CRM con WhatsApp Business API, replatforming Shopify, facturación electrónica SUNAT, consultoría tecnológica pymes">
+
+    <!-- Open Graph — es lo que se ve al compartir el enlace en WhatsApp,
+         Facebook, LinkedIn o al pegarlo en un anuncio. Con tráfico de pago
+         importa el doble: mucha gente decide si hace clic por esta tarjeta.
+         ⚠️ La imagen es og-nouweb.png (1200x630), NO el logo: Facebook y
+         LinkedIn recortan o rechazan las que no tienen esa proporción, y un
+         logo apaisado salía con franjas o cortado. Fase 13. -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_PE">
+    <meta property="og:url" content="https://nouweb-es.com/">
+    <meta property="og:site_name" content="Nouweb">
+    <meta property="og:title" content="Tu tienda se quedó atrás. Tus pedidos viven en WhatsApp.">
+    <meta property="og:description"
+        content="Migramos tu eCommerce y conectamos tus procesos a un CRM que sí encaja con tu negocio. Consultoría independiente para pymes.">
+    <meta property="og:image" content="https://nouweb-es.com/Imagenes/og-nouweb.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Nouweb — migración de eCommerce e integración de CRM para pymes.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tu tienda se quedó atrás. Tus pedidos viven en WhatsApp.">
+    <meta name="twitter:description"
+        content="Migramos tu eCommerce y conectamos tus procesos a un CRM que sí encaja con tu negocio. Consultoría independiente para pymes.">
+    <meta name="twitter:image" content="https://nouweb-es.com/Imagenes/og-nouweb.png">
+
+    <!-- Datos estructurados (SEO): ayudan a Google a entender qué es Nouweb,
+         a quién atiende (Perú y España) y cómo contactar.
+         El @id común enlaza los tres bloques como una sola entidad. -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "@id": "https://nouweb-es.com/#negocio",
+        "name": "Nouweb",
+        "url": "https://nouweb-es.com/",
+        "logo": "https://nouweb-es.com/Imagenes/LogoAlta.png",
+        "image": "https://nouweb-es.com/Imagenes/og-nouweb.png",
+        "description": "Consultora tecnológica e integrador de soluciones de negocio para pymes: migración de eCommerce e integración de CRM, con la facturación electrónica SUNAT contemplada.",
+        "email": "info@nouweb-es.com",
+        "telephone": "+34614942732",
+        "areaServed": ["PE", "ES"],
+        "knowsLanguage": ["es", "en", "de"],
+        "serviceType": ["Migración de eCommerce", "Integración de CRM", "Consultoría tecnológica"]
+    }
+    </script>
+
+    <!-- Los tres servicios como Service enlazados al negocio. Fase 13: le da a
+         Google la estructura "una empresa que ofrece estos tres servicios",
+         que es justo el posicionamiento (tres fases, no productos sueltos). -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+            {
+                "@type": "Service",
+                "position": 1,
+                "name": "Diagnóstico de procesos de negocio",
+                "description": "Análisis de cómo opera hoy tu negocio: por dónde entran los pedidos, dónde se pierden y qué conviene arreglar primero.",
+                "provider": { "@id": "https://nouweb-es.com/#negocio" },
+                "areaServed": ["PE", "ES"]
+            },
+            {
+                "@type": "Service",
+                "position": 2,
+                "name": "Migración de eCommerce",
+                "description": "Replatforming de tiendas online obsoletas a Shopify, WooCommerce o VTEX, con UX y responsive reales y sin perder posicionamiento.",
+                "provider": { "@id": "https://nouweb-es.com/#negocio" },
+                "areaServed": ["PE", "ES"]
+            },
+            {
+                "@type": "Service",
+                "position": 3,
+                "name": "Integración de CRM",
+                "description": "Selección e integración del CRM de pago que encaja con tu operación, conectado con tu web, tu WhatsApp y la facturación electrónica SUNAT.",
+                "provider": { "@id": "https://nouweb-es.com/#negocio" },
+                "areaServed": ["PE", "ES"]
+            }
+        ]
+    }
+    </script>
+
+    <!-- FAQPage: Google puede mostrar estas preguntas desplegables debajo del
+         resultado, que ocupa más espacio en la búsqueda y responde dudas antes
+         del clic. ⚠️ Cada pregunta/respuesta de aquí RESPONDE a algo real del
+         negocio; no se inventan datos (CLAUDE.md § 6.3). Si algún día se pone
+         una FAQ visible en la página, este bloque debe COINCIDIR con ella o
+         Google lo marca como incumplimiento. -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "¿Nouweb vende su propio CRM?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Nouweb es consultora e integradora independiente: no vende software de gestión propio, por eso puede recomendar el CRM que de verdad encaja con tu operación en lugar del que le convenga vender."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Contemplan la facturación electrónica SUNAT?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sí. La conexión con tu OSE o PSE se define en el mismo momento que el flujo de venta, para que el comprobante salga solo cuando el pedido se confirma. Los precios se manejan en soles y con el IGV del 18% donde corresponde."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿A qué plataforma migran mi tienda?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Depende de tu operación y tu volumen. No toda migración termina en la misma plataforma: primero analizamos tu caso y después decidimos entre Shopify, WooCommerce, VTEX o un desarrollo a medida. A veces la conclusión es que no hace falta cambiar de plataforma."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿La auditoría inicial tiene costo?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "La auditoría es gratuita para negocios con intención real de implementar, ahora o a mediano plazo. Incluye una videollamada y un documento con los hallazgos priorizados, que es tuyo lo contrates con Nouweb o no."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Canónica e idiomas.
+
+         ⚠️ EL GRUPO ES RECÍPROCO O NO VALE NADA (Fase 14, sesión 3). Google
+         ignora un hreflang que la otra página no devuelve, así que cada
+         miembro del grupo declara el grupo ENTERO, incluido él mismo. Esta
+         página y /es-es/index.html tienen que llevar exactamente estas cinco
+         líneas. Si se toca una, se tocan las dos.
+
+         Es la lección que dejó medida la Fase 6 al mirar /en/, que lleva meses
+         publicada sin declarar ni canonical ni hreflang: la raíz sí la
+         apuntaba, ella no devolvía el apunte, y el grupo entero valía cero.
+
+         ⚠️ `es` a secas se fue, y lo sustituyen `es-PE` (esta) y `es-ES`. Con
+         las dos declaradas, un `es` genérico compitiendo con ellas solo añade
+         ambigüedad. Quien busque en español desde un tercer país cae en
+         x-default, que apunta aquí — que es lo que se quiere: la raíz es la
+         única indexada. -->
+    <link rel="canonical" href="https://nouweb-es.com/">
+    <link rel="alternate" hreflang="x-default" href="https://nouweb-es.com/">
+    <link rel="alternate" hreflang="es-PE" href="https://nouweb-es.com/">
+    <link rel="alternate" hreflang="es-ES" href="https://nouweb-es.com/es-es/">
+    <link rel="alternate" hreflang="en" href="https://nouweb-es.com/en/">
+    <link rel="alternate" hreflang="de" href="https://nouweb-es.com/de/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="Imagenes/iconoweb.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Imagenes/iconoweb.png">
+    <link rel="apple-touch-icon" href="Imagenes/iconoweb.png">
+
+    <!-- Styles (único, compartido).
+         El ?v= es cache busting: el navegador y el hosting cachean estos dos
+         archivos con fuerza. Subir el número en CADA publicación por FTP.
+
+         ⚠️ VA EL PRIMERO desde la Fase 13. Es la única hoja que de verdad hace
+         falta para pintar la primera pantalla, así que es la única que se deja
+         bloquear. Las dos de terceros (fuentes e iconos) van debajo y NO
+         bloquean. -->
+    <link rel="stylesheet" href="styles.css?v=33">
+
+    <!-- Fuentes — Fase 13.
+         Se retiró el peso 300: se cargaba en cada visita y no lo usa ni un
+         selector del sitio (medido: solo hay 400, 500, 600 y 700).
+
+         `media="print"` + `onload` es el truco estándar para que una hoja no
+         bloquee el pintado: el navegador la descarga con prioridad baja porque
+         cree que es para imprimir, y al llegar se pasa a `all`. El <noscript>
+         cubre a quien tenga el JS desactivado.
+
+         Con `display=swap` el titular se pinta ya con la tipografía del
+         sistema y cambia a Outfit al llegar. ⚠️ Ese cambio mueve las medidas
+         del texto, y este hero RESERVA ALTURA midiendo la frase más larga
+         (Fase 12). Por eso script.js vuelve a medir en `document.fonts.ready`:
+         sin eso, la altura quedaría calculada con la letra equivocada. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" media="print" onload="this.media='all'"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap">
+    </noscript>
+
+    <!-- Iconos — Fase 13.
+         Font Awesome entero son ~300 KB (la hoja más dos archivos de fuente)
+         para los 29 iconos que usa el sitio, y bloqueaba el pintado. Ahora
+         carga sin bloquear.
+
+         Los TRES iconos que salen encima del pliegue (el menú, el acceso de
+         clientes y la X del banner) van en SVG dentro del propio HTML, así que
+         la cabecera se ve entera sin esperar a nadie. El resto están más abajo
+         y da igual que tarden un instante. -->
+    <link rel="stylesheet" media="print" onload="this.media='all'"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
+</head>
+
+<body>
+
+    <!-- Enlace de salto (Fase 12). Es el PRIMER elemento tabulable de la
+         página y vive fuera de pantalla hasta que recibe el foco. Sin él,
+         quien navega con el teclado tiene que pasar por las 9 entradas del
+         menú antes de llegar al contenido, en cada página y cada vez.
+         Va antes del banner de idioma a propósito: si fuera después, ya
+         habría un tabulador por delante. -->
+    <a href="#hero" class="skip-link">Saltar al contenido</a>
+
+    <!-- Banner de idioma: solo se muestra si el navegador no está en español.
+         Sin redirección automática: rompería el rastreo de Google. -->
+    <div id="lang-banner" class="lang-banner" hidden>
+        <span class="lang-banner-text">This page is also available in English and Deutsch.</span>
+        <a href="/en/" class="lang-banner-link" data-banner-choice="en">English</a>
+        <a href="/de/" class="lang-banner-link" data-banner-choice="de">Deutsch</a>
+        <!-- SVG en línea, no Font Awesome: este icono sale encima del pliegue
+             y con FA cargando sin bloquear (Fase 13) tardaría un momento en
+             aparecer. Un botón de cerrar vacío durante medio segundo se lee
+             como un fallo. Mismo motivo en los dos del header. -->
+        <button type="button" class="lang-banner-close" aria-label="Cerrar">
+            <svg class="icono" viewBox="0 0 384 512" aria-hidden="true" focusable="false">
+                <path
+                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Banner de país (Fase 14, sesión 4). Reusa la clase .lang-banner entera:
+         es la misma barra, con otra oferta dentro, y así no hace falta tocar
+         styles.css. Solo una de las dos se enseña; lo decide script.js.
+
+         Se enseña cuando el navegador está en español Y la zona horaria es
+         europea. NUNCA redirige: esta página es la versión Perú y es la única
+         indexada, y cambiarla o mandarla a otro sitio según quién la pide es
+         justo lo que CLAUDE.md § 7 prohíbe desde la Fase 1.
+
+         ⚠️ EL TEXTO NO DICE "IVA" NI "VERIFACTU" A PROPÓSITO, aunque sería más
+         atractivo. La prueba de que no hay fugas entre mercados es "la raíz no
+         contiene ni una palabra española y /es-es/ ni una peruana", medida sobre
+         el DOM; meter vocabulario fiscal del otro país aquí convertiría esa
+         prueba en un falso positivo permanente. La barra señaliza, no vende. -->
+    <div id="pais-banner" class="lang-banner" hidden>
+        <span class="lang-banner-text">¿Escribes desde España?</span>
+        <a href="/es-es/" class="lang-banner-link" data-banner-choice="es">Ver la versión para España</a>
+        <button type="button" class="lang-banner-close" aria-label="Cerrar">
+            <svg class="icono" viewBox="0 0 384 512" aria-hidden="true" focusable="false">
+                <path
+                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#hero" class="logo">
+                <!-- ⚠️ Fase 13: este <img> usa LogoAlta-2x.png, NO LogoAlta.png.
+                     El original es de 1130x340 y 277 KB, y aquí se dibuja a 80px
+                     de alto (64 en celular): se descargaban 277 KB para enseñar
+                     265. La copia a 532x160 pesa 63 KB —**214 KB menos**— y sigue
+                     siendo el doble de la medida de pantalla, así que en
+                     pantallas retina se ve igual de nítido.
+
+                     El LogoAlta.png grande SE QUEDA en la carpeta: lo usan el
+                     og:image y el JSON-LD, donde sí hace falta una imagen
+                     grande porque la reescalan Facebook, WhatsApp y Google.
+
+                     width/height son las medidas NATURALES del archivo nuevo.
+                     Le dan al navegador la proporción para reservar el hueco
+                     antes de que llegue el CSS; sin ellos el header salta.
+                     ⚠️ Si se cambia el archivo, cambiar también estos números. -->
+                <img src="Imagenes/LogoAlta-2x.png" alt="Nouweb" width="532" height="160" fetchpriority="high">
+            </a>
+
+            <nav class="nav">
+                <!-- El menú sigue el orden real de la página (Fase 8 § Parte C).
+                     "Inicio" se retiró: el logo de la izquierda ya lleva a #hero,
+                     así que era un enlace repetido, y el hueco que deja es justo
+                     el que necesita "Proceso" para no empujar la fila contra el
+                     logo apaisado. -->
+                <ul class="nav-list">
+                    <li><a href="#proceso" class="nav-link">Proceso</a></li>
+                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="#casos" class="nav-link">Casos</a></li>
+                    <li><a href="#stack-crm" class="nav-link">CRM</a></li>
+                    <!-- "Blog" apunta al índice (/blog/), no a la sección #blog
+                         de esta página: la sección solo enseña los 3 últimos y
+                         quien busca el blog en el menú quiere la lista entera. -->
+                    <li><a href="/blog/" class="nav-link">Blog</a></li>
+                    <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                    <li><a href="#auditoria" class="btn btn-primary">Auditoría gratuita</a></li>
+                    <li><a href="login.html" target="_blank" rel="noopener" class="login-icon" title="Acceso Clientes"
+                            aria-label="Acceso Clientes">
+                            <svg class="icono" viewBox="0 0 496 512" aria-hidden="true" focusable="false">
+                                <path
+                                    d="M248 8C111 8 0 119 0 256S111 504 248 504 496 393 496 256 385 8 248 8zM248 128c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zm0 320c-52.9 0-100.3-24.7-131.3-63 15.6-29.6 46.5-50 82.3-50 2 0 4 .3 5.9 .9 14.1 4.6 28.8 7.1 43.1 7.1s29-2.5 43.1-7.1c1.9-.6 3.9-.9 5.9-.9 35.8 0 66.7 20.4 82.3 50-31 38.3-78.4 63-131.3 63z" />
+                            </svg>
+                        </a></li>
+                </ul>
+            </nav>
+
+            <button class="mobile-toggle" aria-label="Menu" aria-expanded="false">
+                <svg class="icono icono-barras" viewBox="0 0 448 512" aria-hidden="true" focusable="false">
+                    <path
+                        d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+                </svg>
+                <svg class="icono icono-cerrar" viewBox="0 0 384 512" aria-hidden="true" focusable="false">
+                    <path
+                        d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- 1. Hero.
+         tabindex="-1" es lo que hace que el enlace de salto FUNCIONE de
+         verdad: sin él, varios navegadores mueven el scroll pero dejan el
+         foco donde estaba, así que el siguiente tabulador vuelve al menú y el
+         atajo no sirve de nada. El -1 no lo mete en el orden de tabulación,
+         solo lo hace enfocable por programa. -->
+    <section id="hero" class="hero" tabindex="-1">
+        <!-- ⚠️ El vídeo del hero pesa 1,78 MB y es DECORATIVO: va detrás de un
+             velo oscuro y debajo del titular. Con autoplay a secas era el
+             elemento más pesado de la primera pantalla y competía con todo lo
+             demás justo cuando se está midiendo el LCP.
+
+             Desde la Fase 13 no tiene `src`: lo pone script.js DESPUÉS de que
+             la página haya cargado del todo, y solo si la conexión da para
+             ello. Mientras tanto —y en conexiones malas, siempre— se ve el
+             degradado CSS de .video-background, que está sacado de los colores
+             del propio vídeo y no pesa nada.
+
+             Esto importa especialmente ahora: el tráfico de anuncios es casi
+             todo celular, y en Perú buena parte va con datos contados. Una
+             web que cobra 1,78 MB antes de dejar leer nada se paga dos veces,
+             en la factura del anuncio y en la gente que se va. -->
+        <div class="video-background">
+            <video muted loop playsinline id="hero-video" preload="none"
+                data-video-hero data-src="Videos/videoprincipal.mp4"></video>
+            <div class="video-overlay"></div>
+        </div>
+
+        <div class="container hero-container">
+            <div class="hero-content fade-in-up">
+                <span class="badge">Consultoría tecnológica e integración de sistemas</span>
+                <!-- El titular se escribe solo. Petición de Luis del 2026-07-22,
+                     a partir de la home de Cluster. Se copió EL EFECTO, no su
+                     frase: "Ecommerce is the new retail" es copy suyo y además
+                     describe su negocio (agencia Shopify), no el de Nouweb
+                     (CLAUDE.md § 11.1).
+
+                     El titular es SOLO la frase que rota, desde el array
+                     HERO_FRASES de script.js: son cuatro de los seis dolores de
+                     #problema. La línea fija "Tu tienda online se quedó atrás."
+                     se retiró el 2026-07-22 a petición de Luis.
+
+                     ⚠️ Tres cosas que no se pueden quitar sin romper algo:
+                     · El aria-label del <h1> es lo que leen los lectores de
+                       pantalla. Sin él oirían el titular a medio teclear.
+                     · La frase va ESCRITA en el HTML: sin JS el titular sigue
+                       completo y con sentido, y Google lee texto real. script.js
+                       la reconstruye letra a letra al arrancar.
+                     · La altura la reserva script.js midiendo la frase más alta.
+                       Sin eso el hero pega un salto en cada cambio: a 375 px
+                       estas frases ocupan de 2 a 3 líneas, y no todas las
+                       mismas. -->
+                <h1 aria-label="Tus pedidos viven en WhatsApp.">
+                    <span class="hero-rotativo" id="hero-rotativo"><span
+                            class="hero-rotativo-texto text-gradient">Tus pedidos viven en WhatsApp.</span></span>
+                </h1>
+                <p>Migramos tu eCommerce y conectamos tus procesos a un CRM que sí encaja con tu negocio.
+                    No vendemos software de gestión propio: por eso podemos recomendarte el correcto.</p>
+                <div class="hero-buttons">
+                    <!-- data-cta="whatsapp": en cuanto CONTACTO.whatsapp tenga número
+                         (script.js), este botón se convierte solo en enlace wa.me y
+                         cambia al texto de data-cta-wa. Mientras tanto baja a #auditoria. -->
+                    <a href="#auditoria" class="btn btn-primary" data-cta="whatsapp"
+                        data-cta-wa="Auditoría gratuita por WhatsApp">Quiero mi auditoría gratuita</a>
+                    <!-- Apuntaba a #servicios; desde la Fase 8 baja a #proceso,
+                         que es literalmente la sección "Cómo trabajamos". -->
+                    <a href="#proceso" class="btn btn-outline">Ver cómo trabajamos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Banda de credenciales (Fase 8) — se monta desde el array CREDENCIALES
+         de script.js. No escribir aquí ninguna casilla.
+
+         ⚠️ Esta banda comunica CAPACIDADES VERIFICABLES, no resultados de
+         negocio. El competidor pone en este mismo sitio su porcentaje de
+         conversión y su facturación; Nouweb no tiene esas cifras y no se
+         inventan (CLAUDE.md § 6.3). Si algún día llegan datos reales de Luis,
+         se añaden al array con su fuente. -->
+    <section id="credenciales" class="credenciales">
+        <div class="container">
+            <ul class="credenciales-banda" id="credenciales-grid"></ul>
+        </div>
+    </section>
+
+    <!-- 3. Rejilla de logos de clientes: NO se dibuja.
+         El competidor tiene una aquí. Nouweb solo publica colaboraciones reales
+         y con permiso (CLAUDE.md § 6.2) y hoy hay una sola (Misako), que ya se
+         cuenta bien en #casos. Una rejilla con un logo y tres huecos se lee
+         peor que ninguna rejilla. Se monta cuando existan 4 logos reales
+         (ESTADO.md § Pendientes de Luis, nº 11). -->
+
+    <!-- 4. Problema — sección propia de Nouweb, es su mejor gancho -->
+    <section id="problema" class="section problema">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2>¿Te suena esto?</h2>
+                <p>Son las señales de que tu operación ya creció más que tus herramientas.
+                    Si reconoces tres o más, la conversación vale la pena.</p>
+            </div>
+
+            <div class="problema-grid">
+                <div class="problema-card fade-in-up">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>Los pedidos se pierden en el chat</h3>
+                    <p>Entran por WhatsApp, alguien los anota en un cuaderno o en un Excel, y al cierre del día nadie
+                        sabe con certeza cuáles quedaron pendientes de atender.</p>
+                </div>
+
+                <div class="problema-card fade-in-up delay-1">
+                    <i class="fas fa-file-excel"></i>
+                    <h3>El stock vive en un Excel que nunca cuadra</h3>
+                    <p>Inventario, clientes y cobranzas en archivos distintos que solo entiende una persona del equipo.
+                        El día que esa persona no está, la operación se frena.</p>
+                </div>
+
+                <div class="problema-card fade-in-up delay-2">
+                    <i class="fas fa-mobile-screen"></i>
+                    <h3>La tienda va lenta y no vende en celular</h3>
+                    <p>Casi todos tus clientes te compran desde el celular, y es justo ahí donde la web tarda en cargar
+                        o el proceso de compra se rompe a medio camino.</p>
+                </div>
+
+                <div class="problema-card fade-in-up">
+                    <i class="fas fa-file-invoice"></i>
+                    <h3>La facturación SUNAT va por su lado</h3>
+                    <p>Emitir los comprobantes electrónicos es un trámite manual, desconectado de la venta. Se duplica
+                        el trabajo y se cuelan errores que después hay que corregir.</p>
+                </div>
+
+                <div class="problema-card fade-in-up delay-1">
+                    <i class="fas fa-plug-circle-exclamation"></i>
+                    <h3>Tus sistemas no se hablan entre ellos</h3>
+                    <p>La web por un lado, el CRM por otro y la contabilidad por un tercero. Alguien del equipo se pasa
+                        el día copiando y pegando los mismos datos de una pantalla a otra.</p>
+                </div>
+
+                <div class="problema-card fade-in-up delay-2">
+                    <i class="fas fa-user-slash"></i>
+                    <h3>Nadie sabe cuántos clientes repiten</h3>
+                    <p>Cotizaste, respondiste y el cliente se enfrió. Nadie hizo seguimiento porque no hay dónde
+                        registrarlo, y no tienes forma de saber quién te vuelve a comprar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Proceso de 6 pasos (Fase 8) — se monta desde el array PROCESO de
+         script.js. No escribir aquí el texto de ningún paso: reordenar o añadir
+         uno es tocar el array.
+
+         Va ANTES de #servicios a propósito: primero se ve cómo se trabaja y
+         después qué se compra. Los pasos 1, 3 y 4 enlazan a #servicios para que
+         las dos secciones no se lean como dos ofertas distintas. -->
+    <section id="proceso" class="section proceso">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2>Cómo trabajamos, paso a paso</h2>
+                <p>Seis pasos, en este orden. No hace falta recorrerlos todos: se entra por el 1 y se decide
+                    hasta dónde llegar. Cada paso cierra con algo en la mano.</p>
+            </div>
+
+            <ol class="proceso-lista" id="proceso-grid"></ol>
+
+            <p class="text-center stack-nota">Los pasos 1, 3 y 4 son las tres fases de servicio de abajo.
+                El resto es el trabajo que va alrededor y que también hacemos nosotros.</p>
+        </div>
+    </section>
+
+    <!-- 6. Servicios: las tres fases.
+         ⚠️ Son TRES, no seis. Decisión de Luis del 2026-07-21 (FASE-8 § Parte C):
+         el relato de "tres fases consecutivas" es la columna vertebral del
+         posicionamiento (CLAUDE.md § 2) y seis tarjetas sueltas volverían a
+         parecer un menú de agencia. No añadir tarjetas sin decisión suya. -->
+    <section id="servicios" class="section services">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2>Un recorrido de tres fases, no tres productos sueltos</h2>
+                <p>Primero entendemos tu operación, después arreglamos la tienda y al final conectamos todo.
+                    Empiezas por la fase 1 y decides hasta dónde llegar: cada una cierra sola y deja algo servible.</p>
+            </div>
+
+            <div class="services-grid services-grid-3">
+                <div class="service-card fade-in-up" data-service="diagnostico">
+                    <div class="icon-box">
+                        <i class="fas fa-magnifying-glass-chart"></i>
+                    </div>
+                    <span class="fase-num">Fase 1 · El punto de partida</span>
+                    <h3>Diagnóstico</h3>
+                    <p>Analizamos cómo funciona hoy tu negocio de verdad: dónde entran los pedidos, quién los toca y en
+                        qué punto se pierden.</p>
+                    <p class="fase-salida"><strong>Te llevas:</strong> el mapa de tus procesos con los puntos de fuga
+                        marcados y qué conviene arreglar primero.</p>
+                </div>
+
+                <div class="service-card fade-in-up delay-1" data-service="migracion">
+                    <div class="icon-box">
+                        <i class="fas fa-cart-shopping"></i>
+                    </div>
+                    <span class="fase-num">Fase 2 · Si la tienda frena la venta</span>
+                    <h3>Migración</h3>
+                    <p>Llevamos tu eCommerce antiguo a una plataforma actual, con una experiencia de compra pensada para
+                        el celular, que es donde te compran.</p>
+                    <p class="fase-salida"><strong>Te llevas:</strong> una tienda rápida en celular, con tu catálogo y
+                        tu posicionamiento intactos.</p>
+                </div>
+
+                <div class="service-card fade-in-up delay-2" data-service="integracion">
+                    <div class="icon-box">
+                        <i class="fas fa-diagram-project"></i>
+                    </div>
+                    <span class="fase-num">Fase 3 · Adiós al trabajo manual</span>
+                    <h3>Integración</h3>
+                    <p>Elegimos contigo el CRM de pago que encaja con tu operación y lo conectamos con tu web, tu
+                        WhatsApp y tu facturación electrónica.</p>
+                    <p class="fase-salida"><strong>Te llevas:</strong> los pedidos entrando solos, cada conversación
+                        registrada y la facturación SUNAT dentro del mismo flujo.</p>
+                </div>
+            </div>
+
+            <p class="text-center servicios-nota">¿No sabes en qué fase estás? Para eso es la auditoría gratuita:
+                te lo decimos nosotros.</p>
+
+            <!-- Modal de servicio (contenido en script.js) -->
+            <div id="service-modal" class="service-modal">
+                <div class="modal-content">
+                    <!-- ⚠️ El aria-label no es decorativo: el contenido del botón es un
+                         icono de Font Awesome, que la Fase 13 dejó cargando sin bloquear.
+                         Sin él, un lector de pantalla anuncia "botón" a secas y no hay
+                         forma de saber que cierra. Detectado en el repaso de la Fase 14,
+                         sesión 4, midiendo los nombres accesibles de las dos páginas. -->
+                    <button class="close-modal" aria-label="Cerrar"><i class="fas fa-times" aria-hidden="true"></i></button>
+                    <div class="modal-body">
+                        <div class="modal-image">
+                            <i class="fas fa-magnifying-glass-chart placeholder-icon"></i>
+                        </div>
+                        <div class="modal-text">
+                            <h3 id="modal-title">Servicio</h3>
+                            <p id="modal-description">Descripción del servicio.</p>
+                            <div class="modal-buttons">
+                                <a href="#auditoria" class="btn btn-primary" onclick="closeServiceModal()">Quiero mi
+                                    auditoría</a>
+                                <button id="learn-more-btn" class="btn btn-outline">Saber más</button>
+                            </div>
+
+                            <div id="modal-details" class="modal-details">
+                                <div id="details-text" class="details-content"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Casos.
+         Subió por delante de #stack-crm en la Fase 8: la prueba de que el
+         trabajo está hecho pesa más que el catálogo de herramientas, y va
+         mejor pegada a los servicios que acaba de leer el visitante. -->
+    <section id="casos" class="section success-cases">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2>Casos</h2>
+                <p>Solo publicamos trabajos reales y con permiso del cliente. Preferimos un caso bien contado
+                    que una pared de logos sin historia.</p>
+            </div>
+
+            <!-- Se monta desde el array CASOS de script.js. No escribir ninguna marca aquí:
+                 añadir un caso es añadir un objeto al array. Prohibido rellenar con marcas
+                 o métricas inventadas (CLAUDE.md § 6.2 y 6.3). -->
+            <div id="casos-grid" class="casos-grid"></div>
+        </div>
+    </section>
+
+    <!-- 8a. Stack CRM — se llenó en la Fase 3 -->
+    <section id="stack-crm" class="section stack-crm">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2>Integramos con las principales plataformas CRM</h2>
+                <p>No vendemos nuestro propio CRM. Por eso podemos recomendarte el que de verdad te encaja.</p>
+            </div>
+
+            <!-- La rejilla se monta desde el array CRMS de script.js.
+                 {{PENDIENTE: archivos de logo}} — mientras `logo` sea null se dibuja el
+                 nombre de la marca. Al dejar los PNG/SVG en Imagenes/crm/ y rellenar el
+                 campo `logo`, la ficha cambia sola. No se toca este HTML. -->
+            <div class="stack-grid" id="crm-grid">
+                <!-- ⚠️ Esta lista se quedó vieja al entrar Klaviyo el 2026-08-10
+                     y no lo vio nadie, porque solo la lee quien navega sin JS.
+                     Si se añade o se quita un CRM del array CRMS, se toca
+                     también aquí. -->
+                <noscript>Kommo · Klaviyo · HubSpot · Zoho · Odoo · Bitrix24 · Pipedrive · monday · Clientify</noscript>
+            </div>
+
+            <p class="text-center stack-nota">Partner en proceso de certificación con HubSpot, Zoho y Kommo.</p>
+        </div>
+    </section>
+
+    <!-- 8b. Migración eCommerce — ampliada en la Fase 9.
+         ⚠️ La matriz de orígenes y la fila de destinos se montan desde los
+         arrays MIGRACIONES y DESTINOS de script.js. NO escribir aquí el nombre
+         de ninguna plataforma: añadir un origen es añadir un objeto al array.
+         La frase de independencia también sale de JS porque depende del
+         interruptor SHOPIFY_PARTNER: si el alta no estuviera activa, se escribe
+         sola su variante sin partner. -->
+    <section id="migracion-ecommerce" class="section migracion">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2>Migración de eCommerce</h2>
+                <p>De una plataforma que ya no da más a una que aguanta tu volumen actual,
+                    sin perder catálogo, histórico ni posicionamiento.</p>
+            </div>
+
+            <!-- La tesis de la sección, y la diferencia con el competidor: él es
+                 Shopify-exclusive, así que toda migración suya termina en
+                 Shopify. Va arriba del todo a propósito, porque condiciona cómo
+                 se lee la matriz que viene debajo. -->
+            <p class="migracion-tesis fade-in-up">No toda migración termina en la misma plataforma.
+                Primero miramos tu operación y tu volumen; después decidimos a dónde.</p>
+
+            <h3 class="migracion-subtitulo fade-in-up">Desde dónde se migra, y por qué</h3>
+            <p class="migracion-intro fade-in-up">Estos son los puntos de partida que encontramos de verdad.
+                Si el tuyo está acá, ya sabemos qué te está pasando antes de la primera reunión.</p>
+
+            <ul class="migracion-matriz" id="migracion-matriz"></ul>
+
+            <h3 class="migracion-subtitulo fade-in-up">A dónde migramos</h3>
+
+            <ul class="destinos-grid" id="migracion-destinos"></ul>
+
+            <p class="migracion-independencia fade-in-up" id="migracion-independencia"></p>
+
+            <!-- Bloque SUNAT: va destacado a propósito. Es obligatorio en Perú y
+                 mencionarlo separa a Nouweb de una agencia que no conoce el terreno. -->
+            <div class="sunat-sello fade-in-up">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <div>
+                    <h3>La facturación electrónica SUNAT va contemplada desde el diseño</h3>
+                    <p>No es un añadido al final. La conexión con tu OSE o PSE se define en el mismo momento en que se
+                        define el flujo de venta, para que el comprobante salga solo cuando el pedido se confirma.
+                        Los precios se manejan en <strong>soles (S/)</strong> y con el <strong>IGV del 18%</strong> donde
+                        corresponde.</p>
+                </div>
+            </div>
+
+            <div class="pasarelas fade-in-up">
+                <h3 class="text-center">Y con los medios de pago que tu cliente sí usa</h3>
+                <ul class="pasarelas-lista">
+                    <li>Niubiz</li>
+                    <li>Izipay</li>
+                    <li>Culqi</li>
+                    <li>Mercado Pago</li>
+                    <li>Yape</li>
+                    <li>Plin</li>
+                </ul>
+                <p class="text-center stack-nota">Integrar Yape y Plin no es un detalle menor: es la diferencia entre
+                    que el cliente termine la compra o te escriba por WhatsApp para preguntarte cómo pagar.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Blog — enganchado en la Fase 10.
+         Las tarjetas salen del array ARTICULOS de /blog/blog.js, el mismo del
+         que se monta el índice: una sola fuente para las dos páginas.
+
+         ⚠️ El `hidden` SE QUEDA, y no es un olvido. Lo quita blog.js, y solo
+         si el array tiene artículos. Así, si algún día se vacía, la home
+         vuelve sola a no tener sección de blog en vez de enseñar un titular
+         con una rejilla vacía debajo. Es la misma degradación honesta que el
+         bloque de WhatsApp de la Fase 5. -->
+    <section id="blog" class="section blog" hidden>
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2>Del blog</h2>
+                <p>Lo que vamos aprendiendo migrando tiendas e integrando sistemas en Perú.</p>
+            </div>
+            <div class="blog-grid" id="blog-grid"></div>
+
+            <!-- Se revela solo cuando hay más de 3 artículos: con menos, este
+                 botón lleva a una página que enseña justo lo mismo que el
+                 visitante acaba de ver. Lo decide blog.js. -->
+            <p class="text-center blog-ver-todos" id="blog-ver-todos" hidden>
+                <a href="/blog/" class="btn btn-outline">Ver todos los artículos</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- 10. Nosotros — sección propia, va justo antes del CTA final -->
+    <section id="nosotros" class="section about">
+        <div class="container about-container">
+            <div class="about-content fade-in-up">
+                <h2>Quién está detrás de Nouweb</h2>
+                <p>Soy <strong>Luis</strong>, ingeniero de software full stack, peruano radicado en España. Trabajo en
+                    una agencia digital española y me especializo en soluciones de gestión empresarial.</p>
+                <p>Conozco los dos mercados: la exigencia técnica europea y cómo se vende de verdad en el Perú, donde
+                    el cliente escribe por WhatsApp, paga con Yape y necesita su comprobante SUNAT al toque. Esa mezcla
+                    es justo lo que hace falta para que una integración no se quede a medias.</p>
+                <p>Trabajas conmigo directamente. No hay capa de comerciales ni un equipo distinto al que arranca el
+                    proyecto: quien te explica la propuesta es quien la ejecuta.</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Independientes: no vendemos CRM propio, así que
+                        recomendamos el que te encaja</li>
+                    <li><i class="fas fa-check-circle"></i> Contexto peruano: SUNAT, WhatsApp y pasarelas locales
+                        contemplados desde el primer día</li>
+                    <li><i class="fas fa-check-circle"></i> Trato directo con quien hace el trabajo</li>
+                </ul>
+            </div>
+            <div class="about-image fade-in-up delay-1">
+                <div class="video-wrapper">
+                    <!-- ⚠️ Este vídeo pesa 3,79 MB y está MUY por debajo del
+                         pliegue: con autoplay a secas se descargaba entero en
+                         cada visita aunque el visitante no bajara nunca hasta
+                         acá. Era el mayor lastre de la home después del vídeo
+                         del hero, y encima competía con él por el ancho de
+                         banda justo durante la primera pantalla.
+
+                         `preload="none"` corta esa descarga; el `src` va en
+                         data-src y lo pone script.js cuando la sección se
+                         acerca a la pantalla.
+
+                         Sin poster a propósito: la única imagen suelta que hay
+                         en el proyecto (Imagenes/reserva.jpg) es una foto de
+                         stock vertical de comida a domicilio, que no tiene que
+                         ver con esta sección ni con la proporción del vídeo.
+                         El hueco no queda roto porque .video-wrapper ya trae
+                         alto fijo, borde y fondo propio. Fase 12. -->
+                    <video muted loop playsinline preload="none" data-video-diferido>
+                        <source data-src="Videos/5495845-hd_1920_1080_30fps.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. Auditoría — primera mitad del CTA final -->
+    <section id="auditoria" class="section auditoria">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2>Auditoría gratuita</h2>
+                <p>Antes de proponerte nada, miramos cómo funciona hoy tu operación. Sin costo y sin
+                    compromiso de contratar.</p>
+            </div>
+
+            <div class="auditoria-grid">
+                <article class="auditoria-card fade-in-up">
+                    <i class="fas fa-magnifying-glass-chart"></i>
+                    <h3>Revisión de tu tienda online</h3>
+                    <p>Velocidad, checkout, comportamiento en celular y pasarelas de pago. Qué se está
+                        cayendo hoy y cuánto te está costando.</p>
+                </article>
+                <article class="auditoria-card fade-in-up delay-1">
+                    <i class="fas fa-diagram-project"></i>
+                    <h3>Mapa de tus procesos</h3>
+                    <p>Del pedido que entra por WhatsApp hasta la entrega y la boleta en SUNAT. Dónde se
+                        pierde la información y quién la vuelve a escribir a mano.</p>
+                </article>
+                <article class="auditoria-card fade-in-up delay-2">
+                    <i class="fas fa-scale-balanced"></i>
+                    <h3>Recomendación de CRM</h3>
+                    <p>Cuál encaja con tu negocio y cuál no, con su costo mensual real. No vendemos CRM
+                        propio: por eso podemos decirte que no necesitas uno, si es el caso.</p>
+                </article>
+            </div>
+
+            <div class="auditoria-cierre fade-in-up">
+                <p class="auditoria-entregable"><strong>Te llevas:</strong> una videollamada y un documento
+                    con los hallazgos priorizados y el orden en que los atacaríamos. Es tuyo, lo contrates
+                    con nosotros o no.</p>
+
+                <p class="auditoria-filtro">La auditoría es gratuita para negocios con intención real de
+                    implementar, ahora o a mediano plazo.</p>
+
+                <div class="auditoria-cta">
+                    <a href="#contacto" class="btn btn-primary" data-cta="whatsapp"
+                        data-cta-wa="Pedir mi auditoría por WhatsApp">Pedir mi auditoría</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. Contacto — segunda mitad del CTA final -->
+    <section id="contacto" class="section contact">
+        <div class="container">
+            <div class="contact-wrapper fade-in-up">
+                <div class="contact-info">
+                    <h2>Conversemos</h2>
+                    <p>Cuéntanos cómo funciona hoy tu operación y te decimos por dónde empezaríamos.</p>
+
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p><a href="mailto:info@nouweb-es.com">info@nouweb-es.com</a></p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-globe"></i>
+                        <div>
+                            <h4>Dónde trabajamos</h4>
+                            <p>Perú · España</p>
+                        </div>
+                    </div>
+
+                    <!-- Bloque de WhatsApp: oculto mientras no haya número.
+                         script.js lo revela y le pone el enlace. -->
+                    <div class="contacto-whatsapp" id="contacto-whatsapp" hidden>
+                        <p>¿Prefieres escribir directo? Es el camino más rápido. El número es español
+                            porque Luis vive allá, pero por WhatsApp no te cuesta nada escribir desde Perú.</p>
+                        <a href="#" class="btn btn-whatsapp" data-cta="whatsapp"
+                            data-cta-wa="Escríbenos por WhatsApp">
+                            <i class="fab fa-whatsapp"></i> Escríbenos por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <form class="contact-form" action="https://formspree.io/f/xqeeevyv" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" name="name" required placeholder="Nombre y apellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="tucorreo@empresa.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Celular</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+51 987 654 321">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Empresa</label>
+                        <input type="text" id="company" name="company" placeholder="Nombre de tu empresa">
+                    </div>
+                    <!-- Preguntas de calificación (Fase 5). No están para estorbar:
+                         filtran al curioso y le llegan a Luis dentro del propio correo. -->
+                    <div class="form-group">
+                        <label for="plazo">¿Cuándo planea implementar?</label>
+                        <select id="plazo" name="plazo" required>
+                            <option value="" disabled selected>Elige una opción</option>
+                            <option value="Ahora">Ahora</option>
+                            <option value="En 3-6 meses">En 3-6 meses</option>
+                            <option value="Solo explorando">Solo estoy explorando</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pedidos">¿Cuántos pedidos maneja al mes?</label>
+                        <select id="pedidos" name="pedidos" required>
+                            <option value="" disabled selected>Elige una opción</option>
+                            <option value="Menos de 100">Menos de 100</option>
+                            <option value="100-500">Entre 100 y 500</option>
+                            <option value="Más de 500">Más de 500</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" rows="5" required
+                            placeholder="Cuéntanos qué necesitas"></textarea>
+                    </div>
+                    <input type="hidden" name="_subject" value="Nuevo mensaje desde Nouweb">
+
+                    <div class="form-group consent-group">
+                        <label class="consent-label">
+                            <input type="checkbox" id="consent-checkbox" name="consent" required>
+                            <span>Consiento el tratamiento de mis datos. <a href="#" id="read-more-consent"
+                                    class="consent-link">Leer más...</a></span>
+                        </label>
+                    </div>
+
+                    <p class="form-nota-legal">Tratamos tus datos conforme al RGPD europeo y a los principios de
+                        la Ley 29733 del Perú. No los cedemos a terceros.</p>
+
+                    <button type="submit" class="btn btn-primary btn-block">Enviar mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <a href="#hero" class="logo-footer">Nouweb</a>
+                <p>Consultora tecnológica e integrador de soluciones de negocio para pymes.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#servicios">Diagnóstico</a></li>
+                    <li><a href="#servicios">Migración de eCommerce</a></li>
+                    <li><a href="#servicios">Integración de CRM</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="aviso-legal.html">Aviso Legal</a></li>
+                    <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
+                    <li><a href="politica-cookies.html">Cookies</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="mailto:info@nouweb-es.com">info@nouweb-es.com</a></li>
+                    <li><a href="tel:+34614942732">+34 614 94 27 32</a>
+                        <span class="footer-nota">(España · también WhatsApp)</span></li>
+                </ul>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nouweb. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal de consentimiento de datos -->
+    <div id="consent-modal" class="consent-modal">
+        <div class="consent-modal-content">
+            <button class="close-consent-modal">&times;</button>
+            <h2>Consentimiento para el tratamiento de datos</h2>
+            <div class="consent-modal-body">
+                <p><strong>Responsable del tratamiento:</strong> Nou Web España SL</p>
+                <p><strong>Finalidad:</strong> atender tu solicitud de información, gestionar tu consulta y enviarte
+                    información relacionada con nuestros servicios.</p>
+
+                <h3>Información básica sobre protección de datos</h3>
+                <ul>
+                    <li><strong>Responsable:</strong> Nou Web España SL, con domicilio en Denia, Alicante, España.</li>
+                    <li><strong>Finalidad:</strong> gestionar las solicitudes de información y consultas hechas a través
+                        del formulario de contacto.</li>
+                    <li><strong>Legitimación:</strong> consentimiento del interesado.</li>
+                    <li><strong>Destinatarios:</strong> no se ceden datos a terceros, salvo obligación legal.</li>
+                    <li><strong>Derechos:</strong> acceder, rectificar y suprimir los datos, además de los demás
+                        derechos que se explican en la información adicional.</li>
+                    <li><strong>Conservación:</strong> mientras se mantenga la relación o durante los años necesarios
+                        para cumplir con las obligaciones legales.</li>
+                </ul>
+
+                <h3>Si escribes desde Perú</h3>
+                <p>Nou Web España SL está establecida en España, así que el tratamiento se rige por el <strong>RGPD</strong>
+                    europeo. Además, y por respeto a la normativa de tu país, aplicamos los principios de la
+                    <strong>Ley 29733 de Protección de Datos Personales del Perú</strong> y su reglamento: tus datos se
+                    tratan solo para la finalidad que aceptaste, no se venden ni se ceden a terceros con fines
+                    comerciales, y puedes ejercer tus derechos ARCO en la misma dirección de abajo.</p>
+
+                <h3>Tus derechos</h3>
+                <p>Puedes ejercer tus derechos de acceso, rectificación, supresión, limitación, portabilidad y oposición
+                    escribiendo a <strong>info@nouweb-es.com</strong>.</p>
+
+                <p>Para más información, revisa nuestra <a href="politica-privacidad.html" target="_blank" rel="noopener">Política de
+                        Privacidad</a> completa.</p>
+
+                <div class="consent-modal-actions">
+                    <button id="accept-consent-modal" class="btn btn-primary">Acepto</button>
+                    <button id="close-consent-modal-btn" class="btn btn-outline">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Banner de cookies -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h3>Uso de cookies</h3>
+                <p>Usamos cookies propias y de terceros para mejorar tu navegación. Si sigues navegando, aceptas su uso.
+                    Revisa nuestra <a href="politica-cookies.html">Política de Cookies</a>, el <a
+                        href="aviso-legal.html">Aviso Legal</a> y la <a href="politica-privacidad.html">Política de
+                        Privacidad</a>.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn btn-primary">Aceptar</button>
+                <button id="decline-cookies" class="btn btn-outline-white">Rechazar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón flotante de WhatsApp. script.js lo rellena y lo revela solo si
+         CONTACTO.whatsapp tiene número. El número NO se escribe aquí: se cambia
+         en CONTACTO (script.js) y se propaga a todos los CTA a la vez.
+         ⚠️ Va DESPUÉS del banner de cookies a propósito: así el CSS puede
+         esconderlo con el selector de hermano mientras el banner está arriba.
+         Si se mueve más arriba, el flotante vuelve a quedar atrapado detrás
+         del banner (que tiene z-index 10000) y deja de poderse pulsar. -->
+    <a href="#" class="whatsapp-float" id="whatsapp-float" hidden
+        aria-label="Escríbenos por WhatsApp" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ⚠️ blog.js ANTES que script.js, y no es indiferente. blog.js inyecta
+         las tarjetas del blog con .fade-in-up, y script.js las entrega al
+         IntersectionObserver dentro de su DOMContentLoaded. Al revés, las
+         tarjetas se quedarían en opacity 0 para siempre y sin ningún error en
+         consola: la sección se vería vacía y parecería un fallo del array. -->
+    <script src="blog/blog.js?v=33"></script>
+
+    <!-- Script (único, compartido). Subir el ?v= junto con el de styles.css. -->
+    <script src="script.js?v=33"></script>
+</body>
+
+</html>

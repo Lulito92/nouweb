@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Mapa del sitio de Nouweb. Creado en la Fase 10 (2026-07-22): el sitio no
+    tenía ninguno.
+
+    ⚠️ AL PUBLICAR UN ARTÍCULO HAY QUE AÑADIRLO ACÁ. Es el único paso del
+    proceso que no se puede automatizar sin un generador, y por eso está
+    escrito en blog/README.md como paso 3 de 4.
+
+    Qué NO va en este archivo:
+      · /es/ y /es-pe/ — redirigen 301 a la raíz (.htaccess). Una URL que
+        redirige no se declara nunca: Google la cuenta como error de cobertura.
+      · /en/ y /de/ — congeladas hasta las fases 6 y 7. Se añaden cuando
+        cuenten la oferta nueva; hoy contradicen a la home en español.
+      · /blog/_plantilla.html — es el molde, no una página. Además lleva
+        noindex.
+      · login.html, dashboard.php, briefing.html y el resto del backend: son
+        privadas o de trabajo interno. robots.txt bloquea las que importan.
+
+    Sobre <lastmod>: es la fecha del último cambio REAL del contenido. Si se
+    pone la de hoy en todas cada vez que se sube algo, Google aprende que la
+    señal no vale nada y deja de mirarla.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://nouweb-es.com/</loc>
+        <lastmod>2026-08-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- La versión España (Fase 14). Es una página distinta, no una traducción:
+         mismo idioma, otro marco fiscal y otro cliente. Por eso se declara con
+         su propia entrada y no como variante de la raíz.
+
+         El grupo hreflang NO se repite aquí. Se declara en el <head> de las dos
+         páginas, que ya es recíproco (sesión 3); duplicarlo en el sitemap solo
+         crea un segundo sitio donde puede quedarse desactualizado y decir lo
+         contrario que el HTML.
+
+         Prioridad 0.9 y no 1.0: la raíz es la canónica del sitio y la única con
+         historial en Google. -->
+    <url>
+        <loc>https://nouweb-es.com/es-es/</loc>
+        <lastmod>2026-08-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://nouweb-es.com/blog/</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Artículos del blog, del más nuevo al más viejo. -->
+    <url>
+        <loc>https://nouweb-es.com/blog/pedidos-por-whatsapp-como-dejar-de-perderlos.html</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Páginas legales: prioridad baja, pero se declaran. Que existan y sean
+         accesibles es parte de la credibilidad de un sitio que pide datos. -->
+    <url>
+        <loc>https://nouweb-es.com/aviso-legal.html</loc>
+        <lastmod>2026-08-10</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://nouweb-es.com/politica-privacidad.html</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://nouweb-es.com/politica-cookies.html</loc>
+        <lastmod>2026-08-10</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+</urlset>
