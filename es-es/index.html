@@ -191,7 +191,7 @@
     <!-- Canónica e idiomas.
 
          ⚠️ EL GRUPO ES RECÍPROCO O NO VALE NADA. Estas cinco líneas son
-         EXACTAMENTE las mismas que las de /index.html, esta página incluida.
+         EXACTAMENTE las mismas que las de /es-pe/index.html, esta página incluida.
          Google ignora por completo un hreflang que la otra página no devuelve:
          no es medio trabajo hecho, vale cero. Si se toca una de las dos listas,
          se tocan las dos.
@@ -199,12 +199,13 @@
          Es la lección que dejó medida la Fase 6 al mirar /en/: la raíz la
          apuntaba, ella no devolvía el apunte, y el grupo entero se ignoraba.
 
-         ⚠️ La canónica apunta AQUÍ, no a la raíz. Si apuntara a `/`, se estaría
-         diciendo que esta página es una copia de la peruana y Google no la
-         indexaría nunca — que es justo lo contrario de por qué existe. -->
+         ⚠️ 2026-10-12, decisión de Luis: esta es ahora la versión por defecto.
+         La raíz `/` redirige aquí (vercel.json) y Perú vive en /es-pe/. Por eso
+         x-default apunta a esta página y no a `/`: un hreflang nunca apunta a
+         una URL que redirige. -->
     <link rel="canonical" href="https://nouweb-es.com/es-es/">
-    <link rel="alternate" hreflang="x-default" href="https://nouweb-es.com/">
-    <link rel="alternate" hreflang="es-PE" href="https://nouweb-es.com/">
+    <link rel="alternate" hreflang="x-default" href="https://nouweb-es.com/es-es/">
+    <link rel="alternate" hreflang="es-PE" href="https://nouweb-es.com/es-pe/">
     <link rel="alternate" hreflang="es-ES" href="https://nouweb-es.com/es-es/">
     <link rel="alternate" hreflang="en" href="https://nouweb-es.com/en/">
     <link rel="alternate" hreflang="de" href="https://nouweb-es.com/de/">
@@ -267,7 +268,7 @@
          palabras; ponerlas aquí la rompería para siempre. -->
     <div id="pais-banner" class="lang-banner" hidden>
         <span class="lang-banner-text">¿Escribes desde Perú?</span>
-        <a href="/" class="lang-banner-link" data-banner-choice="pe">Ver la versión para Perú</a>
+        <a href="/es-pe/" class="lang-banner-link" data-banner-choice="pe">Ver la versión para Perú</a>
         <button type="button" class="lang-banner-close" aria-label="Cerrar">
             <svg class="icono" viewBox="0 0 384 512" aria-hidden="true" focusable="false">
                 <path

@@ -51,7 +51,7 @@
          logo apaisado salía con franjas o cortado. Fase 13. -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_PE">
-    <meta property="og:url" content="https://nouweb-es.com/">
+    <meta property="og:url" content="https://nouweb-es.com/es-pe/">
     <meta property="og:site_name" content="Nouweb">
     <meta property="og:title" content="Tu tienda se quedó atrás. Tus pedidos viven en WhatsApp.">
     <meta property="og:description"
@@ -178,26 +178,22 @@
          página y /es-es/index.html tienen que llevar exactamente estas cinco
          líneas. Si se toca una, se tocan las dos.
 
-         Es la lección que dejó medida la Fase 6 al mirar /en/, que lleva meses
-         publicada sin declarar ni canonical ni hreflang: la raíz sí la
-         apuntaba, ella no devolvía el apunte, y el grupo entero valía cero.
-
-         ⚠️ `es` a secas se fue, y lo sustituyen `es-PE` (esta) y `es-ES`. Con
-         las dos declaradas, un `es` genérico compitiendo con ellas solo añade
-         ambigüedad. Quien busque en español desde un tercer país cae en
-         x-default, que apunta aquí — que es lo que se quiere: la raíz es la
-         única indexada. -->
-    <link rel="canonical" href="https://nouweb-es.com/">
-    <link rel="alternate" hreflang="x-default" href="https://nouweb-es.com/">
-    <link rel="alternate" hreflang="es-PE" href="https://nouweb-es.com/">
+         ⚠️ 2026-10-12, decisión de Luis: esta página era la raíz y se mudó a
+         /es-pe/. La raíz `/` redirige ahora a /es-es/ (vercel.json), así que
+         x-default apunta a /es-es/: un hreflang nunca apunta a una URL que
+         redirige. La canónica apunta AQUÍ; si apuntara a `/`, Google seguiría
+         la redirección y tomaría esta página por copia de la española. -->
+    <link rel="canonical" href="https://nouweb-es.com/es-pe/">
+    <link rel="alternate" hreflang="x-default" href="https://nouweb-es.com/es-es/">
+    <link rel="alternate" hreflang="es-PE" href="https://nouweb-es.com/es-pe/">
     <link rel="alternate" hreflang="es-ES" href="https://nouweb-es.com/es-es/">
     <link rel="alternate" hreflang="en" href="https://nouweb-es.com/en/">
     <link rel="alternate" hreflang="de" href="https://nouweb-es.com/de/">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="Imagenes/iconoweb.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="Imagenes/iconoweb.png">
-    <link rel="apple-touch-icon" href="Imagenes/iconoweb.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Imagenes/iconoweb.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/Imagenes/iconoweb.png">
+    <link rel="apple-touch-icon" href="/Imagenes/iconoweb.png">
 
     <!-- Styles (único, compartido).
          El ?v= es cache busting: el navegador y el hosting cachean estos dos
@@ -207,7 +203,7 @@
          falta para pintar la primera pantalla, así que es la única que se deja
          bloquear. Las dos de terceros (fuentes e iconos) van debajo y NO
          bloquean. -->
-    <link rel="stylesheet" href="styles.css?v=33">
+    <link rel="stylesheet" href="/styles.css?v=33">
 
     <!-- Fuentes — Fase 13.
          Se retiró el peso 300: se cargaba en cada visita y no lo usa ni un
@@ -319,7 +315,7 @@
                      Le dan al navegador la proporción para reservar el hueco
                      antes de que llegue el CSS; sin ellos el header salta.
                      ⚠️ Si se cambia el archivo, cambiar también estos números. -->
-                <img src="Imagenes/LogoAlta-2x.png" alt="Nouweb" width="532" height="160" fetchpriority="high">
+                <img src="/Imagenes/LogoAlta-2x.png" alt="Nouweb" width="532" height="160" fetchpriority="high">
             </a>
 
             <nav class="nav">
@@ -340,7 +336,7 @@
                     <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
                     <li><a href="#contacto" class="nav-link">Contacto</a></li>
                     <li><a href="#auditoria" class="btn btn-primary">Auditoría gratuita</a></li>
-                    <li><a href="login.html" target="_blank" rel="noopener" class="login-icon" title="Acceso Clientes"
+                    <li><a href="/login.html" target="_blank" rel="noopener" class="login-icon" title="Acceso Clientes"
                             aria-label="Acceso Clientes">
                             <svg class="icono" viewBox="0 0 496 512" aria-hidden="true" focusable="false">
                                 <path
@@ -387,7 +383,7 @@
              en la factura del anuncio y en la gente que se va. -->
         <div class="video-background">
             <video muted loop playsinline id="hero-video" preload="none"
-                data-video-hero data-src="Videos/videoprincipal.mp4"></video>
+                data-video-hero data-src="/Videos/videoprincipal.mp4"></video>
             <div class="video-overlay"></div>
         </div>
 
@@ -791,7 +787,7 @@
                          El hueco no queda roto porque .video-wrapper ya trae
                          alto fijo, borde y fondo propio. Fase 12. -->
                     <video muted loop playsinline preload="none" data-video-diferido>
-                        <source data-src="Videos/5495845-hd_1920_1080_30fps.mp4" type="video/mp4">
+                        <source data-src="/Videos/5495845-hd_1920_1080_30fps.mp4" type="video/mp4">
                     </video>
                 </div>
             </div>
@@ -961,9 +957,9 @@
             <div class="footer-col">
                 <h4>Legal</h4>
                 <ul>
-                    <li><a href="aviso-legal.html">Aviso Legal</a></li>
-                    <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
-                    <li><a href="politica-cookies.html">Cookies</a></li>
+                    <li><a href="/aviso-legal.html">Aviso Legal</a></li>
+                    <li><a href="/politica-privacidad.html">Política de Privacidad</a></li>
+                    <li><a href="/politica-cookies.html">Cookies</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -1017,7 +1013,7 @@
                 <p>Puedes ejercer tus derechos de acceso, rectificación, supresión, limitación, portabilidad y oposición
                     escribiendo a <strong>info@nouweb-es.com</strong>.</p>
 
-                <p>Para más información, revisa nuestra <a href="politica-privacidad.html" target="_blank" rel="noopener">Política de
+                <p>Para más información, revisa nuestra <a href="/politica-privacidad.html" target="_blank" rel="noopener">Política de
                         Privacidad</a> completa.</p>
 
                 <div class="consent-modal-actions">
@@ -1034,8 +1030,8 @@
             <div class="cookie-text">
                 <h3>Uso de cookies</h3>
                 <p>Usamos cookies propias y de terceros para mejorar tu navegación. Si sigues navegando, aceptas su uso.
-                    Revisa nuestra <a href="politica-cookies.html">Política de Cookies</a>, el <a
-                        href="aviso-legal.html">Aviso Legal</a> y la <a href="politica-privacidad.html">Política de
+                    Revisa nuestra <a href="/politica-cookies.html">Política de Cookies</a>, el <a
+                        href="/aviso-legal.html">Aviso Legal</a> y la <a href="/politica-privacidad.html">Política de
                         Privacidad</a>.</p>
             </div>
             <div class="cookie-buttons">
@@ -1062,10 +1058,10 @@
          IntersectionObserver dentro de su DOMContentLoaded. Al revés, las
          tarjetas se quedarían en opacity 0 para siempre y sin ningún error en
          consola: la sección se vería vacía y parecería un fallo del array. -->
-    <script src="blog/blog.js?v=33"></script>
+    <script src="/blog/blog.js?v=33"></script>
 
     <!-- Script (único, compartido). Subir el ?v= junto con el de styles.css. -->
-    <script src="script.js?v=33"></script>
+    <script src="/script.js?v=33"></script>
 </body>
 
 </html>
