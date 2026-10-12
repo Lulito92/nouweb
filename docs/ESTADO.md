@@ -7,6 +7,28 @@ técnicamente lista.** El backlog nº 22 (legales sin RGPD) **está cerrado**.
 ✅ **Pendiente nº 21 cerrado (2026-10-12): Luis revisó su contrato y publica `/es-es/`.**
 **No queda ningún `{{PENDIENTE}}` visible.** WhatsApp activo con el número español.
 
+## 🇪🇸 2026-10-12 (2ª sesión) — España sale primero; Perú se muda a `/es-pe/`
+
+**Decisión de Luis:** al entrar en nouweb-es.com se ve primero la versión España, y a
+quien escribe desde Perú se le ofrece *"¿Escribes desde Perú? Ver la versión para Perú"*.
+Cambia la arquitectura de `CLAUDE.md` § 7 (ya actualizada).
+
+- **`index.html` de la raíz → `es-pe/index.html`** (con `git mv`). Sus rutas relativas
+  (`styles.css`, `Imagenes/…`, `Videos/…`, legales, `blog/blog.js`) pasan a absolutas.
+- **`vercel.json`:** `/` y `/index.html` → **302** a `/es-es/`; `/es/` → 301 a `/es-es/`;
+  `/es-pe` → `/es-pe/`. Se quitaron los 301 de `/es-pe/` a `/`. `.htaccess` copia lo mismo.
+- **`.vercelignore`:** entra `!es-pe` y sale `!index.html` (ya no existe).
+- **hreflang** (idéntico en las dos): `x-default` y `es-ES` → `/es-es/`, `es-PE` → `/es-pe/`.
+  Canónicas: cada una a sí misma.
+- **Banner de `/es-es/`:** el enlace a Perú va a `/es-pe/`. La lógica de `script.js` no
+  cambia: sale a quien tiene zona horaria `America/…`. **Desde España no se ve**, a propósito.
+- **Blog** (escrito para Perú): sus enlaces a la home van a `/es-pe/` y `/es-pe/#…`.
+- **`sitemap.xml`:** sale `/`, entran `/es-es/` y `/es-pe/`.
+- Las legales y `login.html` siguen enlazando a `index.html`: lo recoge el 302 a `/es-es/`.
+
+**Lo aprendido:** un hreflang nunca apunta a una URL que redirige. Al mudar la raíz,
+`x-default` tenía que dejar de ser `/`.
+
 ## 🚚 2026-10-12 — El proyecto pasa a GitHub + Vercel (adiós FTP)
 
 **Repositorio privado `github.com/Lulito92/nouweb`, rama `main`.** Vercel lo publica solo

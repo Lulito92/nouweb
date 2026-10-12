@@ -20,27 +20,18 @@ RewriteCond %{HTTPS} off
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# La raíz es la versión canónica en español. /es/ deja de existir como home
-# para evitar contenido duplicado con /. Solo se redirige la home, no las
-# páginas legales de /es/, que siguen sirviéndose desde su carpeta.
-RewriteRule ^es/?$ / [L,R=301]
-RewriteRule ^es/index\.html$ / [L,R=301]
+# 2026-10-12, decisión de Luis: la versión por defecto es ESPAÑA. La raíz
+# redirige a /es-es/ y la versión Perú (que antes era la raíz) vive en /es-pe/.
+# Copia de lo que hace vercel.json, por si se vuelve a Apache.
+# 302 y no 301 en la raíz: un 301 se queda guardado para siempre en el
+# navegador, y qué versión sale primero es una decisión que ya ha cambiado.
+RewriteRule ^$ /es-es/ [L,R=302]
+RewriteRule ^index\.html$ /es-es/ [L,R=302]
 
-# /es-pe/ nunca ha tenido contenido y no va a tenerlo: la raíz ES la versión
-# Perú y es la única indexada (Fase 14). Esta carpeta existe solo como redirección
-# porque, desde que hay /es-es/, la gente y los enlaces de fuera van a teclear la
-# pareja simétrica — y un 404 en una URL que el propio esquema del sitio sugiere
-# es peor que no tener el esquema.
-#
-# ⚠️ Va DESPUÉS de las de /es/ y no antes, aunque parezca indiferente: `^es/?$`
-# no llega a mirar "es-pe" (exige fin de cadena tras la barra opcional), pero el
-# orden de un bloque de redirecciones se lee de lo específico a lo general y
-# mezclarlo es cómo nacen los bucles.
-#
-# ⚠️ NO se declara en sitemap.xml. Una URL que redirige no se declara nunca:
-# Google la marcaría como error de cobertura.
-RewriteRule ^es-pe/?$ / [L,R=301]
-RewriteRule ^es-pe/index\.html$ / [L,R=301]
+# /es/ deja de existir como home. Solo se redirige la home, no las páginas
+# legales de /es/, que siguen sirviéndose desde su carpeta.
+RewriteRule ^es/?$ /es-es/ [L,R=301]
+RewriteRule ^es/index\.html$ /es-es/ [L,R=301]
 
 
 DirectoryIndex index.html dashboard.php

@@ -16,7 +16,6 @@
 !vercel.json
 
 # Páginas de la raíz
-!index.html
 !aviso-legal.html
 !politica-cookies.html
 !politica-privacidad.html
@@ -35,6 +34,7 @@
 # Carpetas del sitio
 !blog
 !es-es
+!es-pe
 !en
 !de
 !es

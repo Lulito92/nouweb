@@ -20,7 +20,7 @@ Vercel**, que publica solo con un `git push` a `main`. Tres cosas cambian:
 - ⚠️ **Vercel publica SOLO lo que lista `.vercelignore`** (lista blanca). El repo guarda
   `CLAUDE.md`, `docs/` y `backend/`, y no deben servirse. **Una página o carpeta nueva del
   sitio hay que añadirla ahí con `!`, o dará 404.**
-- ⚠️ **El `.htaccess` ya no se lee.** Redirecciones (301 de `/es/` y `/es-pe/`), caché y
+- ⚠️ **El `.htaccess` ya no se lee.** Redirecciones (`/` y `/es/` → `/es-es/`), caché y
   cabeceras de seguridad viven en **`vercel.json`**. Se conserva el `.htaccess` por si se
   vuelve a Apache.
 - ⚠️ **Vercel no ejecuta PHP**: el login de clientes (`login.html` → `backend/`) no funciona
@@ -187,12 +187,12 @@ Si falta el dato, se deja un marcador visible `{{PENDIENTE: ...}}`.
 
 | Decisión | Detalle |
 |---|---|
-| Home real en la raíz | `/index.html` = home en español peruano. El antiguo selector de idioma desaparece. |
-| Canónica ES | La raíz **es** la versión española. `/es/index.html` → **301 a `/`**. |
+| Home real en la raíz | **Desde el 2026-10-12 no hay `/index.html`**: `/` redirige (**302**) a `/es-es/`. El antiguo selector de idioma desaparece. |
+| Canónica ES | Cada versión es canónica de sí misma: `/es-es/` y `/es-pe/`. `/es/` → **301 a `/es-es/`**. |
 | Sin redirección automática por idioma | Rompe el rastreo de Google. En su lugar: **banner superior discreto** ofreciendo EN/DE si el navegador no es español, con la elección guardada en cookie. |
-| **Mercados en español** (2026-08-09) | `/` **es la versión Perú y no se mueve**: es lo único indexado. `/es-pe/` existe solo como **301 a `/`**. España nace en **`/es-es/`**. |
-| **Sin reparto por país en la raíz** | Misma regla que el idioma, mismo motivo: **Googlebot rastrea desde EE.UU.** y solo vería una variante. El país se detecta con la **zona horaria** del navegador y se ofrece cambiar con **`#pais-banner`** (hermano de `#lang-banner`, misma clase CSS, misma lógica en `script.js`; cookies `nw_pais_banner` y `nw_lang_banner`, 180 días). Solo sale **una** barra a la vez y el idioma tiene prioridad. **Nunca redirigir, nunca cambiar el contenido de `/` según la IP.** |
-| hreflang | `x-default` → `/`, `es-PE` → `/`, `es-ES` → `/es-es/`, `en` → `/en/`, `de` → `/de/`. ⚠️ **Recíprocos o no valen nada**: cada carpeta declara el grupo entero, incluida ella misma. |
+| **Mercados en español** (2026-08-09, **cambiado el 2026-10-12**) | ⚠️ **España sale primero** (decisión de Luis del 2026-10-12): `/` → **302 a `/es-es/`**. **Perú vive en `/es-pe/`** (era la raíz y se mudó entera). El 302 y no 301 es a propósito: el navegador guarda un 301 para siempre y esta decisión ya ha cambiado una vez. |
+| **Sin reparto por país** | Misma regla que el idioma, mismo motivo: **Googlebot rastrea desde EE.UU.** y solo vería una variante. El país se detecta con la **zona horaria** del navegador y se ofrece cambiar con **`#pais-banner`** (hermano de `#lang-banner`, misma clase CSS, misma lógica en `script.js`; cookies `nw_pais_banner` y `nw_lang_banner`, 180 días). Solo sale **una** barra a la vez y el idioma tiene prioridad. **Nunca redirigir según idioma, país o IP.** La redirección de `/` a `/es-es/` es la misma para todo el mundo, Googlebot incluido: no rompe esta regla. |
+| hreflang | `x-default` → `/es-es/`, `es-PE` → `/es-pe/`, `es-ES` → `/es-es/` (nunca a `/`, que redirige), `en` → `/en/`, `de` → `/de/`. ⚠️ **Recíprocos o no valen nada**: cada carpeta declara el grupo entero, incluida ella misma. |
 | Assets | La home nueva usa **un solo** `/styles.css` y `/script.js`. Es el primer paso para matar la triplicación existente. |
 | EN y DE | **Congelados** tal como están hasta cerrar el ES. Se traducen en las fases 6 y 7. |
 
@@ -262,7 +262,7 @@ Detalle y guía de encendido en `docs/ESTADO.md` § Encender el seguimiento.
 6. Si falta un dato de Luis, **no inventarlo**: dejar `{{PENDIENTE: ...}}` y anotarlo
    en `docs/ESTADO.md` § Pendientes de Luis.
 7. **Todo copy se escribe para UN mercado.** Antes de redactar, mirar en qué carpeta cae
-   el archivo: raíz = Perú (§ 4), `/es-es/` = España (§ 4bis). Son reglas opuestas.
+   el archivo: `/es-pe/` y el blog = Perú (§ 4), `/es-es/` = España (§ 4bis). Son reglas opuestas.
 
 > 📋 **El protocolo exacto de abrir y cerrar una sesión está en
 > [`docs/SESIONES.md`](docs/SESIONES.md)**: los tres pasos de arranque, el checklist de
